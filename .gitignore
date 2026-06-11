@@ -1,0 +1,25 @@
+# Klucze i sekrety
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Wygenerowane artefakty raportów (ćwiczenia)
+out/
+*.pdf
+*.xlsx
+*.png
+*.html
+!**/templates/*.html
+
+# Sesje ADK (jeśli ktoś włączy --session_service_uri)
+sessions.db
+
+# System
+.DS_Store

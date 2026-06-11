@@ -1,0 +1,35 @@
+{
+  "eval_set_id": "moj_test_set",
+  "name": "Mój test set - moduł 7",
+  "description": "Szablon do uzupełnienia. NAJLEPIEJ jednak nagraj sesję w 'adk web' (zakładka Eval) - wtedy ten plik wygeneruje się automatycznie z prawdziwej rozmowy.",
+  "eval_cases": [
+    {
+      "eval_id": "TODO_nazwij_przypadek",
+      "conversation": [
+        {
+          "invocation_id": "inv-001",
+          "user_content": {
+            "role": "user",
+            "parts": [{ "text": "TODO: pytanie użytkownika" }]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [{ "text": "TODO: oczekiwana odpowiedź (zweryfikowana na bazie!)" }]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              { "name": "get_schema", "args": {} },
+              { "name": "run_query", "args": { "sql": "TODO: oczekiwany SELECT" } }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "sql_agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    }
+  ]
+}

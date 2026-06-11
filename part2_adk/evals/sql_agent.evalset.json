@@ -1,0 +1,73 @@
+{
+  "eval_set_id": "sql_agent_evalset",
+  "name": "SQL agent - przykładowy test set",
+  "description": "Dwa przykładowe przypadki. Oczekiwane odpowiedzi zweryfikowane na realnej bazie Chinook. UWAGA: kanoniczny sposób tworzenia test case'ów to nagranie sesji w 'adk web' (moduł 7) - ten plik to wzór do podejrzenia.",
+  "eval_cases": [
+    {
+      "eval_id": "klienci_niemcy",
+      "conversation": [
+        {
+          "invocation_id": "inv-001",
+          "user_content": {
+            "role": "user",
+            "parts": [{ "text": "Ilu mamy klientów z Niemiec?" }]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [{ "text": "Mamy 4 klientów z Niemiec." }]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              { "name": "get_schema", "args": {} },
+              {
+                "name": "run_query",
+                "args": {
+                  "sql": "SELECT COUNT(*) FROM Customer WHERE Country = 'Germany';"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "sql_agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "top_gatunek",
+      "conversation": [
+        {
+          "invocation_id": "inv-002",
+          "user_content": {
+            "role": "user",
+            "parts": [{ "text": "Który gatunek ma najwięcej utworów?" }]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [{ "text": "Najwięcej utworów ma Rock - 1297." }]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              { "name": "get_schema", "args": {} },
+              {
+                "name": "run_query",
+                "args": {
+                  "sql": "SELECT g.Name, COUNT(*) AS c FROM Track t JOIN Genre g ON g.GenreId = t.GenreId GROUP BY g.GenreId ORDER BY c DESC LIMIT 1;"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "sql_agent",
+        "user_id": "test_user",
+        "state": {}
+      }
+    }
+  ]
+}
