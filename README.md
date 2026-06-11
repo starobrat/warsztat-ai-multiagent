@@ -102,9 +102,14 @@ Pełny plan modułów: dokument planu szkolenia (u prowadzącego).
 
 Repo zawiera pliki instrukcji dla asystentów AI (`CLAUDE.md`, `AGENTS.md`,
 `.github/copilot-instructions.md`, `.cursor/rules/`). Ustawiają one Twojego
-asystenta w tryb **korepetytora**: pomoże Ci zrozumieć, podpowie kierunek i
-zrobi code review — ale **nie wygeneruje za Ciebie kodu w miejscach `# TODO(you)`**.
-To celowe. Na tym szkoleniu wynosisz umiejętność z głowy, nie z outputu modelu.
+asystenta w tryb **korepetytora**. Asystent **nie wygeneruje rozwiązania na samo
+"rozwiąż mi to"** — najpierw poprosi, żebyś wytłumaczył, czym jest dane zadanie,
+jak działa i jak je zaimplementować. Dopiero gdy pokażesz, że rozumiesz (i sam
+podejmiesz decyzje projektowe), pomoże Ci to zakodować. Po drodze będzie
+naprowadzać, zadawać pytania i prostować błędne wyobrażenia.
+
+To celowe. Możesz uczyć się z asystentem "zgodnie ze sztuką" — ale kod ma być
+efektem Twojego zrozumienia, nie skrótem przez prompt.
 
 ## Licencje
 
