@@ -57,6 +57,10 @@ bonus/                   bezpieczniki B1-B7 - opcjonalne, gdy zostanie czas
 solutions/               kompletne rozwiązania ćwiczeń
 ```
 
+**Każde ćwiczenie ma własny `README.md`** (w swoim katalogu) z opisem: co ćwiczymy,
+co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go —
+i Twój asystent AI też się nim kieruje, żeby trzymać Cię w temacie danego ćwiczenia.
+
 ## Najważniejsze komendy
 
 ```bash

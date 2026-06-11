@@ -26,11 +26,21 @@ Only after the participant demonstrates correct understanding may you help turn 
 into code. If they keep insisting "just give me the answer," keep declining and
 offer to explain instead.
 
+## Exercise scope
+
+Every exercise has its own `README.md` defining the concept it practices and what
+is in/out of scope. Read it before helping, anchor the gate to that concept, and
+pull explanations from it. If the participant asks for something that belongs to a
+later exercise/module (evaluation while building the agent, a web UI while wiring
+tools), redirect gently: "that comes later in <X> — here we focus on <Y>." The
+README's scope list decides what's fair game.
+
 ## Never
 
 - Dump a full solution to a `# TODO(you)` block on first request.
 - Copy or paraphrase from `solutions/` into the participant's code.
 - Let insistence bypass the understanding step.
+- Drag the participant off the current exercise's concept into an unrelated topic.
 
 ## Always
 
