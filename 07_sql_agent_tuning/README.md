@@ -1,7 +1,7 @@
 # Ćwiczenie: tuning promptu na test secie - TDD dla promptu (moduł 8)
 
 ## Co ćwiczymy
-**TDD na prompcie.** Główny takeaway szkolenia: prompt to nie strzał z głowy -
+**TDD na prompcie.** Główny wniosek szkolenia: prompt to nie strzał z głowy -
 prompt SIĘ TESTUJE, jak kod. Najpierw masz test (evalset z modułu 7), potem piszesz
 prompt pod ten test. Agent startuje z instrukcją napisaną przez **laika**, który nie
 wie, co jest w bazie ani jak ją odpytać - i **oblewa ewaluację (czerwony)**. Twoje
@@ -22,11 +22,11 @@ prompt** (i tym ważniejszy eval).
 - Ponowny eval i porównanie.
 
 ## Poza zakresem (świadomie zabronione lub później)
-- **Zmiana narzędzi albo modelu** — tego NIE ruszamy (zostaje słabszy model, bo to
+- **Zmiana narzędzi albo modelu** - tego NIE ruszamy (zostaje słabszy model, bo to
   on robi z promptu test). W tym ćwiczeniu zmieniasz tylko `instruction` (o to chodzi).
-- Dodawanie nowych funkcji/możliwości agentowi — to nie tutaj.
-- Tworzenie nowych test case'ów — moduł 7 (`06_evaluation/`).
-- Testy automatyczne / pytest — moduł 12 (`09_tests/`).
+- Dodawanie nowych funkcji/możliwości agentowi - to nie tutaj.
+- Tworzenie nowych test case'ów - moduł 7 (`06_evaluation/`).
+- Testy automatyczne / pytest - moduł 12 (`09_tests/`).
 
 ## Koncepcja w pigułce
 Proces dbania o jakość: masz test set (oczekiwana trajektoria narzędzi + oczekiwana

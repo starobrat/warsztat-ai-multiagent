@@ -1,7 +1,7 @@
 # Ćwiczenie: pętla agentyczna (moduł 4)
 
 ## Co ćwiczymy
-**Pętlę agentyczną** — różnicę między: wywołaniem LLM, pipeline'em i agentem.
+**Pętlę agentyczną** - różnicę między: wywołaniem LLM, pipeline'em i agentem.
 Agent to LLM w **pętli**, który **sam decyduje**, ilu kroków i jakich narzędzi
 użyć, aż uzna, że ma odpowiedź. To domknięcie części 1.
 
@@ -11,10 +11,10 @@ użyć, aż uzna, że ma odpowiedź. To domknięcie części 1.
 - Bezpiecznik: limit kroków (`MAX_STEPS`).
 
 ## Poza zakresem (przyjdzie później)
-- Pamięć / sesje — część 2 (ADK).
-- Abstrakcja ADK (LlmAgent, adk web) — część 2, zaczyna się od `04_hello`.
-- Ewaluacja — część 2, moduł 7 (`06_evaluation/`).
-- Wieloagentowość — część 2, `08_report_system`.
+- Pamięć / sesje - część 2 (ADK).
+- Abstrakcja ADK (LlmAgent, adk web) - część 2, zaczyna się od `04_hello`.
+- Ewaluacja - część 2, moduł 7 (`06_evaluation/`).
+- Wieloagentowość - część 2, `08_report_system`.
 
 ## Koncepcja w pigułce
 - **Wywołanie** = jeden krok, jedna odpowiedź.
@@ -22,7 +22,7 @@ użyć, aż uzna, że ma odpowiedź. To domknięcie części 1.
 - **Agent** = pętla, w której model decyduje o następnym kroku.
 
 Składasz tu function calling z ćwiczenia 02 z pętlą. Najpierw model patrzy w schemat,
-potem pisze SELECT, potem na podstawie wyniku formułuje odpowiedź — wszystko sam,
+potem pisze SELECT, potem na podstawie wyniku formułuje odpowiedź - wszystko sam,
 w pętli, dopóki nie zwróci `tool: null`.
 
 ## Twoje zadanie
@@ -31,4 +31,4 @@ w `db_tools.py`.
 
 ## "Działa", gdy
 Na "ilu mamy klientów z Niemiec?" agent sam wywołuje `get_schema`, potem `run_query`
-z sensownym SELECT-em i zwraca poprawną liczbę — bez Twojej ingerencji w pętli.
+z sensownym SELECT-em i zwraca poprawną liczbę - bez Twojej ingerencji w pętli.

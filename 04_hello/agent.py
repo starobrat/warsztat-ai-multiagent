@@ -1,7 +1,7 @@
 """Agent referencyjny - moduł 5. GOTOWY, do podejrzenia.
 
 Pierwszy agent w ADK: to samo, co robiłeś ręcznie w części 1, ale pętlę, sesje,
-UI i ewaluację dostajesz z pudełka.
+UI i ewaluację masz gotowe.
 
 Uruchom: uv run adk web 04_hello (UI) albo uv run adk run 04_hello (terminal).
 """

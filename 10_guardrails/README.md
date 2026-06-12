@@ -2,7 +2,7 @@
 
 ## Co ćwiczymy
 **Bezpieczeństwo agentów**: ryzyka (prompt injection, nadmierne uprawnienia narzędzi,
-wyciek danych) i obronę **w głąb** (defense in depth) przez `before_tool_callback` —
+wyciek danych) i obronę **w głąb** (defense in depth) przez `before_tool_callback` -
 callback sprawdzający argumenty narzędzia ZANIM się wykona.
 
 ## Zakres tego ćwiczenia
@@ -11,9 +11,9 @@ callback sprawdzający argumenty narzędzia ZANIM się wykona.
 - Warstwa 1 (narzędzie puszcza tylko SELECT) + warstwa 2 (callback) = obrona w głąb.
 
 ## Poza zakresem (gdzie indziej)
-- Budowanie nowych narzędzi / funkcji — `agents/sql_agent`, `bonus/`.
-- Audyt/logowanie zapytań — bonus `B3_audyt_sql`.
-- Ewaluacja i testy — moduły 7 i 12.
+- Budowanie nowych narzędzi / funkcji - `05_sql_agent`, `bonus/`.
+- Audyt/logowanie zapytań - bonus `B3_audyt_sql`.
+- Ewaluacja i testy - moduły 7 i 12.
 
 ## Koncepcja w pigułce
 Callback zwracający `dict` = blokada (narzędzie się nie wykona). Nie ufaj jednej

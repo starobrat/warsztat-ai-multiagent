@@ -30,7 +30,7 @@ uv run 00_setup/smoke_test.py # jeśli zobaczysz odpowiedź modelu - jesteś got
 ```
 
 Najprościej w trakcie warsztatu: `./run.sh` - menu strzałkami (↑/↓, Enter), z którego
-odpalisz `uv sync`, smoke test i kolejne ćwiczenia bez wpisywania komend.
+uruchomisz `uv sync`, smoke test i kolejne ćwiczenia bez wpisywania komend.
 
 ---
 
@@ -65,7 +65,7 @@ solutions/               kompletne rozwiązania ćwiczeń
 ```
 
 **Każde ćwiczenie ma własny `README.md`** (w swoim katalogu) z opisem: co ćwiczymy,
-co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go —
+co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go -
 i Twój asystent AI też się nim kieruje, żeby trzymać Cię w temacie danego ćwiczenia.
 
 Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web 05_sql_agent`
@@ -117,12 +117,12 @@ Pełny plan modułów: dokument planu szkolenia (u prowadzącego).
 Repo zawiera pliki instrukcji dla asystentów AI (`CLAUDE.md`, `AGENTS.md`,
 `.github/copilot-instructions.md`, `.cursor/rules/`). Ustawiają one Twojego
 asystenta w tryb **korepetytora**. Asystent **nie wygeneruje rozwiązania na samo
-"rozwiąż mi to"** — najpierw poprosi, żebyś wytłumaczył, czym jest dane zadanie,
+"rozwiąż mi to"** - najpierw poprosi, żebyś wytłumaczył, czym jest dane zadanie,
 jak działa i jak je zaimplementować. Dopiero gdy pokażesz, że rozumiesz (i sam
 podejmiesz decyzje projektowe), pomoże Ci to zakodować. Po drodze będzie
 naprowadzać, zadawać pytania i prostować błędne wyobrażenia.
 
-To celowe. Możesz uczyć się z asystentem "zgodnie ze sztuką" — ale kod ma być
+To celowe. Możesz uczyć się z asystentem "zgodnie ze sztuką" - ale kod ma być
 efektem Twojego zrozumienia, nie skrótem przez prompt.
 
 ## Licencje

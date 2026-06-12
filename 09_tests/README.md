@@ -11,12 +11,12 @@ się automatycznie, a nie "na oko".
 - Zrozumienie, że `agent_module` wskazuje katalog agenta (np. `05_sql_agent`).
 
 ## Poza zakresem (gdzie indziej)
-- Tworzenie/nagrywanie evalsetów i metryki — moduł 7 (`06_evaluation/`).
-- Budowa samych agentów — `05_sql_agent`, `08_report_system`.
+- Tworzenie/nagrywanie evalsetów i metryki - moduł 7 (`06_evaluation/`).
+- Budowa samych agentów - `05_sql_agent`, `08_report_system`.
 
 ## Koncepcja w pigułce
 `AgentEvaluator.evaluate(agent_module="05_sql_agent", eval_dataset_file_path_or_dir=...)`
-ładuje agenta po nazwie jego katalogu i odpala na nim evalset. Próg zaliczenia bierze
+ładuje agenta po nazwie jego katalogu i uruchamia na nim evalset. Próg zaliczenia bierze
 z `06_evaluation/test_config.json`. To most między "ręcznym" evalem a CI.
 
 ## Twoje zadanie

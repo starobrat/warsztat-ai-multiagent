@@ -1,7 +1,7 @@
 # Bonus B5: Ewaluacja - przypadki brzegowe
 
 ## Zadanie
-Dorzuć do test setu przypadki, na których agenci zwykle się wykładają:
+Dorzuć do test setu przypadki, na których agenci zwykle zawodzą:
 - pytanie o dane, których NIE MA w bazie (agent powinien przyznać, że nie wie),
 - pytanie wieloznaczne ("najlepszy artysta" - wg czego?),
 - pytanie podchwytliwe z błędnym założeniem.

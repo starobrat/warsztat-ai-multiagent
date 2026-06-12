@@ -11,10 +11,10 @@ system = kilku agentów, którzy przekazują sobie pracę. Budujesz pipeline:
 - Złożenie report_writera z gotowych klocków raportowych (PDF/Excel/HTML z `common/tools/`).
 
 ## Poza zakresem (przyjdzie później)
-- **Testowanie systemu wieloagentowego — moduł 12 (`09_tests/`).**
-- Bezpieczeństwo / guardraile — `10_guardrails` (moduł 14).
-- MCP i A2A — moduł 13.
-- Interfejs webowy masz gotowy (`adk web`) — nie budujemy własnego UI.
+- **Testowanie systemu wieloagentowego - moduł 12 (`09_tests/`).**
+- Bezpieczeństwo / guardraile - `10_guardrails` (moduł 14).
+- MCP i A2A - moduł 13.
+- Interfejs webowy masz gotowy (`adk web`) - nie budujemy własnego UI.
 
 ## Koncepcja w pigułce
 - **SequentialAgent** = sztywna kolejność kroków, dane płyną przez `output_key`.

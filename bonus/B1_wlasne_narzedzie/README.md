@@ -3,7 +3,7 @@
 **Kiedy:** dla osób, które skończyły szybciej, albo jako praca własna.
 
 ## Zadanie
-Dodaj agentowi narzędzie, którego nie ma w `tools/`: pobranie kursu waluty z
+Dodaj agentowi narzędzie, którego nie ma w `common/tools/`: pobranie kursu waluty z
 publicznego API (np. NBP: `https://api.nbp.pl/api/exchangerates/rates/A/EUR/?format=json`)
 i przeliczenie sprzedaży z bazy na PLN.
 

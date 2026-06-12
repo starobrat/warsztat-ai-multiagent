@@ -10,4 +10,4 @@ LOGUJ każde zapytanie SQL, które agent próbuje wykonać, do pliku `out/audit.
 3. Zadaj kilka pytań i obejrzyj `out/audit.log`.
 
 ## Czego się uczysz
-Observability agenta - w produkcji musisz wiedzieć, co agent naprawdę zrobił.
+Observability agenta - na produkcji musisz wiedzieć, co agent naprawdę zrobił.

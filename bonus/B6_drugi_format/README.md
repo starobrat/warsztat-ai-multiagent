@@ -2,7 +2,7 @@
 
 ## Zadanie
 Jeśli Twój system raportowy generuje PDF - dorób wariant HTML (albo odwrotnie).
-Masz gotowe klocki: `tools/pdf_report.py`, `tools/html_report.py`, `tools/excel_report.py`.
+Masz gotowe klocki: `common/tools/pdf_report.py`, `common/tools/html_report.py`, `common/tools/excel_report.py`.
 
 ## Kroki
 1. Dodaj `report_writer`-owi drugie narzędzie raportowe.

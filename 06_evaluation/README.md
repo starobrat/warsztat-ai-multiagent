@@ -1,6 +1,6 @@
 # Ewaluacja agentów (moduły 7 i 12)
 
-Główny takeaway szkolenia: **prompt to nie strzał z głowy. Prompt się testuje.**
+Główny wniosek szkolenia: **prompt to nie strzał z głowy. Prompt się testuje.**
 
 ## Dwa sposoby uruchomienia tego samego test setu
 

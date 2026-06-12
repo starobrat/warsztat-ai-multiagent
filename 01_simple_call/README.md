@@ -11,15 +11,15 @@ max_tokens) i **promptu systemowego** (roli) na odpowiedź.
 - Eksperyment z parametrami i porównanie odpowiedzi.
 
 ## Poza zakresem (przyjdzie później)
-- Narzędzia / function calling — ćwiczenie 02.
-- Pętla, w której model sam decyduje o krokach — ćwiczenie 03.
+- Narzędzia / function calling - ćwiczenie 02.
+- Pętla, w której model sam decyduje o krokach - ćwiczenie 03.
 - ADK i cokolwiek z części 2.
 
 ## Koncepcja w pigułce
 LLM to funkcja: tekst wejściowy -> tekst wyjściowy, niedeterministycznie.
 `temperature` steruje losowością (0 = zachowawczo, wyżej = kreatywniej). Rola
 (system prompt) ustawia kontekst, w jakim model odpowiada. Tu nie ma jeszcze
-żadnej "akcji" — model tylko generuje tekst.
+żadnej "akcji" - model tylko generuje tekst.
 
 ## Twoje zadanie
 Patrz `starter.py`: napisz prompt systemowy i porównaj odpowiedzi dla różnych
