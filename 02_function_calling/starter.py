@@ -30,15 +30,10 @@ def build_system_prompt() -> str:
     tool_list = "\n".join(
         f"- {name}: {meta['description']}" for name, meta in TOOLS.items()
     )
-    # TODO(you): dokończ prompt systemowy. Model MA zwracać wyłącznie JSON:
-    #   {"tool": "<nazwa>", "args": {...}}        -> gdy potrzebuje narzędzia
-    #   {"tool": null, "answer": "<odpowiedź>"}   -> gdy umie odpowiedzieć sam
-    return f"""Masz do dyspozycji narzędzia:
-{tool_list}
-
-# TODO(you): dopisz instrukcję, że model odpowiada WYŁĄCZNIE JSON-em
-# w jednym z dwóch formatów powyżej.
-"""
+    # TODO(you): dopisz do promptu zasadę, że model odpowiada WYŁĄCZNIE JSON-em:
+    #   {"tool": "<nazwa>", "args": {...}}      -> gdy potrzebuje narzędzia
+    #   {"tool": null, "answer": "<odpowiedź>"} -> gdy odpowiada sam
+    return f"Masz do dyspozycji narzędzia:\n{tool_list}\n"
 
 
 def call_model(user_prompt: str) -> dict:
