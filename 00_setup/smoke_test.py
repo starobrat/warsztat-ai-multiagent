@@ -35,7 +35,7 @@ def main() -> int:
     response = client.chat.completions.create(
         model=model,
         messages=[
-            {"role": "user", "content": "Odpowiedz jednym zdaniem: czy mój setup działa?"}
+            {"role": "user", "content": "Przywitaj się jednym krótkim zdaniem i potwierdź, że jesteś gotowy do pracy."}
         ],
     )
     print("Odpowiedź modelu:")
