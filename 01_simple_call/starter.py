@@ -1,7 +1,8 @@
 """Ćwiczenie 1 - wywołanie LLM i parametry (moduł 2).
 
 Jedno wywołanie, jedna odpowiedź. Bez pętli, bez narzędzi.
-Zadanie: napisz prompt systemowy i porównaj odpowiedzi dla różnych temperatur.
+Zadanie: napisz własny prompt i pytanie, uruchom raz, a potem pozmieniaj
+temperaturę i uruchom ponownie - zobacz, jak zmienia się odpowiedź.
 
 Uruchom: uv run 01_simple_call/starter.py
 """
@@ -30,12 +31,15 @@ def main() -> None:
     # (np. "Jesteś analitykiem sprzedaży sklepu muzycznego...").
     system_prompt = ""
 
-    user_prompt = "Wymień 3 metryki, które warto śledzić w sklepie z muzyką."
+    # TODO(you): napisz pytanie do modelu.
+    user_prompt = ""
 
-    # TODO(you): uruchom to samo pytanie z różnymi temperaturami i porównaj.
-    for temperature in (0.0, 1.0):
-        print(f"\n=== temperature={temperature} ===")
-        print(ask(system_prompt, user_prompt, temperature))
+    # TODO(you): ustaw temperaturę (0.0 = zachowawczo, ~1.0 = kreatywnie).
+    # Uruchom raz, potem zmień tę wartość i uruchom ponownie, żeby porównać.
+    temperature = 0.0
+
+    print(f"=== temperature={temperature} ===")
+    print(ask(system_prompt, user_prompt, temperature))
 
 
 if __name__ == "__main__":
