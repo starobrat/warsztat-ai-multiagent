@@ -15,12 +15,12 @@ load_dotenv()
 
 
 def main() -> int:
-    api_key = os.getenv("OPENROUTER_API_KEY")
-    model = os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini")
+    api_key = os.getenv("OPENAI_API_KEY")
+    model = os.getenv("OPENAI_MODEL", "gpt-5.4-mini")
 
     if not api_key:
-        print("BŁĄD: brak OPENROUTER_API_KEY.")
-        print("Skopiuj .env.example do .env i wklej klucz z https://openrouter.ai/keys")
+        print("BŁĄD: brak OPENAI_API_KEY.")
+        print("Skopiuj .env.example do .env i wklej klucz z https://platform.openai.com/api-keys")
         return 1
 
     try:
@@ -29,9 +29,9 @@ def main() -> int:
         print("BŁĄD: brak pakietu 'openai'. Uruchom: uv sync")
         return 1
 
-    client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=api_key)
+    client = OpenAI(api_key=api_key)
 
-    print(f"Pytam model '{model}' przez OpenRouter...\n")
+    print(f"Pytam model '{model}' przez OpenAI...\n")
     response = client.chat.completions.create(
         model=model,
         messages=[

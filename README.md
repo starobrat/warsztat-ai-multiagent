@@ -5,7 +5,7 @@ i systemów wieloagentowych. Budujemy jeden projekt warstwami: **agenta raportow
 na bazie sklepu z muzyką (Chinook), od ręcznej pętli agentycznej aż po system
 wieloagentowy z ewaluacją i guardrailami.
 
-Stack: **Python + Google ADK 2.0 + OpenRouter** (jeden klucz na całe szkolenie),
+Stack: **Python + Google ADK 2.0 + OpenAI** (jeden klucz na całe szkolenie),
 zarządzanie przez **uv**.
 
 ---
@@ -15,7 +15,7 @@ zarządzanie przez **uv**.
 - Python 3.11+
 - [uv](https://docs.astral.sh/uv/) (zarządzanie zależnościami i uruchamianiem)
 - git
-- Klucz API OpenRouter: https://openrouter.ai/keys (jeden klucz wystarczy na obie części)
+- Klucz API OpenAI: https://platform.openai.com/api-keys (jeden klucz wystarczy na obie części)
 
 ## Setup (5 minut)
 
@@ -24,7 +24,7 @@ git clone <URL-tego-repo>
 cd sages-adk-multiagent
 
 uv sync                       # instaluje zależności
-cp .env.example .env          # następnie wklej swój OPENROUTER_API_KEY do .env
+cp .env.example .env          # następnie wklej swój OPENAI_API_KEY do .env
 
 uv run 00_setup/smoke_test.py # jeśli zobaczysz odpowiedź modelu - jesteś gotowy
 ```
@@ -33,25 +33,29 @@ uv run 00_setup/smoke_test.py # jeśli zobaczysz odpowiedź modelu - jesteś got
 
 ## Jak to jest poukładane
 
+Ćwiczenia są ponumerowane po kolei (00 -> 10) i idą w tempie szkolenia. Część 1
+(01-03) robisz RĘCZNIE, bez ADK. Część 2 (04-10) to Google ADK 2.0.
+
 ```
 data/chinook.sqlite      Baza sklepu z muzyką (11 tabel). Licencja MIT - patrz NOTICE.md
+common/                  Wspólny kod: llm.py (część 1), model.py (ADK) + tools/ (KLOCKI)
+  tools/                   gotowe KLOCKI: db, wykresy, PDF, Excel, HTML
+
 00_setup/                Smoke test - sprawdza, czy setup działa
 
-part1_loop/              CZĘŚĆ 1: pętla agentyczna RĘCZNIE (bez ADK)
-  01_simple_call/          wywołanie LLM + parametry
-  02_function_calling/     function calling napisany samodzielnie
-  03_agentic_loop/         pętla agentyczna na bazie Chinook
+# CZĘŚĆ 1: pętla agentyczna RĘCZNIE (bez ADK)
+01_simple_call/          wywołanie LLM + parametry
+02_function_calling/     function calling napisany samodzielnie
+03_agentic_loop/         pętla agentyczna na bazie Chinook
 
-part2_adk/               CZĘŚĆ 2: Google ADK 2.0
-  agents/                  agenci uruchamiani przez `adk web part2_adk/agents`
-    hello/                   pierwszy agent (gotowy, referencja)
-    sql_agent/               agent SQL (starter)
-    sql_agent_to_tune/       agent z celowo słabą instrukcją - do tuningu
-    report_system/           system wieloagentowy: planner -> dane -> raport (starter)
-    sql_agent_guarded/       agent z guardrailem (bezpieczeństwo)
-  tools/                   gotowe KLOCKI: db, wykresy, PDF, Excel, HTML
-  evals/                   test set + szablony (ewaluacja)
-  tests/                   testy automatyczne (pytest)
+# CZĘŚĆ 2: Google ADK 2.0 (każdy agent: `adk web <katalog>`)
+04_hello/                pierwszy agent (gotowy, referencja)
+05_sql_agent/            agent SQL (starter)
+06_evaluation/           test set + szablony (ewaluacja, moduł 7)
+07_sql_agent_tuning/     agent z celowo słabą instrukcją - do tuningu (moduł 8)
+08_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
+09_tests/                testy automatyczne (pytest, moduł 12)
+10_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
 
 bonus/                   bezpieczniki B1-B7 - opcjonalne, gdy zostanie czas
 solutions/               kompletne rozwiązania ćwiczeń
@@ -61,24 +65,27 @@ solutions/               kompletne rozwiązania ćwiczeń
 co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go —
 i Twój asystent AI też się nim kieruje, żeby trzymać Cię w temacie danego ćwiczenia.
 
+Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web 05_sql_agent`
+otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
+
 ## Najważniejsze komendy
 
 ```bash
 # Część 1 - uruchamianie skryptów
-uv run part1_loop/01_simple_call/starter.py
+uv run 01_simple_call/starter.py
 
-# Część 2 - interfejs webowy ADK (rozmowa, trace, ewaluacja)
-uv run adk web part2_adk/agents
+# Część 2 - interfejs webowy ADK (rozmowa, trace, ewaluacja) - wskaż katalog agenta
+uv run adk web 05_sql_agent
 
 # Część 2 - agent w terminalu
-uv run adk run part2_adk/agents/hello
+uv run adk run 04_hello
 
 # Ewaluacja z CLI
-uv run adk eval part2_adk/agents/sql_agent part2_adk/evals/sql_agent.evalset.json \
-    --config_file_path part2_adk/evals/test_config.json
+uv run adk eval 05_sql_agent 06_evaluation/sql_agent.evalset.json \
+    --config_file_path 06_evaluation/test_config.json
 
 # Testy automatyczne
-uv run pytest part2_adk/tests
+uv run pytest 09_tests
 ```
 
 ## Co przerabiamy (skrót)
@@ -98,9 +105,9 @@ Pełny plan modułów: dokument planu szkolenia (u prowadzącego).
 ## Troubleshooting
 
 - **`adk: command not found`** - uruchamiaj przez `uv run adk ...` (działa w środowisku projektu).
-- **Brak odpowiedzi / 401** - sprawdź, czy `OPENROUTER_API_KEY` jest w `.env` i czy masz środki na koncie OpenRouter.
+- **Brak odpowiedzi / 401** - sprawdź, czy `OPENAI_API_KEY` jest w `.env` i czy masz środki na koncie OpenAI.
 - **Agent nie widzi bazy** - uruchamiaj komendy z katalogu głównego repo (ścieżki do `data/chinook.sqlite` są względne do korzenia).
-- **Model słabo woła narzędzia** - zmień `OPENROUTER_MODEL` w `.env` na mocniejszy (np. `anthropic/claude-3.5-sonnet`).
+- **Model słabo woła narzędzia** - zmień `OPENAI_MODEL` w `.env` na mocniejszy model OpenAI.
 
 ## Asystent AI w tym repo
 

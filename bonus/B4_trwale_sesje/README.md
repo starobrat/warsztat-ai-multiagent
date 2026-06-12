@@ -6,7 +6,7 @@ w SQLite, żeby rozmowa przeżyła restart serwera.
 
 ## Kroki
 ```bash
-uv run adk web part2_adk/agents --session_service_uri "sqlite:///sessions.db"
+uv run adk web 05_sql_agent --session_service_uri "sqlite:///sessions.db"
 ```
 1. Porozmawiaj z agentem, podaj mu jakąś informację.
 2. Zatrzymaj serwer (Ctrl+C) i uruchom ponownie z tym samym `--session_service_uri`.

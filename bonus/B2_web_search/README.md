@@ -5,7 +5,7 @@ Wzbogać raport o kontekst spoza bazy. Dodaj wyszukiwanie web, żeby agent móg�
 np. dopisać krótki komentarz rynkowy obok danych sprzedażowych.
 
 ## Uwaga
-Wbudowany `google_search` w ADK działa natywnie z modelami Gemini. Na OpenRouter
+Wbudowany `google_search` w ADK działa natywnie z modelami Gemini. Na modelu OpenAI
 zrób to jako zwykłe narzędzie-funkcję: wywołanie dowolnego API wyszukiwania
 (np. Tavily, Brave Search API) opakowane w funkcję z docstringiem.
 

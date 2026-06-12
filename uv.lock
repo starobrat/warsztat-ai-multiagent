@@ -2607,7 +2607,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "fpdf2", specifier = ">=2.7" },
-    { name = "google-adk", specifier = ">=1.16" },
+    { name = "google-adk", specifier = ">=2.0" },
     { name = "jinja2", specifier = ">=3.1" },
     { name = "litellm", specifier = ">=1.0" },
     { name = "matplotlib", specifier = ">=3.8" },

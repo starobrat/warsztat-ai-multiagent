@@ -1,15 +1,15 @@
 [project]
 name = "sages-adk-multiagent"
 version = "0.1.0"
-description = "Ćwiczenia do szkolenia AI Multi-Agentic (Google ADK 2.0 + OpenRouter, baza Chinook)"
+description = "Ćwiczenia do szkolenia AI Multi-Agentic (Google ADK 2.0 + OpenAI, baza Chinook)"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     # Część 2 - rdzeń: agenci, adk web / run / eval
-    "google-adk>=1.16",
-    # LiteLLM - pozwala ADK wołać OpenRouter (jeden klucz na całe szkolenie)
+    "google-adk>=2.0",
+    # LiteLLM - pozwala ADK wołać OpenAI (jeden klucz na całe szkolenie)
     "litellm>=1.0",
-    # Część 1 - wywołania LLM przez OpenRouter (OpenAI SDK + base_url)
+    # Część 1 - wywołania LLM bezpośrednio przez OpenAI SDK
     "openai>=1.0",
     "python-dotenv>=1.0",
     # Raporty: artefakty generowane przez agentów (część 2)
@@ -27,4 +27,4 @@ dependencies = [
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-testpaths = ["part2_adk/tests"]
+testpaths = ["09_tests"]
