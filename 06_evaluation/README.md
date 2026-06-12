@@ -16,6 +16,13 @@ To jest kanoniczny sposób tworzenia test setów - plik `.evalset.json` powstaje
 
 **3. pytest** (moduł 12): `uv run pytest 09_tests`
 
+## Twoje zadanie
+Nagraj **2-3 własne case'y eval** dla `05_sql_agent`: w `adk web 05_sql_agent`,
+zakładka **Eval**, poprowadź rozmowę i zapisz ją jako eval case. Wykorzystaj pusty
+szablon z `06_evaluation/_szablony/`. Potem uruchom eval i sprawdź, czy agent je
+przechodzi. To jest kanoniczny sposób budowania test setów - kod piszesz minimalnie,
+case'y nagrywasz.
+
 ## Metryki ADK
 
 - `tool_trajectory_avg_score` - czy agent użył właściwych narzędzi we właściwej kolejności

@@ -28,6 +28,12 @@ tekst, a wywołanie wykonuje Twój kod.
 Patrz `starter.py` (`# TODO(you)`): dokończ prompt systemowy, sparsuj decyzję modelu,
 wywołaj narzędzie z `tools.py`.
 
+## Wskazówki (jeśli pracujesz bez agenta AI)
+- Parsowanie odpowiedzi: `str.strip()`, `str.removeprefix("```json")`,
+  `str.removeprefix("```")`, `str.removesuffix("```")`, `json.loads()`.
+- Wywołanie narzędzia: `TOOLS[nazwa]["fn"](**args)`; najpierw sprawdź
+  `decision.get("tool")` i czy nazwa jest w `TOOLS`.
+
 ## "Działa", gdy
 Na pytanie "ile to 17 + 25" kod wywołuje `add(17, 25)` i pokazuje 42; na pytanie
 o coś ogólnego model odpowiada sam (`tool: null`).

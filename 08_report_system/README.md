@@ -27,6 +27,11 @@ na bazie, report_writer składa artefakt. Każdy agent ma wąską odpowiedzialno
 Patrz `agent.py` (`# TODO(you)`): napisz instrukcję plannera, a w module 11 podłącz
 report_writerowi narzędzia raportowe. Klocki gotowe w `common/tools/`.
 
+## Wskazówki (jeśli pracujesz bez agenta AI)
+- `report_writer`: `tools=[bar_chart, make_pdf_report, make_html_report]`.
+- W instrukcjach odwołuj się do wyników poprzednich agentów przez templating:
+  `{report_plan}`, `{report_data}` (to klucze z `output_key`).
+
 ## "Działa", gdy
 W `adk web` system `report_system` przechodzi planner -> dane -> raport i generuje
 plik w `out/`, a w trace widać przekazania między agentami.

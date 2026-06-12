@@ -42,6 +42,11 @@ uv run adk eval 07_sql_agent_tuning 06_evaluation/sql_agent.evalset.json \
 ```
 Potem poprawiaj `instruction` w `agent.py`, aż eval przejdzie.
 
+## Wskazówki (jeśli pracujesz bez agenta AI)
+- To samo pole `instruction` co w `05_sql_agent` - tam masz wzór dobrej instrukcji.
+- Klucz: każ NAJPIERW wywołać `get_schema`, potem `run_query`; zabroń zgadywania
+  i każ odpowiadać tylko na podstawie danych z bazy.
+
 ## "Działa", gdy
 Eval świeci na zielono, a Ty potrafisz powiedzieć, której części instrukcji
 brakowało i dlaczego.

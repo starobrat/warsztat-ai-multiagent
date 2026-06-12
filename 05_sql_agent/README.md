@@ -27,6 +27,11 @@ pamięć długoterminowa.
 ## Twoje zadanie
 Patrz `agent.py` (`# TODO(you)`): napisz `instruction` i podłącz narzędzia.
 
+## Wskazówki (jeśli pracujesz bez agenta AI)
+- Narzędzia podajesz jako listę funkcji: `tools=[get_schema, run_query]` - ADK sam
+  zrobi z nich `FunctionTool` (po docstringach i type hintach).
+- `instruction` to zwykły string z rolą i zasadami korzystania z narzędzi.
+
 ## "Działa", gdy
 W `adk web` agent `sql_agent` odpowiada na pytania o dane, faktycznie wołając
 `get_schema` i `run_query` (widać to w trace), i nie zmyśla nazw tabel.

@@ -24,6 +24,11 @@ Najpierw nagraj test set systemu raportowego w `adk web 08_report_system` (zakł
 Eval), zapisz go do `06_evaluation/report_system.evalset.json`, a potem odkomentuj
 i uruchom `test_report_system.py`.
 
+## Wskazówki (jeśli pracujesz bez agenta AI)
+- `AgentEvaluator.evaluate(agent_module="08_report_system", eval_dataset_file_path_or_dir=...)`.
+- Evalset nagraj w `adk web 08_report_system` (zakładka Eval) albo dopisz ręcznie
+  wg wzoru `06_evaluation/sql_agent.evalset.json`.
+
 ## "Działa", gdy
 `uv run pytest 09_tests` przechodzi (lub świadomie pomija test, którego evalsetu
 jeszcze nie nagrałeś).

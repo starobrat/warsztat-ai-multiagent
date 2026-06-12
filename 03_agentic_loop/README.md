@@ -29,6 +29,12 @@ w pętli, dopóki nie zwróci `tool: null`.
 Patrz `starter.py` (`# TODO(you)`): napisz pętlę w `run_agent`. Narzędzia masz gotowe
 w `db_tools.py`.
 
+## Wskazówki (jeśli pracujesz bez agenta AI)
+- Pętla: `for _ in range(MAX_STEPS)`, `agent_step(messages)`, `decision.get("tool")`.
+- Wywołanie narzędzia: `TOOLS[nazwa](**args)`.
+- Dołóż decyzję i wynik do historii: `messages.append({"role": ..., "content": ...})`,
+  `json.dumps(...)`.
+
 ## "Działa", gdy
 Na "ilu mamy klientów z Niemiec?" agent sam wywołuje `get_schema`, potem `run_query`
 z sensownym SELECT-em i zwraca poprawną liczbę - bez Twojej ingerencji w pętli.
