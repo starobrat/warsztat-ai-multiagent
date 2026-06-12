@@ -29,6 +29,9 @@ cp .env.example .env          # następnie wklej swój OPENAI_API_KEY do .env
 uv run 00_setup/smoke_test.py # jeśli zobaczysz odpowiedź modelu - jesteś gotowy
 ```
 
+Najprościej w trakcie warsztatu: `./run.sh` - menu strzałkami (↑/↓, Enter), z którego
+odpalisz `uv sync`, smoke test i kolejne ćwiczenia bez wpisywania komend.
+
 ---
 
 ## Jak to jest poukładane
