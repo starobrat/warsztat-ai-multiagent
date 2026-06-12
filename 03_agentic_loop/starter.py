@@ -34,7 +34,8 @@ Masz narzędzia:
 - get_schema: zwraca schemat bazy (bez argumentów)
 - run_query: wykonuje zapytanie SELECT (argument: sql)
 
-W każdej turze odpowiadasz WYŁĄCZNIE JSON-em w jednym z formatów:
+Wykonujesz JEDEN krok na turę. Odpowiadasz WYŁĄCZNIE jednym obiektem JSON
+w jednym z formatów (nic przed ani po obiekcie):
   {"tool": "get_schema", "args": {}}
   {"tool": "run_query", "args": {"sql": "SELECT ..."}}
   {"tool": null, "answer": "<finalna odpowiedź po polsku>"}
@@ -49,10 +50,15 @@ def agent_step(messages: list[dict]) -> dict:
     response = client.chat.completions.create(
         model=MODEL,
         temperature=0,
+        response_format={"type": "json_object"},
         messages=messages,
     )
     raw = response.choices[0].message.content
-    return json.loads(raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```"))
+    cleaned = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+    # Bierzemy PIERWSZY obiekt JSON (jedna akcja na turę). Niektóre modele lubią
+    # od razu wypluć całą trajektorię - raw_decode ignoruje to, co po pierwszym.
+    decision, _ = json.JSONDecoder().raw_decode(cleaned)
+    return decision
 
 
 def run_agent(question: str) -> str:

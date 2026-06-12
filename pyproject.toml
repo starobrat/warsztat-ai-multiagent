@@ -5,8 +5,9 @@ description = "Ćwiczenia do szkolenia AI Multi-Agentic (Google ADK 2.0 + OpenAI
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    # Część 2 - rdzeń: agenci, adk web / run / eval
-    "google-adk>=2.0",
+    # Część 2 - rdzeń: agenci, adk web / run. Extra [eval] dodaje silnik ewaluacji
+    # (moduł 7 i 12) - bez niego `adk eval` / AgentEvaluator wymaga vertexai i pada.
+    "google-adk[eval]>=2.0",
     # LiteLLM - pozwala ADK wołać OpenAI (jeden klucz na całe szkolenie)
     "litellm>=1.0",
     # Część 1 - wywołania LLM bezpośrednio przez OpenAI SDK

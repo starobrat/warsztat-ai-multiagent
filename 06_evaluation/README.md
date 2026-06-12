@@ -19,9 +19,12 @@ To jest kanoniczny sposób tworzenia test setów - plik `.evalset.json` powstaje
 ## Metryki ADK
 
 - `tool_trajectory_avg_score` - czy agent użył właściwych narzędzi we właściwej kolejności
-- `response_match_score` - czy finalna odpowiedź zgadza się z oczekiwaną
+- `response_match_score` - czy finalna odpowiedź zgadza się z oczekiwaną (ROUGE)
 
-Progi w `test_config.json`.
+Progi w `test_config.json`. **Bramką jest `response_match_score` (0.5).**
+`tool_trajectory_avg_score` ma próg `0.0` (informacyjnie) - ADK porównuje też dokładne
+argumenty narzędzi, więc równoważny, ale inaczej zapisany SELECT (inne aliasy, inna
+kolejność JOIN) daje 0, mimo że agent odpowiada poprawnie. Potwierdzone na ADK 2.2.
 
 ## Ważne (uczciwie)
 
