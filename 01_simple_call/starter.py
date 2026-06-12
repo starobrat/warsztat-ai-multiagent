@@ -1,14 +1,9 @@
 """Ćwiczenie 1 - wywołanie LLM i parametry (moduł 2).
 
-Typ 1 aplikacji: proces biznesowy z JEDNYM krokiem LLM.
-Tu nie ma jeszcze żadnej pętli ani narzędzi - po prostu pytamy i dostajemy odpowiedź.
+Jedno wywołanie, jedna odpowiedź. Bez pętli, bez narzędzi.
+Zadanie: napisz prompt systemowy i porównaj odpowiedzi dla różnych temperatur.
 
-Cel:
-  1. Napisz własny prompt systemowy, który nada modelowi rolę.
-  2. Zobacz na żywo, jak temperature zmienia odpowiedź.
-
-Uruchom:
-    uv run 01_simple_call/starter.py
+Uruchom: uv run 01_simple_call/starter.py
 """
 
 import sys

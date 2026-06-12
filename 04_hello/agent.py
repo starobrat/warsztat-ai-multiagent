@@ -1,13 +1,9 @@
 """Agent referencyjny - moduł 5. GOTOWY, do podejrzenia.
 
-Pierwszy agent w ADK. To samo, co robiłeś ręcznie w części 1, tylko że ADK
-ogarnia za Ciebie pętlę, sesje, interfejs webowy i ewaluację.
+Pierwszy agent w ADK: to samo, co robiłeś ręcznie w części 1, ale pętlę, sesje,
+UI i ewaluację dostajesz z pudełka.
 
-Uruchom interfejs webowy z katalogu repo:
-    uv run adk web 04_hello
-
-albo CLI:
-    uv run adk run 04_hello
+Uruchom: uv run adk web 04_hello (UI) albo uv run adk run 04_hello (terminal).
 """
 
 from common.model import get_model

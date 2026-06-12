@@ -1,19 +1,11 @@
 """System wieloagentowy: raportowanie - moduły 9-11. STARTER.
 
-Architektura docelowa (rysunek z modułu 10):
+Pipeline trzech agentów (SequentialAgent, dane płyną przez output_key):
+    planner -> data_agent -> report_writer
+Zadanie: napisz instruction plannera (moduł 9/10) i report_writera z narzędziami
+raportowymi (moduł 11). data_agent jest gotowy.
 
-    planner  ->  data_agent  ->  report_writer
-   (co i jak)    (SQL z bazy)    (składa artefakt)
-
-To pipeline: każdy agent oddaje wynik kolejnemu przez output_key. SequentialAgent
-wykonuje je po kolei. Planner planuje, zanim ktokolwiek dotknie bazy.
-
-Zadanie (rośnie przez moduły 9-11):
-  - moduł 9/10: napisz instruction plannera i podłącz data_agent.
-  - moduł 11: dołóż report_writer z narzędziami raportowymi (PDF/Excel/HTML).
-
-Uruchom:
-    uv run adk web 08_report_system
+Uruchom: uv run adk web 08_report_system (albo adk run 08_report_system).
 """
 
 from common.model import get_model

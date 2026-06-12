@@ -1,18 +1,10 @@
-"""Ćwiczenie 3 - pętla agentyczna (moduł 4). KONIEC części 1.
+"""Ćwiczenie 3 - pętla agentyczna (moduł 4). Koniec części 1.
 
-Składasz wszystko z modułów 2-3 w jedno: AGENTA.
+Łączysz moduły 2-3 w agenta: w pętli LLM SAM decyduje, ile kroków i jakich narzędzi
+użyć, aż ma odpowiedź (inaczej niż pojedyncze wywołanie czy sztywny pipeline).
+Agent odpowiada na pytania o bazę Chinook; ma get_schema() i run_query(). Napisz pętlę.
 
-Różnica, którą tu zobaczysz na własnej skórze:
-  - wywołanie LLM      = jeden krok, jedna odpowiedź
-  - pipeline           = z góry ustalona sekwencja kroków
-  - agent (pętla)      = LLM SAM decyduje, ile kroków i jakich narzędzi użyć,
-                         aż uzna, że ma odpowiedź
-
-Agent odpowiada na pytania o bazę Chinook (sklep z muzyką). Ma dwa narzędzia:
-get_schema() i run_query(sql). Twoim zadaniem jest napisać pętlę.
-
-Uruchom:
-    uv run 03_agentic_loop/starter.py
+Uruchom: uv run 03_agentic_loop/starter.py
 """
 
 import json

@@ -1,19 +1,10 @@
 """Ćwiczenie 2 - function calling napisany samodzielnie (moduł 3).
 
-Najważniejsza idea całego szkolenia:
-    LLM NIE wykonuje akcji. LLM DECYDUJE, co wykonać. Wykonuje Twój kod.
+Kluczowa idea: LLM nie wykonuje akcji - DECYDUJE, co wykonać, a wywołuje to Twój kod.
+Robimy to ręcznie: model zwraca JSON {"tool", "args"} albo {"tool": null, "answer"},
+my go parsujemy i sami wołamy narzędzie.
 
-Tu symulujemy function calling ręcznie - bez gotowego mechanizmu z SDK -
-żeby zobaczyć, jak to naprawdę działa pod spodem.
-
-Plan:
-  1. Prosimy model, żeby ZAMIAST odpowiadać tekstem, zwrócił JSON:
-     {"tool": "<nazwa>", "args": {...}}  albo  {"tool": null, "answer": "..."}
-  2. Parsujemy JSON.
-  3. Jeśli model wskazał narzędzie - MY je wywołujemy i pokazujemy wynik.
-
-Uruchom:
-    uv run 02_function_calling/starter.py
+Uruchom: uv run 02_function_calling/starter.py
 """
 
 import json
@@ -46,8 +37,8 @@ def call_model(user_prompt: str) -> dict:
         ],
     )
     raw = response.choices[0].message.content
-    # TODO(you): sparsuj JSON z odpowiedzi modelu i zwróć jako dict.
-    # Uwaga: model bywa kapryśny i czasem owija JSON w ```...```. Pomyśl o tym.
+    # TODO(you): sparsuj `raw` na dict przez json.loads.
+    # Wskazówka: model czasem owija JSON w ```...``` - oczyść string przed parsowaniem.
     raise NotImplementedError("Sparsuj odpowiedź modelu na dict")
 
 

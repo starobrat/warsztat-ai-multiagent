@@ -1,28 +1,14 @@
 """Agent do tuningu promptu - moduł 8. TDD dla promptu.
 
-Serce szkolenia: prompt to nie strzał z głowy - prompt SIĘ TESTUJE, jak kod.
+Prompt SIĘ TESTUJE jak kod. Test (06_evaluation) już jest, a agent startuje z laicką
+instrukcją i OBLEWA eval (czerwony). Iteruj WYŁĄCZNIE instruction, aż przejdzie
+(zielony) - porównaj z 05_sql_agent. Nie ruszaj narzędzi ani modelu.
 
-To jest TDD na prompcie:
-  1. Test (evalset) już jest - 06_evaluation/sql_agent.evalset.json.
-  2. Agent startuje z instrukcją napisaną przez LAIKA, który nie wie, co jest
-     w bazie ani jak ją odpytać. Eval jest CZERWONY (agent nie zna danych).
-  3. Twoje zadanie: iterować WYŁĄCZNIE instruction, aż eval przejdzie na zielono.
-     Nie ruszaj narzędzi ani modelu.
+Chodzi celowo na słabszym modelu (get_weak_model): mocny zamaskowałby słaby prompt.
+Pełne uzasadnienie i komendy: README tego katalogu.
 
-Zadanie:
-  1. Uruchom eval i zobacz czerwony:
-        uv run adk eval 07_sql_agent_tuning 06_evaluation/sql_agent.evalset.json \\
-            --config_file_path 06_evaluation/test_config.json
-  2. Popraw instruction (porównaj z 05_sql_agent): nadaj rolę analityka, każ
-     NAJPIERW sprawdzić schemat (get_schema), potem pisać SELECT (run_query),
-     zabroń zgadywania, każ odpowiadać po polsku tylko na podstawie danych.
-  3. Powtarzaj: zmiana instrukcji -> eval -> porównanie. To jest pętla jakości.
-
-Dlaczego słabszy model? Ten agent chodzi celowo na słabszym modelu
-(get_weak_model, domyślnie gpt-4o-mini). Mocny model maskuje słaby prompt -
-i tak sięgnie po narzędzia i odpowie dobrze, więc nie zobaczyłbyś czerwonego.
-Słabszy model słucha instrukcji dosłownie: zła instrukcja = zły agent. To samo
-w sobie jest lekcją - im słabszy model, tym bardziej liczy się prompt.
+Uruchom eval: uv run adk eval 07_sql_agent_tuning 06_evaluation/sql_agent.evalset.json \\
+    --config_file_path 06_evaluation/test_config.json
 """
 
 from common.model import get_weak_model
