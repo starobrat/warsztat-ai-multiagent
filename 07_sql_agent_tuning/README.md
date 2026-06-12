@@ -1,18 +1,29 @@
-# Ćwiczenie: tuning promptu na test secie (moduł 8)
+# Ćwiczenie: tuning promptu na test secie - TDD dla promptu (moduł 8)
 
 ## Co ćwiczymy
-**Pętlę jakości promptu.** Główny takeaway szkolenia: prompt to nie strzał z głowy.
-Ten agent ma celowo słabą instrukcję i **oblewa ewaluację**. Twoje zadanie: poprawiać
-`instruction`, aż eval przejdzie — w pętli zmiana -> eval -> porównanie.
+**TDD na prompcie.** Główny takeaway szkolenia: prompt to nie strzał z głowy -
+prompt SIĘ TESTUJE, jak kod. Najpierw masz test (evalset z modułu 7), potem piszesz
+prompt pod ten test. Agent startuje z instrukcją napisaną przez **laika**, który nie
+wie, co jest w bazie ani jak ją odpytać - i **oblewa ewaluację (czerwony)**. Twoje
+zadanie: iterować `instruction`, aż eval przejdzie (zielony). Pętla: zmiana -> eval
+-> porównanie.
+
+## Dlaczego ten agent chodzi na słabszym modelu
+Ten jeden agent używa celowo słabszego modelu (`gpt-4o-mini`, przez `get_weak_model`).
+Mocny model (gpt-5.4-mini) **maskuje** słaby prompt: i tak sięgnie po narzędzia,
+sprawdzi schemat i odpowie dobrze - więc nigdy nie zobaczyłbyś czerwonego i nie dało
+by się pokazać pętli TDD. Słabszy model słucha instrukcji dosłownie: zła instrukcja =
+zły agent. To samo w sobie jest lekcją - **im słabszy model, tym bardziej liczy się
+prompt** (i tym ważniejszy eval).
 
 ## Zakres tego ćwiczenia
-- Uruchomienie evalu i odczytanie, dlaczego jest czerwony.
+- Uruchomienie evalu i odczytanie, dlaczego jest czerwony (agent nie zna danych).
 - Iteracyjna poprawa **wyłącznie instrukcji**.
 - Ponowny eval i porównanie.
 
 ## Poza zakresem (świadomie zabronione lub później)
-- **Zmiana narzędzi albo modelu** — tego NIE ruszamy, w tym ćwiczeniu zmieniasz
-  tylko `instruction` (o to chodzi).
+- **Zmiana narzędzi albo modelu** — tego NIE ruszamy (zostaje słabszy model, bo to
+  on robi z promptu test). W tym ćwiczeniu zmieniasz tylko `instruction` (o to chodzi).
 - Dodawanie nowych funkcji/możliwości agentowi — to nie tutaj.
 - Tworzenie nowych test case'ów — moduł 7 (`06_evaluation/`).
 - Testy automatyczne / pytest — moduł 12 (`09_tests/`).
