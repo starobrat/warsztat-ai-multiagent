@@ -35,3 +35,8 @@ Patrz `agent.py` (`# TODO(you)`): napisz `instruction` i podłącz narzędzia.
 ## "Działa", gdy
 W `adk web` agent `sql_agent` odpowiada na pytania o dane, faktycznie wołając
 `get_schema` i `run_query` (widać to w trace), i nie zmyśla nazw tabel.
+
+## Pójdź dalej
+- Zadaj pytanie wymagające złączenia 3 tabel - czy agent poradzi sobie ze schematem sam?
+- Zapytaj o dane, których NIE MA - zmyśla czy przyznaje niewiedzę? Popraw instrukcję, żeby przyznawał.
+- Następny krok: napisz dla niego eval (moduł 6/7) - dopiero wtedy wiesz, że instrukcja jest dobra.

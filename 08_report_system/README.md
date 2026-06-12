@@ -35,3 +35,8 @@ report_writerowi narzędzia raportowe. Klocki gotowe w `common/tools/`.
 ## "Działa", gdy
 W `adk web` system `report_system` przechodzi planner -> dane -> raport i generuje
 plik w `out/`, a w trace widać przekazania między agentami.
+
+## Pójdź dalej
+- Dodaj 4. agenta - krytyka, który sprawdza raport, zanim trafi do użytkownika.
+- Zrównoleglij pobieranie danych (`ParallelAgent`, patrz bonus B7) - porównaj czas i trace.
+- Co, gdy `data_agent` zwróci błędne dane - czy `report_writer` to wyłapie? Dodaj walidację.

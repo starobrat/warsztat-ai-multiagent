@@ -40,3 +40,12 @@ a oczekiwane liczby zweryfikowaliśmy na realnej bazie (Niemcy = 4 klientów, Ro
 Dopasowanie `tool_uses` po dokładnym SQL bywa kruche (model może napisać równoważny,
 ale inny SELECT) - dlatego w praktyce nagrywaj przypadki przez `adk web` i opieraj się
 głównie na `response_match_score`.
+
+## "Działa", gdy
+Twój nagrany case przechodzi (`response_match` powyżej progu) na dobrym agencie,
+a oblewa, gdy celowo zepsujesz mu instrukcję - czyli eval naprawdę coś mierzy.
+
+## Pójdź dalej
+- Dodaj case brzegowy (pytanie bez odpowiedzi w bazie) - czy agent go przechodzi?
+- Porównaj `response_match` i `tool_trajectory` na tym samym case - czemu się różnią?
+- Zbuduj test set, który złapie regresję niewidoczną "na oko".

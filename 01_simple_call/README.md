@@ -29,3 +29,8 @@ ponownie - skrypt wykonuje jedno wywołanie na uruchomienie.
 ## "Działa", gdy
 Ta sama prośba przy niskiej (np. 0.0) i wysokiej (np. 1.0) temperaturze daje
 zauważalnie różne odpowiedzi, a zmiana roli w prompcie zmienia ton i treść.
+
+## Pójdź dalej
+- Pozmieniaj inne parametry (`top_p`, `max_tokens`, `presence_penalty`) i opisz wpływ.
+- Ta sama treść, różne role (analityk vs sprzedawca vs sceptyk) - jak zmienia się odpowiedź?
+- Znajdź pytanie, gdzie temperatura prawie nic nie zmienia, i takie, gdzie zmienia wszystko. Dlaczego?

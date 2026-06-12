@@ -38,3 +38,8 @@ w `db_tools.py`.
 ## "Działa", gdy
 Na "ilu mamy klientów z Niemiec?" agent sam wywołuje `get_schema`, potem `run_query`
 z sensownym SELECT-em i zwraca poprawną liczbę - bez Twojej ingerencji w pętli.
+
+## Pójdź dalej
+- Zadaj pytanie wymagające kilku zapytań SQL (porównanie dwóch gatunków) - ile kroków zrobi agent?
+- Znajdź pytanie, które ciągnie pętlę aż do `MAX_STEPS`. Czemu nie kończy?
+- Dołóż logowanie każdego kroku (jakie SQL, jaki wynik) - pierwszy krok ku observability.

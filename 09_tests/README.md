@@ -32,3 +32,8 @@ i uruchom `test_report_system.py`.
 ## "Działa", gdy
 `uv run pytest 09_tests` przechodzi (lub świadomie pomija test, którego evalsetu
 jeszcze nie nagrałeś).
+
+## Pójdź dalej
+- Dodaj case, który celowo łamie system (pytanie poza zakresem raportu).
+- Porównaj, ile testów przechodzi na słabym vs mocnym modelu.
+- Jak podłączyłbyś te testy do CI (GitHub Actions)? Naszkicuj workflow.

@@ -33,3 +33,8 @@ a potem podmień instrukcję i zobacz, jak zmienia się zachowanie.
 ## "Działa", gdy
 W przeglądarce rozmawiasz z agentem `hello`, a zmiana instrukcji widocznie zmienia
 jego odpowiedzi.
+
+## Pójdź dalej
+- Daj agentowi wyrazistą osobowość (zabawny sprzedawca, oschły ekspert) - jak zmienia się ton?
+- Każ mu instrukcją podać liczbę z bazy (nie ma narzędzi) - zmyśli czy przyzna, że nie wie?
+- Co odróżnia ten `LlmAgent` od Twojej ręcznej pętli z części 1? Wypisz 3 rzeczy.

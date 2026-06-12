@@ -34,4 +34,9 @@ guard trzyma. Rozszerzenie (logowanie) zrobisz w bonusie `B3_audyt_sql`.
 
 ## "Działa", gdy
 Próba nakłonienia agenta do zapytania modyfikującego bazę zostaje zablokowana przez
-callback, a normalne pytania analityczne działają.
+callback, a normalne pytania analityczne działają - i nie umiesz go obejść w 2 minuty.
+
+## Pójdź dalej
+- Spróbuj OBEJŚĆ własny guard (komentarze w SQL, wielkość liter, spacje) - trzyma?
+- Dołóż logowanie zablokowanych prób (bonus B3) - observability bezpieczeństwa.
+- Wypisz inne ryzyka (nadmiarowe uprawnienia, wyciek danych w odpowiedzi) i jak byś je załatał.

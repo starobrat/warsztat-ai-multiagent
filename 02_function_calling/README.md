@@ -37,3 +37,8 @@ wywołaj narzędzie z `tools.py`.
 ## "Działa", gdy
 Na pytanie "ile to 17 + 25" kod wywołuje `add(17, 25)` i pokazuje 42; na pytanie
 o coś ogólnego model odpowiada sam (`tool: null`).
+
+## Pójdź dalej
+- Dodaj trzecie narzędzie do `tools.py` i sprawdź, czy model je wybiera.
+- Zepsuj model (każ zwrócić tekst zamiast JSON) - jak Twój parser sobie radzi?
+- Obsłuż przypadek, gdy model wskaże nieistniejące narzędzie albo poda złe argumenty.

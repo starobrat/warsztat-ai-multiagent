@@ -50,3 +50,8 @@ Potem poprawiaj `instruction` w `agent.py`, aż eval przejdzie.
 ## "Działa", gdy
 Eval świeci na zielono, a Ty potrafisz powiedzieć, której części instrukcji
 brakowało i dlaczego.
+
+## Pójdź dalej
+- Tnij dobrą instrukcję słowo po słowie, aż eval zacznie oblewać - gdzie jest granica?
+- Dorzuć trudniejszy case do evalsetu i znów dociśnij instrukcję.
+- Sprawdź tę samą instrukcję na mocnym modelu (`get_model`) - czy nadal jest potrzebna?
