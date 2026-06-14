@@ -28,4 +28,4 @@ dependencies = [
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-testpaths = ["09_tests"]
+testpaths = ["ex_09_tests"]

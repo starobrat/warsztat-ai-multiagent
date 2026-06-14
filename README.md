@@ -26,7 +26,7 @@ cd sages-adk-multiagent
 uv sync                       # instaluje zależności
 cp .env.example .env          # następnie wklej swój OPENAI_API_KEY do .env
 
-uv run 00_setup/smoke_test.py # jeśli zobaczysz odpowiedź modelu - jesteś gotowy
+uv run ex_00_setup/smoke_test.py # jeśli zobaczysz odpowiedź modelu - jesteś gotowy
 ```
 
 Najprościej w trakcie warsztatu: `./run.sh` - menu strzałkami (↑/↓, Enter), z którego
@@ -44,21 +44,21 @@ data/chinook.sqlite      Baza sklepu z muzyką (11 tabel). Licencja MIT - patrz 
 common/                  Wspólny kod: llm.py (część 1), model.py (ADK) + tools/ (KLOCKI)
   tools/                   gotowe KLOCKI: db, wykresy, PDF, Excel, HTML
 
-00_setup/                Smoke test - sprawdza, czy setup działa
+ex_00_setup/                Smoke test - sprawdza, czy setup działa
 
 # CZĘŚĆ 1: pętla agentyczna RĘCZNIE (bez ADK)
-01_simple_call/          wywołanie LLM + parametry
-02_function_calling/     function calling napisany samodzielnie
-03_agentic_loop/         pętla agentyczna na bazie Chinook
+ex_01_simple_call/          wywołanie LLM + parametry
+ex_02_function_calling/     function calling napisany samodzielnie
+ex_03_agentic_loop/         pętla agentyczna na bazie Chinook
 
 # CZĘŚĆ 2: Google ADK 2.0 (każdy agent: `adk web <katalog>`)
-04_hello/                pierwszy agent (gotowy, referencja)
-05_sql_agent/            agent SQL (starter)
-06_evaluation/           test set + szablony (ewaluacja, moduł 7)
-07_sql_agent_tuning/     agent z celowo słabą instrukcją - do tuningu (moduł 8)
-08_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
-09_tests/                testy automatyczne (pytest, moduł 12)
-10_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
+ex_04_hello/                pierwszy agent (gotowy, referencja)
+ex_05_sql_agent/            agent SQL (starter)
+ex_06_evaluation/           test set + szablony (ewaluacja, moduł 7)
+ex_07_sql_agent_tuning/     agent z celowo słabą instrukcją - do tuningu (moduł 8)
+ex_08_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
+ex_09_tests/                testy automatyczne (pytest, moduł 12)
+ex_10_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
 
 bonus/                   bezpieczniki B1-B7 - opcjonalne, gdy zostanie czas
 solutions/               kompletne rozwiązania ćwiczeń
@@ -68,27 +68,27 @@ solutions/               kompletne rozwiązania ćwiczeń
 co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go -
 i Twój asystent AI też się nim kieruje, żeby trzymać Cię w temacie danego ćwiczenia.
 
-Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web 05_sql_agent`
+Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web ex_05_sql_agent`
 otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
 
 ## Najważniejsze komendy
 
 ```bash
 # Część 1 - uruchamianie skryptów
-uv run 01_simple_call/starter.py
+uv run ex_01_simple_call/starter.py
 
 # Część 2 - interfejs webowy ADK (rozmowa, trace, ewaluacja) - wskaż katalog agenta
-uv run adk web 05_sql_agent
+uv run adk web ex_05_sql_agent
 
 # Część 2 - agent w terminalu
-uv run adk run 04_hello
+uv run adk run ex_04_hello
 
 # Ewaluacja z CLI
-uv run adk eval 05_sql_agent 06_evaluation/sql_agent.evalset.json \
-    --config_file_path 06_evaluation/test_config.json
+uv run adk eval ex_05_sql_agent ex_06_evaluation/sql_agent.evalset.json \
+    --config_file_path ex_06_evaluation/test_config.json
 
 # Testy automatyczne
-uv run pytest 09_tests
+uv run pytest ex_09_tests
 ```
 
 ## Co przerabiamy (skrót)

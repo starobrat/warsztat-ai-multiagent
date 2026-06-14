@@ -18,8 +18,10 @@ out/
 *.html
 !**/templates/*.html
 
-# Sesje ADK (jeśli ktoś włączy --session_service_uri)
+# Sesje ADK (adk web tworzy <ćwiczenie>/.adk/session.db; --session_service_uri -> sessions.db)
 sessions.db
+session.db
+.adk/
 
 # System
 .DS_Store
