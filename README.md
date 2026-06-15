@@ -52,23 +52,37 @@ ex_02_function_calling/     function calling napisany samodzielnie
 ex_03_agentic_loop/         pętla agentyczna na bazie Chinook
 
 # CZĘŚĆ 2: Google ADK 2.0 (każdy agent: `adk web <katalog>`)
-ex_04_hello/                pierwszy agent (gotowy, referencja)
-ex_13_text_to_sql/            agent SQL (starter)
-ex_12_eval/           test set + szablony (ewaluacja, moduł 7)
-ex_14_modele_i_diagnostyka/     agent z celowo słabą instrukcją - do tuningu (moduł 8)
-ex_15_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
-ex_16_tests/                testy automatyczne (pytest, moduł 12)
-ex_17_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
+ex_04_hello/                pierwszy agent ADK (starter)
+ex_05_pamiec_i_sesje/       pamięć i stan sesji - co agent pamięta (starter)
+ex_06_pierwsze_narzedzie/   pierwsze narzędzie: get_schema (starter)
+ex_07_instrukcja_grounding/ grounding - agent odmawia bez danych (starter)
+ex_08_docstring/            docstring jako kontrakt narzędzia (starter)
+ex_09_argumenty/            narzędzie z parametrem (starter)
+ex_10_lancuch_narzedzi/     sekwencja wywołań narzędzi (starter)
+ex_11_analityka_iteracja/   analityka przez iterację (starter)
+ex_12_raport_wykres/        artefakt: wykres PNG (starter)
+ex_13_eval/                 test set + szablony (ewaluacja, moduł 7)
+ex_14_text_to_sql/          agent SQL - sam pisze SELECT (starter)
+ex_15_modele_i_diagnostyka/ słaba instrukcja + porównanie modeli (moduł 8)
+ex_16_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
+ex_17_tests/                testy automatyczne (pytest, moduł 12)
+ex_18_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
+
+# DEMA prowadzącego (gotowe, do pokazania na żywo)
+demo_01_halucynacja/        model zmyśla pewnym tonem (skrypt)
+demo_02_function_calling/   function calling - wersja kompletna (skrypt)
+demo_09_transfer/           transfer sterowania: master -> specjaliści (adk web)
+demo_13_mcp/                podpięcie serwera MCP (adk web)
+demo_14_injection/          prompt injection bez guardraila (adk web)
 
 bonus/                   bezpieczniki B1-B7 - opcjonalne, gdy zostanie czas
-solutions/               kompletne rozwiązania ćwiczeń
 ```
 
 **Każde ćwiczenie ma własny `README.md`** (w swoim katalogu) z opisem: co ćwiczymy,
 co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go -
 i Twój asystent AI też się nim kieruje, żeby trzymać Cię w temacie danego ćwiczenia.
 
-Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web ex_13_text_to_sql`
+Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web ex_14_text_to_sql`
 otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
 
 ## Najważniejsze komendy
@@ -78,17 +92,17 @@ otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
 uv run ex_01_simple_call/starter.py
 
 # Część 2 - interfejs webowy ADK (rozmowa, trace, ewaluacja) - wskaż katalog agenta
-uv run adk web ex_13_text_to_sql
+uv run adk web ex_14_text_to_sql
 
 # Część 2 - agent w terminalu
 uv run adk run ex_04_hello
 
 # Ewaluacja z CLI
-uv run adk eval ex_13_text_to_sql ex_12_eval/sql_agent.evalset.json \
-    --config_file_path ex_12_eval/test_config.json
+uv run adk eval ex_14_text_to_sql ex_13_eval/sql_agent.evalset.json \
+    --config_file_path ex_13_eval/test_config.json
 
 # Testy automatyczne
-uv run pytest ex_16_tests
+uv run pytest ex_17_tests
 ```
 
 ## Co przerabiamy (skrót)
