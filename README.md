@@ -53,12 +53,12 @@ ex_03_agentic_loop/         pętla agentyczna na bazie Chinook
 
 # CZĘŚĆ 2: Google ADK 2.0 (każdy agent: `adk web <katalog>`)
 ex_04_hello/                pierwszy agent (gotowy, referencja)
-ex_05_sql_agent/            agent SQL (starter)
-ex_06_evaluation/           test set + szablony (ewaluacja, moduł 7)
-ex_07_sql_agent_tuning/     agent z celowo słabą instrukcją - do tuningu (moduł 8)
-ex_08_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
-ex_09_tests/                testy automatyczne (pytest, moduł 12)
-ex_10_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
+ex_13_text_to_sql/            agent SQL (starter)
+ex_12_eval/           test set + szablony (ewaluacja, moduł 7)
+ex_14_modele_i_diagnostyka/     agent z celowo słabą instrukcją - do tuningu (moduł 8)
+ex_15_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
+ex_16_tests/                testy automatyczne (pytest, moduł 12)
+ex_17_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
 
 bonus/                   bezpieczniki B1-B7 - opcjonalne, gdy zostanie czas
 solutions/               kompletne rozwiązania ćwiczeń
@@ -68,7 +68,7 @@ solutions/               kompletne rozwiązania ćwiczeń
 co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go -
 i Twój asystent AI też się nim kieruje, żeby trzymać Cię w temacie danego ćwiczenia.
 
-Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web ex_05_sql_agent`
+Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web ex_13_text_to_sql`
 otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
 
 ## Najważniejsze komendy
@@ -78,17 +78,17 @@ otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
 uv run ex_01_simple_call/starter.py
 
 # Część 2 - interfejs webowy ADK (rozmowa, trace, ewaluacja) - wskaż katalog agenta
-uv run adk web ex_05_sql_agent
+uv run adk web ex_13_text_to_sql
 
 # Część 2 - agent w terminalu
 uv run adk run ex_04_hello
 
 # Ewaluacja z CLI
-uv run adk eval ex_05_sql_agent ex_06_evaluation/sql_agent.evalset.json \
-    --config_file_path ex_06_evaluation/test_config.json
+uv run adk eval ex_13_text_to_sql ex_12_eval/sql_agent.evalset.json \
+    --config_file_path ex_12_eval/test_config.json
 
 # Testy automatyczne
-uv run pytest ex_09_tests
+uv run pytest ex_16_tests
 ```
 
 ## Co przerabiamy (skrót)

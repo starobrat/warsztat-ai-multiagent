@@ -66,3 +66,87 @@ def run_query(sql: str) -> dict:
         "row_count": len(result),
         "truncated": len(result) > MAX_ROWS,
     }
+
+
+# --- Dedykowane narzędzia czytające konkret (bez pisania SQL przez agenta) ----
+# Każde zwraca wąski, konkretny wynik. Agent je KOMPONUJE; SQL siedzi w środku.
+
+
+def get_genres() -> list[str]:
+    """Zwraca listę wszystkich gatunków muzycznych w bazie Chinook."""
+    with _connect() as conn:
+        rows = conn.execute("SELECT Name FROM Genre ORDER BY Name").fetchall()
+    return [r["Name"] for r in rows]
+
+
+def get_artists() -> list[str]:
+    """Zwraca listę wszystkich wykonawców w bazie Chinook."""
+    with _connect() as conn:
+        rows = conn.execute("SELECT Name FROM Artist ORDER BY Name").fetchall()
+    return [r["Name"] for r in rows]
+
+
+def get_albums_for_artist(artist: str) -> list[str]:
+    """Zwraca tytuły albumów danego wykonawcy.
+
+    Args:
+        artist: Dokładna nazwa wykonawcy (np. "AC/DC").
+
+    Returns:
+        Lista tytułów albumów. Pusta, jeśli wykonawca nie istnieje.
+    """
+    with _connect() as conn:
+        rows = conn.execute(
+            "SELECT al.Title FROM Album al "
+            "JOIN Artist ar ON ar.ArtistId = al.ArtistId "
+            "WHERE ar.Name = ? ORDER BY al.Title",
+            (artist,),
+        ).fetchall()
+    return [r["Title"] for r in rows]
+
+
+def get_sold_count_for_artist(artist: str) -> int:
+    """Zwraca liczbę sprzedanych utworów danego wykonawcy (suma ze wszystkich faktur).
+
+    Args:
+        artist: Dokładna nazwa wykonawcy (np. "AC/DC").
+
+    Returns:
+        Liczba sprzedanych sztuk. 0, jeśli brak sprzedaży lub wykonawcy.
+    """
+    with _connect() as conn:
+        row = conn.execute(
+            "SELECT COALESCE(SUM(il.Quantity), 0) AS n FROM InvoiceLine il "
+            "JOIN Track t ON t.TrackId = il.TrackId "
+            "JOIN Album al ON al.AlbumId = t.AlbumId "
+            "JOIN Artist ar ON ar.ArtistId = al.ArtistId "
+            "WHERE ar.Name = ?",
+            (artist,),
+        ).fetchone()
+    return int(row["n"])
+
+
+def get_sold_count_for_genre(genre: str, year: int | None = None) -> int:
+    """Zwraca liczbę sprzedanych utworów danego gatunku, opcjonalnie w danym roku.
+
+    Args:
+        genre: Dokładna nazwa gatunku (np. "Rock").
+        year: Rok sprzedaży (np. 2025). Pominięty -> cała historia (2021-2025).
+
+    Returns:
+        Liczba sprzedanych sztuk. 0, jeśli brak sprzedaży lub gatunku.
+    """
+    sql = (
+        "SELECT COALESCE(SUM(il.Quantity), 0) AS n FROM InvoiceLine il "
+        "JOIN Track t ON t.TrackId = il.TrackId "
+        "JOIN Genre g ON g.GenreId = t.GenreId "
+    )
+    params: tuple = (genre,)
+    if year is not None:
+        sql += "JOIN Invoice i ON i.InvoiceId = il.InvoiceId WHERE g.Name = ? AND strftime('%Y', i.InvoiceDate) = ?"
+        params = (genre, str(year))
+    else:
+        sql += "WHERE g.Name = ?"
+    with _connect() as conn:
+        row = conn.execute(sql, params).fetchone()
+    return int(row["n"])

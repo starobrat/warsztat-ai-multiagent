@@ -11,11 +11,11 @@ Skupiamy się na: czym jest `LlmAgent` i jak go uruchomić.
 - Obserwacja, jak zmiana `instruction` zmienia zachowanie.
 
 ## Poza zakresem (przyjdzie później)
-- Narzędzia (FunctionTool) - `ex_05_sql_agent` (moduł 6).
-- Pamięć i sesje - `ex_05_sql_agent` (moduł 6).
-- Wieloagentowość - `ex_08_report_system` (moduły 9-11).
-- Ewaluacja - `ex_06_evaluation/` (moduł 7).
-- Bezpieczeństwo / guardraile - `ex_10_guardrails` (moduł 14).
+- Narzędzia (FunctionTool) - `ex_13_text_to_sql` (moduł 6).
+- Pamięć i sesje - `ex_13_text_to_sql` (moduł 6).
+- Wieloagentowość - `ex_15_report_system` (moduły 9-11).
+- Ewaluacja - `ex_12_eval/` (moduł 7).
+- Bezpieczeństwo / guardraile - `ex_17_guardrails` (moduł 14).
 
 ## Koncepcja w pigułce
 `LlmAgent` to deklaratywny agent: opisujesz rolę (`instruction`) i - później -
