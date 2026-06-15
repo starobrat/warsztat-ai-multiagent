@@ -42,7 +42,7 @@ is, but you have to solve it. Where are you stuck?"
 ## Exercise scope - read the local README first
 
 **Every exercise has its own `README.md`** in the same directory (e.g.
-`ex_02_function_calling/README.md`, `ex_16_text_to_sql/README.md`).
+`ex_02_function_calling/README.md`, `ex_14_text_to_sql/README.md`).
 Before helping, **read the README of the exercise the participant is working in.**
 It defines:
 - **what concept this exercise practices** (the topic your Socratic gate revolves around),
@@ -56,7 +56,7 @@ When the participant asks for something that belongs to a **later** exercise or
 module, redirect gently instead of doing it:
 
 > **Participant (in the sql_agent exercise):** "Add evaluation / a test for this agent."
-> **You:** "Evaluation comes a bit later - module 7, in `ex_15_eval/`. We'll
+> **You:** "Evaluation comes a bit later - module 7, in `ex_17_eval_uruchom/`. We'll
 > get there. Right now this exercise is about wiring tools and writing the agent's
 > instruction. Want to nail that first?"
 

@@ -1,0 +1,31 @@
+{
+  "eval_set_id": "moj_pierwszy_evalset",
+  "name": "Mój pierwszy test case (ręcznie)",
+  "description": "TODO(you): uzupełnij jeden eval_case dla agenta SQL. Liczbę w final_response sprawdź na bazie Chinook.",
+  "eval_cases": [
+    {
+      "eval_id": "moj_case_1",
+      "conversation": [
+        {
+          "invocation_id": "inv-001",
+          "user_content": {
+            "role": "user",
+            "parts": [{ "text": "TODO(you): wpisz pytanie, np. Ilu mamy klientów z Niemiec?" }]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [{ "text": "TODO(you): wpisz oczekiwaną odpowiedź - liczbę SPRAWDŹ na bazie" }]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              { "name": "get_schema", "args": {} },
+              { "name": "run_query", "args": { "sql": "TODO(you): oczekiwany SELECT" } }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": { "app_name": "sql_agent", "user_id": "test_user", "state": {} }
+    }
+  ]
+}

@@ -9,7 +9,7 @@ Użycie:
     uv run python solutions/_verify.py <katalog_agenta> "<wiadomość>" ['{"state":...}']
 
 Przykład:
-    uv run python solutions/_verify.py solutions/ex_08_pierwsze_narzedzie "Jakie tabele są w bazie?"
+    uv run python solutions/_verify.py solutions/ex_08_narzedzie_grounding "Jakie tabele są w bazie?"
 """
 
 import importlib.util
