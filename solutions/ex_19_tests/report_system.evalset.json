@@ -1,0 +1,32 @@
+{
+  "eval_set_id": "report_system_evalset",
+  "name": "Report system - przykładowy test set (szablon)",
+  "description": "Szablon test setu dla systemu wieloagentowego (ex_18_report_system). Skopiuj do ex_15_eval/report_system.evalset.json. Trajektoria w systemie wieloagentowym obejmuje wywołania narzędzi przez data_agent i report_writer - dlatego kryterium trajektorii trzymamy na 0.0 (test_config.json obok evalsetu), a sprawdzamy głównie, że raport powstał. Kanonicznie nagraj własny case w 'adk web' (report_system) -> zakładka Eval.",
+  "eval_cases": [
+    {
+      "eval_id": "raport_sprzedaz_2025",
+      "conversation": [
+        {
+          "invocation_id": "inv-001",
+          "user_content": {
+            "role": "user",
+            "parts": [{ "text": "Zrób krótki raport o sprzedaży gatunków muzycznych w 2025." }]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [{ "text": "Raport został wygenerowany. Ścieżka do pliku z raportem." }]
+          },
+          "intermediate_data": {
+            "tool_uses": [],
+            "intermediate_responses": []
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "report_system",
+        "user_id": "test_user",
+        "state": {}
+      }
+    }
+  ]
+}

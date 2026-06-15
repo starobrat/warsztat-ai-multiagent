@@ -36,8 +36,8 @@ uruchomisz `uv sync`, smoke test i kolejne ćwiczenia bez wpisywania komend.
 
 ## Jak to jest poukładane
 
-Ćwiczenia są ponumerowane po kolei (00 -> 10) i idą w tempie szkolenia. Część 1
-(01-03) robisz RĘCZNIE, bez ADK. Część 2 (04-10) to Google ADK 2.0.
+Ćwiczenia są ponumerowane po kolei (00 -> 20) i idą w tempie szkolenia. Część 1
+(01-03) robisz RĘCZNIE, bez ADK. Część 2 (04-20) to Google ADK 2.0.
 
 ```
 data/chinook.sqlite      Baza sklepu z muzyką (11 tabel). Licencja MIT - patrz NOTICE.md
@@ -54,19 +54,21 @@ ex_03_agentic_loop/         pętla agentyczna na bazie Chinook
 # CZĘŚĆ 2: Google ADK 2.0 (każdy agent: `adk web <katalog>`)
 ex_04_hello/                pierwszy agent ADK (starter)
 ex_05_pamiec_i_sesje/       pamięć i stan sesji - co agent pamięta (starter)
-ex_06_pierwsze_narzedzie/   pierwsze narzędzie: get_schema (starter)
-ex_07_instrukcja_grounding/ grounding - agent odmawia bez danych (starter)
-ex_08_docstring/            docstring jako kontrakt narzędzia (starter)
-ex_09_argumenty/            narzędzie z parametrem (starter)
-ex_10_lancuch_narzedzi/     sekwencja wywołań narzędzi (starter)
-ex_11_analityka_iteracja/   analityka przez iterację (starter)
-ex_12_raport_wykres/        artefakt: wykres PNG (starter)
-ex_13_eval/                 test set + szablony (ewaluacja, moduł 7)
-ex_14_text_to_sql/          agent SQL - sam pisze SELECT (starter)
-ex_15_modele_i_diagnostyka/ słaba instrukcja + porównanie modeli (moduł 8)
-ex_16_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
-ex_17_tests/                testy automatyczne (pytest, moduł 12)
-ex_18_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
+ex_06_pamiec_dlugoterminowa/ Memory ponad rozmowy: load_memory (skrypt, starter)
+ex_07_kompaktowanie/        rolling window + kompaktowanie kontekstu (skrypt, starter)
+ex_08_pierwsze_narzedzie/   pierwsze narzędzie: get_schema (starter)
+ex_09_instrukcja_grounding/ grounding - agent odmawia bez danych (starter)
+ex_10_docstring/            docstring jako kontrakt narzędzia (starter)
+ex_11_argumenty/            narzędzie z parametrem (starter)
+ex_12_lancuch_narzedzi/     sekwencja wywołań narzędzi (starter)
+ex_13_analityka_iteracja/   analityka przez iterację (starter)
+ex_14_raport_wykres/        artefakt: wykres PNG (starter)
+ex_15_eval/                 test set + szablony (ewaluacja, moduł 7)
+ex_16_text_to_sql/          agent SQL - sam pisze SELECT (starter)
+ex_17_modele_i_diagnostyka/ słaba instrukcja + porównanie modeli (moduł 8)
+ex_18_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
+ex_19_tests/                testy automatyczne (pytest, moduł 12)
+ex_20_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
 
 # DEMA prowadzącego (gotowe, do pokazania na żywo)
 demo_01_halucynacja/        model zmyśla pewnym tonem (skrypt)
@@ -82,7 +84,7 @@ bonus/                   bezpieczniki B1-B7 - opcjonalne, gdy zostanie czas
 co jest w zakresie, a co przyjdzie później. Zacznij ćwiczenie od przeczytania go -
 i Twój asystent AI też się nim kieruje, żeby trzymać Cię w temacie danego ćwiczenia.
 
-Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web ex_14_text_to_sql`
+Agentów ADK uruchamiasz po jednym, wskazując jego katalog: `adk web ex_16_text_to_sql`
 otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
 
 ## Najważniejsze komendy
@@ -92,17 +94,17 @@ otwiera w przeglądarce dokładnie tego agenta (rozmowa, trace, ewaluacja).
 uv run ex_01_simple_call/starter.py
 
 # Część 2 - interfejs webowy ADK (rozmowa, trace, ewaluacja) - wskaż katalog agenta
-uv run adk web ex_14_text_to_sql
+uv run adk web ex_16_text_to_sql
 
 # Część 2 - agent w terminalu
 uv run adk run ex_04_hello
 
 # Ewaluacja z CLI
-uv run adk eval ex_14_text_to_sql ex_13_eval/sql_agent.evalset.json \
-    --config_file_path ex_13_eval/test_config.json
+uv run adk eval ex_16_text_to_sql ex_15_eval/sql_agent.evalset.json \
+    --config_file_path ex_15_eval/test_config.json
 
 # Testy automatyczne
-uv run pytest ex_17_tests
+uv run pytest ex_19_tests
 ```
 
 ## Co przerabiamy (skrót)
