@@ -33,7 +33,7 @@ labels=(
   "demo 09  transfer  -  delegacja master -> specjalisci (adk web)"
   "demo 13  mcp  -  podpiecie serwera MCP (adk web)"
   "demo 14  injection  -  prompt injection bez guardraila (adk web)"
-  "---  ROZWIAZANIA (dla prowadzacego)  ---"
+  "---  ROZWIAZANIA  ---"
   "sol 01  simple call"
   "sol 02  function calling"
   "sol 03  agentic loop"
