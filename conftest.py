@@ -1,6 +1,6 @@
 """Pytest: dołóż korzeń repo do sys.path.
 
-Dzięki temu testy (ex_25_tests) mogą zaimportować agentów po numerowanej nazwie
+Dzięki temu testy (ex_23_tests) mogą zaimportować agentów po numerowanej nazwie
 katalogu (np. "ex_14_text_to_sql") i pakiet `common`, niezależnie od trybu importu
 pytest.
 """

@@ -3,7 +3,7 @@
 Wypełnione: instrukcja plannera (output_key="report_plan"). data_agent i
 report_writer były gotowe. Pipeline: planner -> data_agent -> report_writer.
 
-Uruchom: uv run adk run solutions/ex_21_planner "..." (albo adk web).
+Uruchom: uv run adk run solutions/ex_19_planner "..." (albo adk web).
 """
 
 import sys

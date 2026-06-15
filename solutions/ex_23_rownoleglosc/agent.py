@@ -3,7 +3,7 @@
 Wzorzec fan-out/gather: ParallelAgent(branch_klienci, branch_faktury) -> synteza,
 całość owinięta w SequentialAgent. Gałęzie i synteza były gotowe.
 
-Uruchom: uv run adk run solutions/ex_23_rownoleglosc "..." (albo adk web).
+Uruchom: uv run adk run solutions/ex_21_rownoleglosc "..." (albo adk web).
 """
 
 import sys

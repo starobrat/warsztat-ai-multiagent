@@ -13,9 +13,9 @@ Skupiamy się na: czym jest `LlmAgent` i jak go uruchomić.
 ## Poza zakresem (przyjdzie później)
 - Narzędzia (FunctionTool) - `ex_14_text_to_sql` (moduł 6).
 - Pamięć i sesje - `ex_14_text_to_sql` (moduł 6).
-- Wieloagentowość - `ex_22_report_writer` (moduły 9-11).
-- Ewaluacja - `ex_17_eval_uruchom/` (moduł 7).
-- Bezpieczeństwo / guardraile - `ex_26_guardrail_tool` (moduł 14).
+- Wieloagentowość - `ex_20_report_writer` (moduły 9-11).
+- Ewaluacja - `ex_15_ewaluacja/` (moduł 7).
+- Bezpieczeństwo / guardraile - `ex_24_guardrail_tool` (moduł 14).
 
 ## Koncepcja w pigułce
 `LlmAgent` to deklaratywny agent: opisujesz rolę (`instruction`) i - później -

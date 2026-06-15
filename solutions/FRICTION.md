@@ -28,24 +28,24 @@ oryginalnego katalogu ćwiczenia.
 - ex_11_lancuch_narzedzi: brak friction. Zweryfikowane: get_artists -> get_albums_for_artist (2 albumy).
 - ex_12_analityka_iteracja: brak friction. Zweryfikowane: iteracja po gatunkach, Rock 2025 = 176.
 - ex_13_raport_wykres: brak friction. Zweryfikowane: narysuj_wykres_slupkowy -> PNG w out/.
-- ex_17_eval_uruchom (NIEKODOWE): brak friction. SOLUTION.md + wzorcowy evalset. Eval przeciw
+- ex_15_ewaluacja (NIEKODOWE): brak friction. SOLUTION.md + wzorcowy evalset. Eval przeciw
   rozwiązanemu agentowi SQL: 2 passed, 0 failed.
 - ex_14_text_to_sql: brak friction. Zweryfikowane: get_schema -> run_query, klienci z Niemiec = 4.
-- ex_18_modele_i_diagnostyka: brak friction. Naprawa WYŁĄCZNIE instruction na słabym modelu;
+- ex_16_modele_i_diagnostyka: brak friction. Naprawa WYŁĄCZNIE instruction na słabym modelu;
   eval RED->GREEN (2 passed). Diagnoza w nagłówku solution.
-- ex_22_report_writer: brak friction. Zweryfikowane: planner -> data_agent -> report_writer;
+- ex_20_report_writer: brak friction. Zweryfikowane: planner -> data_agent -> report_writer;
   powstaje HTML + wykres PNG w out/.
-- ex_25_tests (NIEKODOWE+kod): SOLUTION.md + szablon report_system.evalset.json.
+- ex_23_tests (NIEKODOWE+kod): SOLUTION.md + szablon report_system.evalset.json.
   Friction (drobne, POPRAWIONE w starterze): README/docstring mówiły "odkomentuj test",
   a test jest pomijany przez `@pytest.mark.skipif` do czasu pojawienia się evalsetu -
-  poprawiono opis w `ex_25_tests/README.md` i `test_report_system.py`.
-- ex_26_guardrail_tool: brak friction. Zweryfikowane: callback blokuje DROP/INSERT itd.,
+  poprawiono opis w `ex_23_tests/README.md` i `test_report_system.py`.
+- ex_24_guardrail_tool: brak friction. Zweryfikowane: callback blokuje DROP/INSERT itd.,
   przepuszcza SELECT (dodatkowo test jednostkowy callbacku - bo model często odmawia
   groźnego zapytania już na poziomie instrukcji, zanim guard zdąży zadziałać).
 
 ## Podsumowanie friction
 Same ćwiczenia są czyste - każde rozwiązuje się WYŁĄCZNIE krokami z `# TODO(you)`.
-Jedyna realna poprawka startera: opis "odkomentuj" w ex_25_tests (powyżej). Reszta
+Jedyna realna poprawka startera: opis "odkomentuj" w ex_23_tests (powyżej). Reszta
 to artefakty struktury `solutions/` (shim sys.path o poziom głębiej), nie friction ćwiczeń.
 
 ## Narzędzie weryfikacyjne

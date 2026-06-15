@@ -6,8 +6,8 @@ SQL (najpierw schemat, potem SELECT, bez zgadywania). Model i narzędzia bez zmi
 Po poprawie eval przechodzi (zielony). To jest pointa: prompt = kod, testuje się go.
 
 Uruchom eval:
-  uv run adk eval solutions/ex_18_modele_i_diagnostyka \\
-      ex_17_eval_uruchom/sql_agent.evalset.json --config_file_path ex_17_eval_uruchom/test_config.json
+  uv run adk eval solutions/ex_16_modele_i_diagnostyka \\
+      ex_15_ewaluacja/sql_agent.evalset.json --config_file_path ex_15_ewaluacja/test_config.json
 """
 
 import sys

@@ -36,8 +36,8 @@ uruchomisz `uv sync`, smoke test i kolejne ćwiczenia bez wpisywania komend.
 
 ## Jak to jest poukładane
 
-Ćwiczenia są ponumerowane po kolei (00 -> 29) i idą w tempie szkolenia. Część 1
-(01-03) robisz RĘCZNIE, bez ADK. Część 2 (04-29) to Google ADK 2.0.
+Ćwiczenia są ponumerowane po kolei (00 -> 27) i idą w tempie szkolenia. Część 1
+(01-03) robisz RĘCZNIE, bez ADK. Część 2 (04-27) to Google ADK 2.0.
 
 ```
 data/chinook.sqlite      Baza sklepu z muzyką (11 tabel). Licencja MIT - patrz NOTICE.md
@@ -64,23 +64,21 @@ ex_12_analityka_iteracja/   analityka przez iterację
 ex_13_raport_wykres/        artefakt: wykres PNG
 # Ewaluacja (moduł 7)
 ex_14_text_to_sql/          agent SQL - sam pisze SELECT
-ex_15_eval_pierwszy_case/   pierwszy test case ręcznie (format evalset)
-ex_16_eval_nagrywanie/      nagraj test set w adk web (GUI)
-ex_17_eval_uruchom/         uruchom adk eval + czytaj metryki (evalset + config)
-ex_18_modele_i_diagnostyka/ tuning promptu red->green na słabym modelu (moduł 8)
+ex_15_ewaluacja/            zbuduj test set (ręcznie/GUI) + uruchom adk eval + metryki
+ex_16_modele_i_diagnostyka/ tuning promptu red->green na słabym modelu (moduł 8)
 # Wieloagentowość (moduły 9-11)
-ex_19_delegacja_transfer/   master -> sub_agents, transfer sterowania
-ex_20_sekwencja/            SequentialAgent + output_key
-ex_21_planner/              system raportowy: planner
-ex_22_report_writer/        system raportowy: artefakt (writer + narzędzia)
-ex_23_rownoleglosc/         ParallelAgent
-ex_24_petla_agentow/        LoopAgent (iteracja z warunkiem stopu)
-ex_25_tests/                testy automatyczne (pytest, moduł 12)
+ex_17_delegacja_transfer/   master -> sub_agents, transfer sterowania
+ex_18_sekwencja/            SequentialAgent + output_key
+ex_19_planner/              system raportowy: planner
+ex_20_report_writer/        system raportowy: artefakt (writer + narzędzia)
+ex_21_rownoleglosc/         ParallelAgent
+ex_22_petla_agentow/        LoopAgent (iteracja z warunkiem stopu)
+ex_23_tests/                testy automatyczne (pytest, moduł 12)
 # Bezpieczeństwo / guardraile (moduł 14)
-ex_26_guardrail_tool/       before_tool: blokuj groźne SQL
-ex_27_guardrail_input/      before_model: blokuj prompt injection
-ex_28_guardrail_output/     after_tool: redakcja wrażliwych danych
-ex_29_guardrail_blad/       on_tool_error: kontrolowana obsługa błędu
+ex_24_guardrail_tool/       before_tool: blokuj groźne SQL
+ex_25_guardrail_input/      before_model: blokuj prompt injection
+ex_26_guardrail_output/     after_tool: redakcja wrażliwych danych
+ex_27_guardrail_blad/       on_tool_error: kontrolowana obsługa błędu
 
 # DEMA prowadzącego (gotowe, do pokazania na żywo)
 demo_01_halucynacja/        model zmyśla pewnym tonem (skrypt)
@@ -112,11 +110,11 @@ uv run adk web ex_14_text_to_sql
 uv run adk run ex_04_hello
 
 # Ewaluacja z CLI
-uv run adk eval ex_14_text_to_sql ex_17_eval_uruchom/sql_agent.evalset.json \
-    --config_file_path ex_17_eval_uruchom/test_config.json
+uv run adk eval ex_14_text_to_sql ex_15_ewaluacja/sql_agent.evalset.json \
+    --config_file_path ex_15_ewaluacja/test_config.json
 
 # Testy automatyczne
-uv run pytest ex_25_tests
+uv run pytest ex_23_tests
 ```
 
 ## Co przerabiamy (skrót)

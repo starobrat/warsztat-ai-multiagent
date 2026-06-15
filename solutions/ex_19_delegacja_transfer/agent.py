@@ -3,7 +3,7 @@
 Master deleguje do jednego z dwóch specjalistów na podstawie ich `description`.
 Wypełnione: instrukcja mastera + podpięcie sub_agents.
 
-Uruchom: uv run adk run solutions/ex_19_delegacja_transfer "..." (albo adk web).
+Uruchom: uv run adk run solutions/ex_17_delegacja_transfer "..." (albo adk web).
 """
 
 import sys

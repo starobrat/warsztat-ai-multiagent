@@ -3,7 +3,7 @@
 Agent A zapisuje temat pod output_key="temat", agent B czyta go przez {temat}.
 SequentialAgent gwarantuje kolejność A -> B.
 
-Uruchom: uv run adk run solutions/ex_20_sekwencja "..." (albo adk web).
+Uruchom: uv run adk run solutions/ex_18_sekwencja "..." (albo adk web).
 """
 
 import sys
