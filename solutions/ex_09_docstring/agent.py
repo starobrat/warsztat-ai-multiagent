@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ćwiczenia ex_10: docstring narzędzia - moduł 6.
+"""ROZWIĄZANIE ćwiczenia ex_09: docstring narzędzia - moduł 6.
 
 Docstring to KONTRAKT, który czyta model, żeby zdecydować, KIEDY wywołać
 narzędzie. `get_genres` dostaje opisowy docstring, a agent - instrukcję

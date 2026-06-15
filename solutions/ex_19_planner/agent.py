@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ex_21: pipeline raportu - PLANNER.
+"""ROZWIĄZANIE ex_19: pipeline raportu - PLANNER.
 
 Wypełnione: instrukcja plannera (output_key="report_plan"). data_agent i
 report_writer były gotowe. Pipeline: planner -> data_agent -> report_writer.

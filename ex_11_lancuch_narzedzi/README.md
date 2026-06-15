@@ -1,6 +1,6 @@
-# Ćwiczenie ex_12: łańcuch narzędzi (moduł 6)
+# Ćwiczenie ex_11: łańcuch narzędzi (moduł 6)
 
-<!-- [TODO Piotr - ŁUK: w ex_11 wystarczyło jedno narzędzie. Teraz jedno pytanie
+<!-- [TODO Piotr - ŁUK: w ex_10 wystarczyło jedno narzędzie. Teraz jedno pytanie
 wymaga DWÓCH po kolei - to pierwsza prawdziwa orkiestracja.] -->
 
 ## Co ćwiczymy
@@ -30,5 +30,5 @@ decyduje o KOLEJNOŚCI wywołań - nie o gotową instrukcję.
 Agent wykonuje dwa wywołania we właściwej kolejności i podaje albumy z bazy.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_13: dwa wywołania to mało;
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_12: dwa wywołania to mało;
 co, gdy trzeba przejść w pętli przez wszystkie gatunki i policzyć sprzedaż?] -->

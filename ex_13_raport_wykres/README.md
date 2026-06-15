@@ -1,6 +1,6 @@
-# Ćwiczenie ex_14: raport z wykresem (moduł 6)
+# Ćwiczenie ex_13: raport z wykresem (moduł 6)
 
-<!-- [TODO Piotr - ŁUK: w ex_13 agent policzył sprzedaż gatunków. Teraz robi
+<!-- [TODO Piotr - ŁUK: w ex_12 agent policzył sprzedaż gatunków. Teraz robi
 z tego ARTEFAKT - wykres. To payoff całego bloku narzędziowego.] -->
 
 ## Co ćwiczymy
@@ -8,7 +8,7 @@ z tego ARTEFAKT - wykres. To payoff całego bloku narzędziowego.] -->
 rysującym wykres słupkowy. Pytanie -> dane -> plik PNG.
 
 ## Które narzędzia podpinamy
-- `get_genres`, `get_sold_count_for_genre` - dane (jak w ex_13).
+- `get_genres`, `get_sold_count_for_genre` - dane (jak w ex_12).
 - `narysuj_wykres_slupkowy(labels, values, title)` - rysuje wykres (PNG).
 
 ## Twoje zadanie
@@ -31,5 +31,5 @@ przekazuje wynik jednego narzędzia na wejście kolejnego - nie o gotową instru
 Agent zbiera dane i generuje wykres PNG odpowiadający liczbom z bazy.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_15: jak UPEWNIĆ się, że agent
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_14: jak UPEWNIĆ się, że agent
 odpowiada dobrze za każdym razem? Czas na ewaluację.] -->

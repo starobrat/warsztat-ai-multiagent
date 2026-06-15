@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ex_23: ParallelAgent - równoległe odpytanie bazy.
+"""ROZWIĄZANIE ex_21: ParallelAgent - równoległe odpytanie bazy.
 
 Wzorzec fan-out/gather: ParallelAgent(branch_klienci, branch_faktury) -> synteza,
 całość owinięta w SequentialAgent. Gałęzie i synteza były gotowe.

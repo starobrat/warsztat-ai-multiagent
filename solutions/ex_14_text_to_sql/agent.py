@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ćwiczenia ex_16: text-to-SQL - moduł 7.
+"""ROZWIĄZANIE ćwiczenia ex_14: text-to-SQL - moduł 7.
 
 Agent dostaje OGÓLNE narzędzia: gdy nie ma gotowca, sam pisze SQL. `get_schema`
 (poznaj strukturę) -> `run_query` (wykonaj SELECT). Instrukcja dyscyplinuje:

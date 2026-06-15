@@ -1,4 +1,4 @@
-# Rozwiązanie: ex_17 - uruchom eval i czytaj metryki (NIEKODOWE)
+# Rozwiązanie: ex_15 - uruchom eval i czytaj metryki (NIEKODOWE)
 
 Komenda (na rozwiązanym agencie SQL):
   uv run adk eval ex_14_text_to_sql ex_15_ewaluacja/sql_agent.evalset.json --config_file_path ex_15_ewaluacja/test_config.json

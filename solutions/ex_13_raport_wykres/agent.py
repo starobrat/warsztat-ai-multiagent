@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ćwiczenia ex_14: raport z wykresem - moduł 6.
+"""ROZWIĄZANIE ćwiczenia ex_13: raport z wykresem - moduł 6.
 
 Payoff bloku narzędziowego: agent nie tylko liczy, ale ROBI ARTEFAKT. Łączysz
 analitykę (gatunki + sprzedaż) z narzędziem rysującym wykres słupkowy. Pytasz

@@ -1,4 +1,4 @@
-# Ćwiczenie ex_11: narzędzie z argumentem (moduł 6)
+# Ćwiczenie ex_10: narzędzie z argumentem (moduł 6)
 
 <!-- [TODO Piotr - ŁUK: dotąd narzędzia nie brały argumentów. Teraz model musi
 wyłuskać argument z pytania ("ile sprzedał AC/DC?") i podać go narzędziu.] -->
@@ -28,5 +28,5 @@ jakiego typu jest argument `artist` - nie o gotową instrukcję.
 Model poprawnie przekazuje nazwę wykonawcy jako argument i podaje liczbę z bazy.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_12: jedno narzędzie wystarcza
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_11: jedno narzędzie wystarcza
 na proste pytanie; co, gdy odpowiedź wymaga DWÓCH narzędzi po kolei?] -->

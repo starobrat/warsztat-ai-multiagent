@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ex_22: pipeline raportu - REPORT WRITER.
+"""ROZWIĄZANIE ex_20: pipeline raportu - REPORT WRITER.
 
 Wypełnione: narzędzia raportowe + instrukcja report_writera (buduje artefakt z
 {report_plan} i {report_data}). planner i data_agent były gotowe.

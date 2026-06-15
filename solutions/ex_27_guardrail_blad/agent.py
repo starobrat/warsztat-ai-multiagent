@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_29: guardrail na BŁĄD narzędzia (on_tool_error_callback). ROZWIĄZANIE.
+"""Ćwiczenie ex_27: guardrail na BŁĄD narzędzia (on_tool_error_callback). ROZWIĄZANIE.
 
 Gdy run_query_raw rzuci wyjątek (np. zła nazwa kolumny), callback łapie go i oddaje
 modelowi czysty dict z błędem zamiast pozwolić wywalić całą turę agenta.

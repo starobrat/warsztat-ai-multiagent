@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_28: guardrail na WYJŚCIU (after_tool_callback). ROZWIĄZANIE.
+"""Ćwiczenie ex_26: guardrail na WYJŚCIU (after_tool_callback). ROZWIĄZANIE.
 
 Po tym jak run_query zwróci wiersze, a ZANIM trafią do modelu, maskujemy komórki
 wyglądające na e-mail/telefon. Zwrócenie dict = podmiana wyniku narzędzia.

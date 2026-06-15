@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ćwiczenia ex_13: analityka przez iterację - moduł 6.
+"""ROZWIĄZANIE ćwiczenia ex_12: analityka przez iterację - moduł 6.
 
 Pierwsza prawdziwa ANALITYKA: agent pobiera listę gatunków (`get_genres`),
 a potem dla każdego liczy sprzedaż w danym roku (`get_sold_count_for_genre`)

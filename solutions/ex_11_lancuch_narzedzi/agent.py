@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ćwiczenia ex_12: łańcuch narzędzi - moduł 6.
+"""ROZWIĄZANIE ćwiczenia ex_11: łańcuch narzędzi - moduł 6.
 
 Czasem jedno pytanie wymaga DWÓCH narzędzi po kolei: najpierw rozwiąż
 wykonawcę (`get_artists`), potem pobierz jego albumy (`get_albums_for_artist`).
@@ -26,7 +26,7 @@ root_agent = LlmAgent(
         "Jesteś analitykiem katalogu sklepu muzycznego Chinook. Odpowiadaj po "
         "polsku, krótko i rzeczowo. Gdy użytkownik pyta o albumy danego "
         "wykonawcy, działaj w dwóch krokach: NAJPIERW wywołaj `get_artists`, "
-        "żeby znaleźć właściwego wykonawcę i jego identyfikator, a POTEM "
+        "żeby znaleźć właściwego wykonawcę, a POTEM "
         "wywołaj `get_albums_for_artist` dla tego wykonawcy, by pobrać jego "
         "albumy. Korzystaj WYŁĄCZNIE z danych zwróconych przez narzędzia - "
         "nie zmyślaj. Jeśli wykonawcy nie ma w bazie, powiedz to wprost."

@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_26: guardrail na narzędziu (before_tool_callback). ROZWIĄZANIE.
+"""Ćwiczenie ex_24: guardrail na narzędziu (before_tool_callback). ROZWIĄZANIE.
 
 Warstwa 2 obrony w głąb: callback before_tool blokuje groźne wzorce SQL ZANIM
 run_query się wykona. Zwrócenie dict = blokada (narzędzie pominięte), None = dalej.

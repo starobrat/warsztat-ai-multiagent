@@ -21,7 +21,7 @@ zarządzanie przez **uv**.
 
 ```bash
 git clone <URL-tego-repo>
-cd sages-adk-multiagent
+cd warsztat-ai-multiagent
 
 uv sync                       # instaluje zależności
 cp .env.example .env          # następnie wklej swój OPENAI_API_KEY do .env

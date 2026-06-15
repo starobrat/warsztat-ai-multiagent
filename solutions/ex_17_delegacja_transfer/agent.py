@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ex_19: delegacja przez transfer (moduł 9).
+"""ROZWIĄZANIE ex_17: delegacja przez transfer (moduł 9).
 
 Master deleguje do jednego z dwóch specjalistów na podstawie ich `description`.
 Wypełnione: instrukcja mastera + podpięcie sub_agents.

@@ -1,4 +1,4 @@
-# Ćwiczenie ex_16: text-to-SQL (moduł 7)
+# Ćwiczenie ex_14: text-to-SQL (moduł 7)
 
 <!-- [TODO Piotr - ŁUK: dotąd agent miał gotowe, wąskie narzędzia. Co, gdy
 pytanie wykracza poza nie? Dajemy mu ogólne narzędzie - sam pisze SQL.] -->
@@ -35,5 +35,5 @@ wąskim a ogólnym narzędziem - nie o gotową instrukcję.
 Agent najpierw czyta schemat, potem pisze poprawny SELECT i odpowiada z danych.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_17: skoro agent pisze SQL,
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_15: skoro agent pisze SQL,
 to jak RÓŻNE modele radzą sobie z tym samym zadaniem? Czas na diagnostykę.] -->

@@ -1,6 +1,6 @@
-# Ćwiczenie ex_10: docstring narzędzia (moduł 6)
+# Ćwiczenie ex_09: docstring narzędzia (moduł 6)
 
-<!-- [TODO Piotr - ŁUK: w ex_09 agent miał jedno narzędzie. Teraz dokładamy
+<!-- [TODO Piotr - ŁUK: w ex_08 agent miał jedno narzędzie. Teraz dokładamy
 drugie - i pojawia się pytanie: skąd model wie, KTÓRE wywołać? Z docstringa.] -->
 
 ## Co ćwiczymy
@@ -30,5 +30,5 @@ opis narzędzia z funkcji - nie o gotowy docstring.
 Z dobrym docstringiem model trafnie woła `get_genres`; ze złym - nie.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_11: narzędzia bez argumentów
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_10: narzędzia bez argumentów
 są proste; co, gdy narzędzie potrzebuje parametru z pytania użytkownika?] -->

@@ -1,6 +1,6 @@
-# Ćwiczenie ex_13: analityka przez iterację (moduł 6)
+# Ćwiczenie ex_12: analityka przez iterację (moduł 6)
 
-<!-- [TODO Piotr - ŁUK: w ex_12 agent zrobił dwa wywołania. Teraz robi ich
+<!-- [TODO Piotr - ŁUK: w ex_11 agent zrobił dwa wywołania. Teraz robi ich
 WIELE - pętla po gatunkach. To pierwsza prawdziwa analityka.] -->
 
 ## Co ćwiczymy
@@ -30,5 +30,5 @@ sam decyduje o liczbie iteracji - nie o gotową instrukcję.
 Agent iteruje po gatunkach, liczy sprzedaż każdego i poprawnie wskazuje najlepszy.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_14: masz liczby; czas zrobić
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_13: masz liczby; czas zrobić
 z nich coś, co widać - wykres. To payoff całego bloku narzędziowego.] -->

@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ex_24: LoopAgent - pętla z warunkiem stopu.
+"""ROZWIĄZANIE ex_22: LoopAgent - pętla z warunkiem stopu.
 
 Wypełnione: LoopAgent z agenta skracacz + max_iterations jako twardy limit.
 Pętla kończy się przez exit_loop (gdy hasło dość krótkie) albo po max_iterations.

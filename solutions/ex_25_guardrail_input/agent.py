@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_27: guardrail na WEJŚCIU (before_model_callback). ROZWIĄZANIE.
+"""Ćwiczenie ex_25: guardrail na WEJŚCIU (before_model_callback). ROZWIĄZANIE.
 
 Sprawdzamy ostatnią wiadomość użytkownika ZANIM dotrze do modelu. Jeśli wykryjemy
 próbę wstrzyknięcia instrukcji, zwracamy gotowy LlmResponse z odmową - ADK użyje

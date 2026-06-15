@@ -1,4 +1,4 @@
-"""ROZWIĄZANIE ex_20: SequentialAgent - sztywna kolejność i output_key.
+"""ROZWIĄZANIE ex_18: SequentialAgent - sztywna kolejność i output_key.
 
 Agent A zapisuje temat pod output_key="temat", agent B czyta go przez {temat}.
 SequentialAgent gwarantuje kolejność A -> B.

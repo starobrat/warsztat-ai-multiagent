@@ -1,11 +1,8 @@
 """DEMO (moduł 13): podpięcie serwera MCP do agenta ADK.
 
 Agent dostaje narzędzia z gotowego serwera MCP (filesystem) - bez pisania własnych
-funkcji. Wymaga Node/npx (serwer MCP startuje przez npx).
-
-UWAGA: ADK 2.0 to wersja wczesna. Jeśli import/API MCPToolset się różni, sprawdź
-dokumentację ADK - agent załaduje się bez narzędzi MCP (lista pusta) i wtedy
-pokazujesz koncepcję na kodzie zamiast na żywo.
+funkcji. Wymaga Node/npx (serwer MCP startuje przez npx) oraz pakietu `mcp`
+(jest w zależnościach repo - instaluje się przez `uv sync`).
 
 Uruchom: uv run adk web demo_13_mcp
 """
@@ -13,23 +10,22 @@ Uruchom: uv run adk web demo_13_mcp
 from common.model import get_model
 
 from google.adk.agents import LlmAgent
+from google.adk.tools.mcp_tool import McpToolset, StdioConnectionParams
+from mcp import StdioServerParameters
 
 # Tu, w katalogu repo, serwer filesystem MCP wystawi narzędzia do plików.
 _FS_ROOT = "."
 
-try:
-    from google.adk.tools.mcp_tool import MCPToolset, StdioServerParameters
-
-    _tools = [
-        MCPToolset(
-            connection_params=StdioServerParameters(
+_tools = [
+    McpToolset(
+        connection_params=StdioConnectionParams(
+            server_params=StdioServerParameters(
                 command="npx",
                 args=["-y", "@modelcontextprotocol/server-filesystem", _FS_ROOT],
             )
         )
-    ]
-except Exception:  # noqa: BLE001 - API MCP w alpha może się różnić; degraduj łagodnie
-    _tools = []
+    )
+]
 
 root_agent = LlmAgent(
     name="agent_z_mcp",
