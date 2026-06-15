@@ -42,7 +42,7 @@ Agent w obrębie jednej rozmowy odtwarza fakty, które mu podałeś, a w zakład
 State widać klucz `notatki`. Po otwarciu nowej sesji zaczyna od zera.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - otwarte rozszerzenie + CLIFFHANGER do ex_06. Np.: agent pamięta,
+<!-- [TODO Piotr - otwarte rozszerzenie + CLIFFHANGER do ex_08. Np.: agent pamięta,
 ale wciąż nic nie wie o naszych danych - czas dać mu PIERWSZE narzędzie do bazy
-(ex_06). Możesz też wspomnieć trwałe sesje (--session_service_uri, bonus B4)
+(ex_08). Możesz też wspomnieć trwałe sesje (--session_service_uri, bonus B4)
 i pamięć długoterminową. Twój głos.] -->

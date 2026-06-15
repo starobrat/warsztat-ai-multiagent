@@ -56,7 +56,7 @@ When the participant asks for something that belongs to a **later** exercise or
 module, redirect gently instead of doing it:
 
 > **Participant (in the sql_agent exercise):** "Add evaluation / a test for this agent."
-> **You:** "Evaluation comes a bit later - module 7, in `ex_13_eval/`. We'll
+> **You:** "Evaluation comes a bit later - module 7, in `ex_15_ewaluacja/`. We'll
 > get there. Right now this exercise is about wiring tools and writing the agent's
 > instruction. Want to nail that first?"
 

@@ -36,8 +36,8 @@ uruchomisz `uv sync`, smoke test i kolejne ćwiczenia bez wpisywania komend.
 
 ## Jak to jest poukładane
 
-Ćwiczenia są ponumerowane po kolei (00 -> 10) i idą w tempie szkolenia. Część 1
-(01-03) robisz RĘCZNIE, bez ADK. Część 2 (04-10) to Google ADK 2.0.
+Ćwiczenia są ponumerowane po kolei (00 -> 27) i idą w tempie szkolenia. Część 1
+(01-03) robisz RĘCZNIE, bez ADK. Część 2 (04-27) to Google ADK 2.0.
 
 ```
 data/chinook.sqlite      Baza sklepu z muzyką (11 tabel). Licencja MIT - patrz NOTICE.md
@@ -51,22 +51,34 @@ ex_01_simple_call/          wywołanie LLM + parametry
 ex_02_function_calling/     function calling napisany samodzielnie
 ex_03_agentic_loop/         pętla agentyczna na bazie Chinook
 
-# CZĘŚĆ 2: Google ADK 2.0 (każdy agent: `adk web <katalog>`)
-ex_04_hello/                pierwszy agent ADK (starter)
-ex_05_pamiec_i_sesje/       pamięć i stan sesji - co agent pamięta (starter)
-ex_06_pierwsze_narzedzie/   pierwsze narzędzie: get_schema (starter)
-ex_07_instrukcja_grounding/ grounding - agent odmawia bez danych (starter)
-ex_08_docstring/            docstring jako kontrakt narzędzia (starter)
-ex_09_argumenty/            narzędzie z parametrem (starter)
-ex_10_lancuch_narzedzi/     sekwencja wywołań narzędzi (starter)
-ex_11_analityka_iteracja/   analityka przez iterację (starter)
-ex_12_raport_wykres/        artefakt: wykres PNG (starter)
-ex_13_eval/                 test set + szablony (ewaluacja, moduł 7)
-ex_14_text_to_sql/          agent SQL - sam pisze SELECT (starter)
-ex_15_modele_i_diagnostyka/ słaba instrukcja + porównanie modeli (moduł 8)
-ex_16_report_system/        system wieloagentowy: planner -> dane -> raport (starter)
-ex_17_tests/                testy automatyczne (pytest, moduł 12)
-ex_18_guardrails/           agent z guardrailem (bezpieczeństwo, moduł 14)
+# CZĘŚĆ 2: Google ADK 2.0 (agenci: `adk web <katalog>`, skrypty: `uv run python ...`)
+ex_04_hello/                pierwszy agent ADK
+ex_05_pamiec_i_sesje/       pamięć i stan sesji (state)
+ex_06_pamiec_dlugoterminowa/ Memory ponad rozmowy: load_memory (skrypt)
+ex_07_kompaktowanie/        rolling window + kompaktowanie kontekstu (skrypt)
+ex_08_narzedzie_grounding/  pierwsze narzędzie get_schema + grounding (odmowa bez danych)
+ex_09_docstring/            docstring jako kontrakt narzędzia
+ex_10_argumenty/            narzędzie z parametrem
+ex_11_lancuch_narzedzi/     sekwencja wywołań narzędzi
+ex_12_analityka_iteracja/   analityka przez iterację
+ex_13_raport_wykres/        artefakt: wykres PNG
+# Ewaluacja (moduł 7)
+ex_14_text_to_sql/          agent SQL - sam pisze SELECT
+ex_15_ewaluacja/            zbuduj test set (ręcznie/GUI) + uruchom adk eval + metryki
+ex_16_modele_i_diagnostyka/ tuning promptu red->green na słabym modelu (moduł 8)
+# Wieloagentowość (moduły 9-11)
+ex_17_delegacja_transfer/   master -> sub_agents, transfer sterowania
+ex_18_sekwencja/            SequentialAgent + output_key
+ex_19_planner/              system raportowy: planner
+ex_20_report_writer/        system raportowy: artefakt (writer + narzędzia)
+ex_21_rownoleglosc/         ParallelAgent
+ex_22_petla_agentow/        LoopAgent (iteracja z warunkiem stopu)
+ex_23_tests/                testy automatyczne (pytest, moduł 12)
+# Bezpieczeństwo / guardraile (moduł 14)
+ex_24_guardrail_tool/       before_tool: blokuj groźne SQL
+ex_25_guardrail_input/      before_model: blokuj prompt injection
+ex_26_guardrail_output/     after_tool: redakcja wrażliwych danych
+ex_27_guardrail_blad/       on_tool_error: kontrolowana obsługa błędu
 
 # DEMA prowadzącego (gotowe, do pokazania na żywo)
 demo_01_halucynacja/        model zmyśla pewnym tonem (skrypt)
@@ -98,11 +110,11 @@ uv run adk web ex_14_text_to_sql
 uv run adk run ex_04_hello
 
 # Ewaluacja z CLI
-uv run adk eval ex_14_text_to_sql ex_13_eval/sql_agent.evalset.json \
-    --config_file_path ex_13_eval/test_config.json
+uv run adk eval ex_14_text_to_sql ex_15_ewaluacja/sql_agent.evalset.json \
+    --config_file_path ex_15_ewaluacja/test_config.json
 
 # Testy automatyczne
-uv run pytest ex_17_tests
+uv run pytest ex_23_tests
 ```
 
 ## Co przerabiamy (skrót)
