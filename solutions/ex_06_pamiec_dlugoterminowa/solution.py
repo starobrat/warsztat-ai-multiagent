@@ -1,7 +1,8 @@
-"""ROZWIĄZANIE ćwiczenia 6 - pamięć długoterminowa (Memory ponad rozmowy) - moduł 6.
+"""ROZWIĄZANIE ćwiczenia 6 - pamięć faktów o użytkowniku (ponad sesjami) - moduł 6.
 
-Trzy TODO wypełnione: instrukcja (kiedy load_memory), tools=[load_memory], oraz
-zapis sesji 1 do pamięci. Efekt: sesja 2 (NOWA) odzyskuje fakt z sesji 1.
+Dwa TODO wypełnione: instrukcja (kiedy zapisać fakt, kiedy przypomnieć) oraz
+tools=[zapamietaj_fakt, przypomnij_fakty]. Fakty trafiają do stanu z zasięgiem
+`user:`, więc sesja 2 (NOWA) odzyskuje je bez dopytywania.
 
 Uruchom: uv run python solutions/ex_06_pamiec_dlugoterminowa/solution.py
 """
@@ -14,38 +15,57 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from common.model import get_model  # noqa: E402
 
 from google.adk.agents import LlmAgent  # noqa: E402
-from google.adk.memory import InMemoryMemoryService  # noqa: E402
 from google.adk.runners import Runner  # noqa: E402
 from google.adk.sessions import InMemorySessionService  # noqa: E402
-from google.adk.tools import load_memory  # noqa: E402
+from google.adk.tools.tool_context import ToolContext  # noqa: E402
 import google.genai.types as gt  # noqa: E402
 
 APP = "ex06"
 USER = "uczestnik"
 
 session_service = InMemorySessionService()
-memory_service = InMemoryMemoryService()
 
-# TODO 1: instrukcja - kiedy sięgać do pamięci długoterminowej.
+
+# Klucz "user:fakty" ma zasięg UŻYTKOWNIKA - przeżywa kolejne sesje tego usera.
+def zapamietaj_fakt(kategoria: str, wartosc: str, tool_context: ToolContext) -> str:
+    """Zapisuje trwały fakt o użytkowniku (ma przeżyć kolejne rozmowy).
+
+    Wołaj, gdy użytkownik podaje coś stałego o sobie - np. ulubione gatunki
+    muzyczne albo z kim współpracuje.
+    kategoria: krótka etykieta faktu, np. "gatunki" albo "współpracownicy".
+    wartosc: treść faktu, np. "Rock, Jazz".
+    """
+    fakty = dict(tool_context.state.get("user:fakty", {}))
+    fakty[kategoria] = wartosc
+    tool_context.state["user:fakty"] = fakty
+    return f"Zapamiętano: {kategoria} = {wartosc}"
+
+
+def przypomnij_fakty(tool_context: ToolContext) -> dict:
+    """Zwraca fakty zapamiętane o użytkowniku (także z poprzednich rozmów)."""
+    return dict(tool_context.state.get("user:fakty", {}))
+
+
+# TODO 1: instrukcja - kiedy zapisać fakt, a kiedy go przypomnieć.
 INSTRUKCJA = (
-    "Jesteś asystentem z pamięcią długoterminową. Odpowiadasz po polsku, krótko. "
-    "Gdy odpowiedź NIE wynika z bieżącej rozmowy, użyj narzędzia load_memory, "
-    "żeby sprawdzić wcześniejsze rozmowy z tym użytkownikiem. Nie zmyślaj - jeśli "
-    "ani rozmowa, ani pamięć nie dają odpowiedzi, powiedz, że nie wiesz."
+    "Jesteś asystentem, który pamięta fakty o użytkowniku. Odpowiadasz po polsku, krótko. "
+    "Gdy użytkownik podaje trwały fakt o sobie (np. ulubione gatunki, z kim współpracuje), "
+    "zapisz go narzędziem zapamietaj_fakt (dobierz krótką kategorię). Gdy pyta, co o nim "
+    "wiesz, wywołaj przypomnij_fakty i odpowiedz na podstawie wyniku. Jeśli danego faktu "
+    "nie ma, powiedz, że nie wiesz - nie zmyślaj."
 )
 
 root_agent = LlmAgent(
-    name="pamiec_dluga",
+    name="pamiec_uzytkownika",
     model=get_model(),
     instruction=INSTRUKCJA,
-    tools=[load_memory],  # TODO 2: narzędzie pamięci długoterminowej
+    tools=[zapamietaj_fakt, przypomnij_fakty],  # TODO 2
 )
 
 runner = Runner(
     agent=root_agent,
     app_name=APP,
     session_service=session_service,
-    memory_service=memory_service,
 )
 
 
@@ -66,23 +86,16 @@ def powiedz(sid: str, tekst: str) -> tuple[str, list[str]]:
     return final, narzedzia
 
 
-def zapisz_sesje_do_pamieci(sid: str) -> None:
-    s = asyncio.run(session_service.get_session(app_name=APP, user_id=USER, session_id=sid))
-    asyncio.run(memory_service.add_session_to_memory(s))
-
-
 def main() -> None:
     nowa_sesja("s1")
-    odp1, _ = powiedz("s1", "Mam na imię Piotr i pracuję nad raportem sprzedaży gatunku Rock.")
+    odp1, n1 = powiedz("s1", "Interesują mnie gatunki Rock i Jazz, a współpracuję z Jane Peacock.")
     print(f"Sesja 1 (agent): {odp1}")
-
-    # TODO 3: zapisz zakończoną sesję 1 do pamięci długoterminowej.
-    zapisz_sesje_do_pamieci("s1")
+    print(f"Sesja 1 - użyte narzędzia: {n1 or '(żadne)'}")
 
     nowa_sesja("s2")
-    odp2, narzedzia = powiedz("s2", "Jak mam na imię i nad czym pracuję?")
+    odp2, n2 = powiedz("s2", "Które gatunki mnie interesują i z kim współpracuję?")
     print(f"Sesja 2 (agent): {odp2}")
-    print(f"Sesja 2 - użyte narzędzia: {narzedzia or '(żadne)'}")
+    print(f"Sesja 2 - użyte narzędzia: {n2 or '(żadne)'}")
 
 
 if __name__ == "__main__":
