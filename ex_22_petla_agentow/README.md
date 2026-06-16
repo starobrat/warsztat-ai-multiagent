@@ -1,4 +1,4 @@
-# Ćwiczenie ex_24: LoopAgent (moduł 11)
+# Ćwiczenie ex_22: LoopAgent (moduł 11)
 
 <!-- [TODO Piotr - ŁUK: mamy już trzy kształty orkiestracji - po kolei
 (Sequential), naraz (Parallel), a teraz trzeci: powtarzaj, AŻ będzie dobrze.

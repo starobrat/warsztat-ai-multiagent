@@ -1,6 +1,6 @@
-"""Ćwiczenie ex_20: SequentialAgent - sztywna kolejność i output_key. STARTER.
+"""Ćwiczenie ex_18: SequentialAgent - sztywna kolejność i output_key. STARTER.
 
-Transfer (ex_19) zostawiał wybór modelowi. Tu kolejność jest GWARANTOWANA:
+Transfer (ex_17) zostawiał wybór modelowi. Tu kolejność jest GWARANTOWANA:
 `SequentialAgent` uruchamia sub-agentów po kolei. Agent A zapisuje swój wynik pod
 `output_key`, a agent B czyta go w instrukcji przez `{klucz}`.
 

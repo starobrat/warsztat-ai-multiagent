@@ -1,4 +1,4 @@
-# Ćwiczenie ex_28: guardrail na wyjściu (after_tool)
+# Ćwiczenie ex_26: guardrail na wyjściu (after_tool)
 
 ## Co ćwiczymy
 **Guardrail wyjściowy**: maskowanie danych wrażliwych PO tym, jak narzędzie je
@@ -6,9 +6,9 @@ zwróci, a ZANIM trafią do modelu i użytkownika. `after_tool_callback` dostaje
 `(tool, args, tool_context, tool_response)` i jeśli zwróci `dict`, ADK użyje go
 zamiast oryginalnej odpowiedzi narzędzia.
 
-Trzeci z czterech guardraili. ex_26 pilnował akcji, ex_27 wejścia. Tutaj pilnujemy
+Trzeci z czterech guardraili. ex_24 pilnował akcji, ex_25 wejścia. Tutaj pilnujemy
 WYJŚCIA - wyciek danych (e-maile, telefony klientów) to osobne ryzyko od injection.
-Dalej: błędy (`ex_29`).
+Dalej: błędy (`ex_27`).
 
 ## Twoje zadanie
 Patrz `agent.py` (`# TODO(you)`): napisz ciało `redact_sensitive_output`. Dla
@@ -33,6 +33,6 @@ bo nigdy ich nie zobaczył.
 ## Pójdź dalej
 - Maskuj po nazwie kolumny (`Email`, `Phone`), nie po wyglądzie wartości - pewniej.
 - Co z adresem i fakturami? Gdzie postawić granicę "dane wrażliwe"?
-- Połącz z `ex_26`: wejście + akcja + wyjście to trzy warstwy tej samej obrony.
+- Połącz z `ex_24`: wejście + akcja + wyjście to trzy warstwy tej samej obrony.
 
 <!-- [TODO Piotr: narracja - moment "agent może wygadać dane, których sam nie powinien widzieć"; analogia do maskowania PII w logach / RODO] -->

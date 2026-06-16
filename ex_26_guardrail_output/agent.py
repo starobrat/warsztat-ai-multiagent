@@ -1,6 +1,6 @@
-"""Ćwiczenie ex_28: guardrail na WYJŚCIU (after_tool_callback). STARTER.
+"""Ćwiczenie ex_26: guardrail na WYJŚCIU (after_tool_callback). STARTER.
 
-ex_26 pilnował wywołania narzędzia, ex_27 pilnował wejścia. Tutaj pilnujemy
+ex_24 pilnował wywołania narzędzia, ex_25 pilnował wejścia. Tutaj pilnujemy
 WYJŚCIA - po tym jak run_query zwróci wiersze, a ZANIM trafią do modelu i
 użytkownika, maskujemy dane wrażliwe (e-maile, telefony klientów).
 

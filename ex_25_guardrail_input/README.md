@@ -1,13 +1,13 @@
-# Ćwiczenie ex_27: guardrail na wejściu (before_model)
+# Ćwiczenie ex_25: guardrail na wejściu (before_model)
 
 ## Co ćwiczymy
 **Guardrail wejściowy**: zatrzymanie groźnej wiadomości użytkownika ZANIM dotrze
 do modelu. `before_model_callback` dostaje `(callback_context, llm_request)` i
 jeśli zwróci `LlmResponse`, ADK użyje go zamiast wołać model (krótkie spięcie).
 
-Drugi z czterech guardraili. W `ex_26` pilnowaliśmy narzędzia (po stronie akcji).
-Tutaj filtrujemy WEJŚCIE - taniej i wcześniej niż model. Dalej: wyjście (`ex_28`),
-błędy (`ex_29`).
+Drugi z czterech guardraili. W `ex_24` pilnowaliśmy narzędzia (po stronie akcji).
+Tutaj filtrujemy WEJŚCIE - taniej i wcześniej niż model. Dalej: wyjście (`ex_26`),
+błędy (`ex_27`).
 
 ## Twoje zadanie
 Patrz `agent.py` (`# TODO(you)`): napisz ciało `block_injection_input`. Wyciągnij
@@ -34,7 +34,7 @@ zwraca odpowiedź z bazy.
 
 ## Pójdź dalej
 - Porównaj koszt: guardrail wejściowy odcina prompt, zanim spalisz tokeny modelu.
-- Czym to się różni od guardraila na narzędziu (`ex_26`)? Kiedy potrzebujesz obu?
+- Czym to się różni od guardraila na narzędziu (`ex_24`)? Kiedy potrzebujesz obu?
 - Spróbuj obejść swój filtr (parafraza, inny język) - lista wzorców to nie wszystko.
 
 <!-- [TODO Piotr: narracja - moment "to nie model decyduje, to Ty odcinasz wejście"; analogia do WAF / walidacji formularza] -->

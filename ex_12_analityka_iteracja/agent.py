@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_13: analityka przez iterację - moduł 6. STARTER.
+"""Ćwiczenie ex_12: analityka przez iterację - moduł 6. STARTER.
 
 Pierwsza prawdziwa ANALITYKA: agent pobiera listę gatunków (`get_genres`),
 a potem dla każdego liczy sprzedaż w danym roku (`get_sold_count_for_genre`)

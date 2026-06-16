@@ -1,4 +1,4 @@
-<!-- [TODO Piotr - REFRAME]: nowy kierunek ex_17 = porównanie RÓŻNYCH MODELI +
+<!-- [TODO Piotr - REFRAME]: nowy kierunek ex_16 = porównanie RÓŻNYCH MODELI +
 diagnostyka. Elementy do dodania: narzędzie z celowo kiepskim docstringiem
 (trudne do trafnego wywołania), test jak modele radzą sobie z tym samym zadaniem,
 i jak z wyników eval zdiagnozować, GDZIE problem (model vs docstring vs instrukcja).

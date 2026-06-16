@@ -1,4 +1,4 @@
-# Ćwiczenie ex_19: delegacja przez transfer (moduł 9)
+# Ćwiczenie ex_17: delegacja przez transfer (moduł 9)
 
 <!-- [TODO Piotr - ŁUK: do tej pory budowaliśmy JEDNEGO agenta z narzędziami.
 Tu pierwszy raz agent przekazuje sterowanie INNEMU agentowi - to wejście w
@@ -35,6 +35,6 @@ W Traces widać, że master przekazał zadanie właściwemu sub-agentowi, a odpo
 przychodzi od niego (analityk sięga po `get_schema`/`run_query`).
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_20: transfer to swoboda -
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_18: transfer to swoboda -
 model SAM decyduje. A jeśli kolejność kroków ma być sztywna, gwarantowana? Wtedy
 SequentialAgent - następne ćwiczenie.] -->

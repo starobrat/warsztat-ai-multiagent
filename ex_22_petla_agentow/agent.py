@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_24: LoopAgent - pętla z warunkiem stopu (moduł 11). STARTER.
+"""Ćwiczenie ex_22: LoopAgent - pętla z warunkiem stopu (moduł 11). STARTER.
 
 Sequential = po kolei, Parallel = naraz. LoopAgent = POWTARZAJ ten sam krok, aż
 warunek stopu. Tu agent iteracyjnie skraca hasło reklamowe i SAM kończy pętlę

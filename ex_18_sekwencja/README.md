@@ -1,6 +1,6 @@
-# Ćwiczenie ex_20: SequentialAgent (moduł 9/10)
+# Ćwiczenie ex_18: SequentialAgent (moduł 9/10)
 
-<!-- [TODO Piotr - ŁUK: w ex_19 to MODEL wybierał, komu przekazać. Tu kolejność
+<!-- [TODO Piotr - ŁUK: w ex_17 to MODEL wybierał, komu przekazać. Tu kolejność
 jest narzucona z góry - pierwszy krok, potem drugi, zawsze tak samo. I pokazujemy,
 jak dane przepływają z agenta do agenta przez output_key.] -->
 
@@ -25,13 +25,13 @@ Patrz `agent.py` (`# TODO(you)`):
 
 ## Praca z agentem AI
 Bramka sokratejska (`CLAUDE.md`): poproś, by asystent wyjaśnił RÓŻNICĘ między
-transferem (ex_19) a sekwencją - kto tu decyduje o kolejności. Bez gotowej instrukcji.
+transferem (ex_17) a sekwencją - kto tu decyduje o kolejności. Bez gotowej instrukcji.
 
 ## "Działa", gdy
 Drugi agent rozwija DOKŁADNIE ten temat, który wymyślił pierwszy - czyli dane
 przepłynęły przez `output_key` (`{temat}` nie zostało puste).
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_21: dwa kroki to rozgrzewka.
-Prawdziwy pipeline ma trzy: planista -> dane -> raport. W ex_21 piszemy mózg
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_19: dwa kroki to rozgrzewka.
+Prawdziwy pipeline ma trzy: planista -> dane -> raport. W ex_19 piszemy mózg
 całego raportu - plannera.] -->

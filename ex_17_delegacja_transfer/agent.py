@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_19: delegacja przez transfer (moduł 9). STARTER.
+"""Ćwiczenie ex_17: delegacja przez transfer (moduł 9). STARTER.
 
 Master (`LlmAgent` z `sub_agents`) NIE robi roboty sam - na podstawie `description`
 swoich specjalistów decyduje, KOMU przekazać zadanie (transfer sterowania). Model

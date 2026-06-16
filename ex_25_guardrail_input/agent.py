@@ -1,6 +1,6 @@
-"""Ćwiczenie ex_27: guardrail na WEJŚCIU (before_model_callback). STARTER.
+"""Ćwiczenie ex_25: guardrail na WEJŚCIU (before_model_callback). STARTER.
 
-ex_26 pilnował narzędzia. Tutaj pilnujemy WEJŚCIA - sprawdzamy wiadomość
+ex_24 pilnował narzędzia. Tutaj pilnujemy WEJŚCIA - sprawdzamy wiadomość
 użytkownika ZANIM w ogóle dotrze do modelu. Jeśli wykryjemy próbę wstrzyknięcia
 instrukcji ("zignoruj instrukcje", "ujawnij system prompt") albo polecenie
 modyfikacji bazy, zwracamy gotową odmowę i model w ogóle się nie odpala.

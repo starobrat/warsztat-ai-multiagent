@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_16: text-to-SQL - moduł 7. STARTER.
+"""Ćwiczenie ex_14: text-to-SQL - moduł 7. STARTER.
 
 Do tej pory agent miał gotowe, wąskie narzędzia. Tu dostaje OGÓLNE: gdy nie
 ma gotowca, sam pisze SQL. `get_schema` (poznaj strukturę) -> `run_query`

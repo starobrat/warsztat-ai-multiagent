@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_23: ParallelAgent - równoległe odpytanie bazy (moduł 11). STARTER.
+"""Ćwiczenie ex_21: ParallelAgent - równoległe odpytanie bazy (moduł 11). STARTER.
 
 Do tej pory agenty szły po kolei (SequentialAgent). Tu DWA niezależne zapytania
 do bazy lecą RÓWNOLEGLE (ParallelAgent) - każde zapisuje wynik pod swój output_key.

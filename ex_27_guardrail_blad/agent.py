@@ -1,6 +1,6 @@
-"""Ćwiczenie ex_29: guardrail na BŁĄD narzędzia (on_tool_error_callback). STARTER.
+"""Ćwiczenie ex_27: guardrail na BŁĄD narzędzia (on_tool_error_callback). STARTER.
 
-Czwarty guardrail. ex_26 pilnował akcji, ex_27 wejścia, ex_28 wyjścia. Tutaj
+Czwarty guardrail. ex_24 pilnował akcji, ex_25 wejścia, ex_26 wyjścia. Tutaj
 pilnujemy BŁĘDU: gdy narzędzie rzuci wyjątek, łapiemy go i oddajemy modelowi
 czysty komunikat zamiast pozwolić, by cała tura agenta się wywaliła.
 

@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_10: docstring narzędzia - moduł 6. STARTER.
+"""Ćwiczenie ex_09: docstring narzędzia - moduł 6. STARTER.
 
 Docstring to KONTRAKT, który czyta model, żeby zdecydować, KIEDY wywołać
 narzędzie. Dokładasz narzędzie `get_genres` z PUSTYM docstringiem, sam piszesz

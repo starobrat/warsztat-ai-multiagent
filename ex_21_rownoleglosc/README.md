@@ -1,4 +1,4 @@
-# Ćwiczenie ex_23: ParallelAgent (moduł 11)
+# Ćwiczenie ex_21: ParallelAgent (moduł 11)
 
 <!-- [TODO Piotr - ŁUK: cały pipeline raportu szedł liniowo - krok po kroku. Ale
 nie wszystko MUSI być po kolei. Dwa niezależne zapytania do bazy nie czekają na
@@ -34,6 +34,6 @@ Obie gałęzie policzyły swoją liczbę (klienci ORAZ faktury), a syntezator zw
 podsumowanie z obiema wartościami.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_24: Sequential = po kolei,
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_22: Sequential = po kolei,
 Parallel = naraz. Brakuje jeszcze jednego kształtu: powtarzaj, AŻ będzie dobrze.
-To LoopAgent - ex_24.] -->
+To LoopAgent - ex_22.] -->

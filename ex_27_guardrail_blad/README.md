@@ -1,4 +1,4 @@
-# Ćwiczenie ex_29: guardrail na błąd narzędzia (on_tool_error)
+# Ćwiczenie ex_27: guardrail na błąd narzędzia (on_tool_error)
 
 ## Co ćwiczymy
 **Guardrail na błędy**: gdy narzędzie rzuci wyjątek, łapiemy go i oddajemy modelowi
@@ -6,7 +6,7 @@ czysty komunikat, zamiast pozwolić, by tura agenta się wywaliła. `on_tool_err
 dostaje `(tool, args, tool_context, error)` i jeśli zwróci `dict`, ADK użyje go jako
 odpowiedzi narzędzia (graceful degradation - agent może spróbować ponownie).
 
-Czwarty i ostatni guardrail. ex_26 akcja, ex_27 wejście, ex_28 wyjście, ex_29 błąd.
+Czwarty i ostatni guardrail. ex_24 akcja, ex_25 wejście, ex_26 wyjście, ex_27 błąd.
 Razem: defense in depth na każdym etapie pracy agenta.
 
 ## Twoje zadanie

@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_11: narzędzie z argumentem - moduł 6. STARTER.
+"""Ćwiczenie ex_10: narzędzie z argumentem - moduł 6. STARTER.
 
 Narzędzie `get_sold_count_for_artist(artist)` bierze ARGUMENT. Model musi
 wyłuskać go z pytania ("ile sprzedał AC/DC?") i podać narzędziu. Tu ćwiczysz

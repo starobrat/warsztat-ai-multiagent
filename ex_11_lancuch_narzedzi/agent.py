@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_12: łańcuch narzędzi - moduł 6. STARTER.
+"""Ćwiczenie ex_11: łańcuch narzędzi - moduł 6. STARTER.
 
 Czasem jedno pytanie wymaga DWÓCH narzędzi po kolei: najpierw rozwiąż
 wykonawcę (`get_artists`), potem pobierz jego albumy (`get_albums_for_artist`).

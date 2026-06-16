@@ -1,4 +1,4 @@
-# Ćwiczenie ex_26: guardrail na narzędziu (before_tool)
+# Ćwiczenie ex_24: guardrail na narzędziu (before_tool)
 
 ## Co ćwiczymy
 **Bezpieczeństwo agentów**: ryzyka (prompt injection, nadmierne uprawnienia narzędzi,
@@ -6,7 +6,7 @@ wyciek danych) i obronę **w głąb** (defense in depth) przez `before_tool_call
 callback sprawdzający argumenty narzędzia ZANIM się wykona.
 
 To pierwszy z czterech guardraili w tym module. Pilnujemy tu **wywołania
-narzędzia**. Dalej: wejście (`ex_27`), wyjście (`ex_28`), błędy (`ex_29`).
+narzędzia**. Dalej: wejście (`ex_25`), wyjście (`ex_26`), błędy (`ex_27`).
 
 ## Zakres tego ćwiczenia
 - Napisanie `before_tool_callback`, który przechwytuje wywołanie narzędzia.
