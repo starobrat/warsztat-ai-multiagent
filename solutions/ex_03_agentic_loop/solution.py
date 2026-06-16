@@ -4,7 +4,7 @@
 użyć, aż ma odpowiedź (inaczej niż pojedyncze wywołanie czy sztywny pipeline).
 Agent odpowiada na pytania o bazę Chinook; ma get_schema() i run_query(). Napisz pętlę.
 
-Uruchom: uv run ex_03_agentic_loop/starter.py
+Uruchom: uv run python solutions/ex_03_agentic_loop/solution.py
 """
 
 import json

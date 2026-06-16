@@ -31,7 +31,8 @@ Eval), zapisz go do `ex_15_ewaluacja/report_system.evalset.json`. Gdy plik już 
 
 ## "Działa", gdy
 `uv run pytest ex_23_tests` przechodzi (lub świadomie pomija test, którego evalsetu
-jeszcze nie nagrałeś).
+jeszcze nie nagrałeś). Uwaga: na świeżym repo ten test jest CZERWONY - celuje w Twojego
+agenta z `ex_14_text_to_sql`, więc zazieleni się dopiero, gdy rozwiążesz ex_14.
 
 ## Pójdź dalej
 - Dodaj case, który celowo łamie system (pytanie poza zakresem raportu).

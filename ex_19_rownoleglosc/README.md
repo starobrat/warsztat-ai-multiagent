@@ -1,4 +1,4 @@
-# Ćwiczenie ex_19: ParallelAgent (moduł 11)
+# Ćwiczenie ex_19: ParallelAgent (moduł 9)
 
 <!-- [TODO Piotr - ŁUK: cały pipeline raportu szedł liniowo - krok po kroku. Ale
 nie wszystko MUSI być po kolei. Dwa niezależne zapytania do bazy nie czekają na

@@ -23,7 +23,7 @@ def main() -> None:
         cols = ", ".join(c[1] for c in conn.execute(f"PRAGMA table_info('{t}')"))
         print(f"  {t}  ({rows} wierszy)")
         print(f"      {cols}\n")
-    print("Pełny schemat z typami zwraca narzędzie get_schema() (ćwiczenie 05).")
+    print("Pełny schemat z typami zwraca narzędzie get_schema() (ćwiczenie 08).")
 
 
 if __name__ == "__main__":

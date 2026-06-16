@@ -1,63 +1,64 @@
-<!-- [TODO Piotr - REFRAME]: nowy kierunek ex_16 = porównanie RÓŻNYCH MODELI +
-diagnostyka. Elementy do dodania: narzędzie z celowo kiepskim docstringiem
-(trudne do trafnego wywołania), test jak modele radzą sobie z tym samym zadaniem,
-i jak z wyników eval zdiagnozować, GDZIE problem (model vs docstring vs instrukcja).
-Obecna treść to stary "tuning promptu" - baza do przerobienia. -->
-
-# Ćwiczenie: tuning promptu na test secie - TDD dla promptu (moduł 8)
+# Ćwiczenie ex_16: modele i diagnostyka (moduł 8)
 
 ## Co ćwiczymy
-**TDD na prompcie.** Główny wniosek szkolenia: prompt to nie strzał z głowy -
-prompt SIĘ TESTUJE, jak kod. Najpierw masz test (evalset z modułu 7), potem piszesz
-prompt pod ten test. Agent startuje z instrukcją napisaną przez **laika**, który nie
-wie, co jest w bazie ani jak ją odpytać - i **oblewa ewaluację (czerwony)**. Twoje
-zadanie: iterować `instruction`, aż eval przejdzie (zielony). Pętla: zmiana -> eval
--> porównanie.
+**Diagnostyka: gdzie naprawdę jest problem - model, opis narzędzia czy instrukcja?**
+Agent sklepu muzycznego ma kilka narzędzi, ale ich **opisy (docstringi) wprowadzają
+w błąd**. Słabszy model słucha opisów dosłownie, wybiera **złe narzędzie** i oblewa
+eval (czerwony). Znasz test i wiesz, czego oczekuje - Twoje zadanie to **zdiagnozować
+warstwę** i zazielenić go.
 
-## Dlaczego ten agent chodzi na słabszym modelu
-Ten jeden agent używa celowo słabszego modelu (`gpt-4o-mini`, przez `get_weak_model`).
-Mocny model (gpt-5.4-mini) **maskuje** słaby prompt: i tak sięgnie po narzędzia,
-sprawdzi schemat i odpowie dobrze - więc nigdy nie zobaczyłbyś czerwonego i nie dało
-by się pokazać pętli TDD. Słabszy model słucha instrukcji dosłownie: zła instrukcja =
-zły agent. To samo w sobie jest lekcją - **im słabszy model, tym bardziej liczy się
-prompt** (i tym ważniejszy eval).
+## Znasz test, do którego pracujesz
+Test set: `diagnostyka.evalset.json` (3 przypadki). Dla każdego wiadomo, **które
+narzędzie** powinno paść i z jakim argumentem - np. "Ile utworów AC/DC sprzedaliśmy?"
+ma wywołać `sales_by_artist`, a "Jakie albumy nagrał AC/DC?" -> `albums_by_artist`.
+Kryterium trajektorii jest **ostre** (`tool_trajectory_avg_score: 1.0`): liczy się,
+KTÓRE narzędzie agent wybrał. Zły wybór = czerwony.
 
-## Zakres tego ćwiczenia
-- Uruchomienie evalu i odczytanie, dlaczego jest czerwony (agent nie zna danych).
-- Iteracyjna poprawa **wyłącznie instrukcji**.
-- Ponowny eval i porównanie.
+## Dlaczego agent chodzi na słabszym modelu
+Startuje na słabszym modelu (`get_weak_model`). Mocny model **maskuje** złe opisy -
+i tak trafi w intencję klienta, więc nigdy nie zobaczyłbyś czerwonego. Słabszy słucha
+docstringów dosłownie: zły opis = zły wybór narzędzia. To samo w sobie jest lekcją -
+**im słabszy model, tym bardziej liczy się opis narzędzia i instrukcja**.
+
+## Twoje zadanie
+1. Uruchom eval i zobacz czerwony:
+   ```bash
+   uv run adk eval ex_16_modele_i_diagnostyka \
+       ex_16_modele_i_diagnostyka/diagnostyka.evalset.json \
+       --config_file_path ex_16_modele_i_diagnostyka/test_config.json
+   ```
+2. **Zdiagnozuj, którą warstwę naprawić** - czytaj raport evalu: jakie narzędzie agent
+   wywołał zamiast oczekiwanego? To wskazuje na **opis narzędzia** (docstring). Czy w
+   ogóle sięgnął po narzędzie? Jeśli nie - to **instrukcja**. Czy nawet z dobrym opisem
+   się myli? To **model**.
+3. **Napraw opisy narzędzi** w `agent.py` (`# TODO(you)`): docstring to kontrakt, po
+   którym model wybiera narzędzie. Nie zmieniaj nazw funkcji ani ich środka.
+4. (Opcjonalnie) dopracuj `instruction`: powiedz wprost, kiedy którego narzędzia użyć.
+5. Uruchom eval ponownie - aż **zielony**.
+
+## Porównaj modele (część diagnostyczna)
+Sprawdź, jak **różne modele** radzą sobie z tym samym zadaniem - to oddziela problem
+"model" od problemu "opis/instrukcja":
+- Podmień `get_weak_model()` na `get_model()` (mocniejszy) i zobacz, czy mocniejszy
+  model trafia w narzędzia **mimo** kiepskich opisów (zwykle tak - dlatego maskuje błąd).
+- Możesz też wskazać konkretny model OpenAI bez zmiany kodu, ustawiając zmienną
+  środowiskową przed uruchomieniem, np.:
+  ```bash
+  OPENAI_MODEL_WEAK=gpt-4o-mini uv run adk eval ex_16_modele_i_diagnostyka ...
+  ```
+- Aktualna lista modeli OpenAI (do podstawienia): https://platform.openai.com/docs/models
 
 ## Poza zakresem (świadomie zabronione lub później)
-- **Zmiana narzędzi albo modelu** - tego NIE ruszamy (zostaje słabszy model, bo to
-  on robi z promptu test). W tym ćwiczeniu zmieniasz tylko `instruction` (o to chodzi).
-- Dodawanie nowych funkcji/możliwości agentowi - to nie tutaj.
+- **Zmiana nazw narzędzi albo ich środka** - naprawiasz OPISY i instrukcję, nie logikę.
+- Dodawanie nowych funkcji agentowi - to nie tutaj.
 - Tworzenie nowych test case'ów - moduł 7 (`ex_15_ewaluacja/`).
 - Testy automatyczne / pytest - moduł 12 (`ex_23_tests/`).
 
-## Koncepcja w pigułce
-Proces dbania o jakość: masz test set (oczekiwana trajektoria narzędzi + oczekiwana
-odpowiedź), zmieniasz prompt, uruchamiasz eval, patrzysz na metryki
-(`tool_trajectory_avg_score`, `response_match_score`), powtarzasz. Prompt "rośnie"
-w oparciu o przypadki testowe, a nie o przeczucie.
-
-## Twoje zadanie
-Uruchom:
-```bash
-uv run adk eval ex_16_modele_i_diagnostyka ex_15_ewaluacja/sql_agent.evalset.json \
-    --config_file_path ex_15_ewaluacja/test_config.json
-```
-Potem poprawiaj `instruction` w `agent.py`, aż eval przejdzie.
-
-## Wskazówki (jeśli pracujesz bez agenta AI)
-- To samo pole `instruction` co w `ex_14_text_to_sql` - tam masz wzór dobrej instrukcji.
-- Klucz: każ NAJPIERW wywołać `get_schema`, potem `run_query`; zabroń zgadywania
-  i każ odpowiadać tylko na podstawie danych z bazy.
-
 ## "Działa", gdy
-Eval świeci na zielono, a Ty potrafisz powiedzieć, której części instrukcji
-brakowało i dlaczego.
+Eval świeci na zielono, a Ty potrafisz powiedzieć, **która warstwa** była źródłem
+problemu (model / opis narzędzia / instrukcja) i dlaczego.
 
 ## Pójdź dalej
-- Tnij dobrą instrukcję słowo po słowie, aż eval zacznie oblewać - gdzie jest granica?
-- Dorzuć trudniejszy case do evalsetu i znów dociśnij instrukcję.
-- Sprawdź tę samą instrukcję na mocnym modelu (`get_model`) - czy nadal jest potrzebna?
+- Zepsuj z powrotem jeden docstring i sprawdź na mocnym modelu (`get_model`) - czy
+  mocniejszy model nadal trafia? Gdzie jest granica "maskowania" złego opisu?
+- Dorzuć czwarty przypadek do evalsetu (np. sprzedaż innego wykonawcy) i znów dociśnij.

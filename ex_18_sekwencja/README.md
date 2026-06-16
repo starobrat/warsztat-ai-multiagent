@@ -1,4 +1,4 @@
-# Ćwiczenie ex_18: SequentialAgent (moduł 9/10)
+# Ćwiczenie ex_18: SequentialAgent (moduł 9)
 
 <!-- [TODO Piotr - ŁUK: w ex_17 to MODEL wybierał, komu przekazać. Tu kolejność
 jest narzucona z góry - pierwszy krok, potem drugi, zawsze tak samo. I pokazujemy,
@@ -32,6 +32,6 @@ Drugi agent rozwija DOKŁADNIE ten temat, który wymyślił pierwszy - czyli dan
 przepłynęły przez `output_key` (`{temat}` nie zostało puste).
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_19: dwa kroki to rozgrzewka.
-Prawdziwy pipeline ma trzy: planista -> dane -> raport. W ex_19 piszemy mózg
-całego raportu - plannera.] -->
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_19: sekwencja czeka na każdy
+krok po kolei. A gdyby niezależne zadania mogły lecieć naraz, nie jeden po drugim?
+To ParallelAgent - ex_19.] -->

@@ -37,6 +37,5 @@ W `out/` powstaje raport HTML zbudowany z realnych danych z bazy (nie zmyślony)
 a w Traces widać wywołania `bar_chart_artifact` / `make_html_report`.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_23: pipeline jest liniowy -
-krok po kroku. A gdyby dwa zapytania do bazy mogły lecieć RÓWNOLEGLE i skrócić
-czas? To ParallelAgent - ex_23.] -->
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_23: pipeline działa. Ale skąd
+wiesz, że jutro go nie zepsujesz? Czas obłożyć agenta testami - ex_23.] -->
