@@ -94,16 +94,25 @@ def powiedz(sid: str, tekst: str) -> tuple[str, list[str]]:
 def main() -> None:
     # Sesja 1: użytkownik podaje trwałe fakty o sobie.
     nowa_sesja("s1")
-    odp1, n1 = powiedz("s1", "Interesują mnie gatunki Rock i Jazz, a współpracuję z Jane Peacock.")
-    print(f"Sesja 1 (agent): {odp1}")
-    print(f"Sesja 1 - użyte narzędzia: {n1 or '(żadne)'}")
+    pyt1 = "Interesują mnie gatunki Rock i Jazz, a współpracuję z Jane Peacock."
+    odp1, n1 = powiedz("s1", pyt1)
+    print("=" * 70)
+    print("SESJA 1 (nowa rozmowa)")
+    print(f"  Ty:    {pyt1}")
+    print(f"  Agent: {odp1}")
+    print(f"  Użyte narzędzia: {n1 or '(żadne)'}")
 
     # Sesja 2: NOWA rozmowa tego samego użytkownika - stan sesji 1 tu nie istnieje,
     # ale fakty z zasięgu user: przeżywają.
     nowa_sesja("s2")
-    odp2, n2 = powiedz("s2", "Które gatunki mnie interesują i z kim współpracuję?")
-    print(f"Sesja 2 (agent): {odp2}")
-    print(f"Sesja 2 - użyte narzędzia: {n2 or '(żadne)'}")
+    pyt2 = "Które gatunki mnie interesują i z kim współpracuję?"
+    odp2, n2 = powiedz("s2", pyt2)
+    print("=" * 70)
+    print("SESJA 2 (NOWA rozmowa - stan sesji 1 tu nie istnieje, fakty user: przeżywają)")
+    print(f"  Ty:    {pyt2}")
+    print(f"  Agent: {odp2}")
+    print(f"  Użyte narzędzia: {n2 or '(żadne)'}")
+    print("=" * 70)
 
 
 if __name__ == "__main__":

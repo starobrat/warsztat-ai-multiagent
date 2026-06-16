@@ -42,10 +42,11 @@ agent = LlmAgent(
 # TODO(you): skonfiguruj kompaktowanie (sliding window) i wstaw je do App poniżej.
 #   COMPACTION = EventsCompactionConfig(
 #       summarizer=LlmEventSummarizer(llm=get_model()),
-#       compaction_interval=3,    # co ile eventów zwijać
+#       compaction_interval=3,    # co ile eventów zwijać (rolling window = 3)
 #       overlap_size=1,           # ile eventów nakładki między oknami
-#       event_retention_size=6,   # ile ostatnich eventów zostawić surowych
 #   )
+#   (ADK 2.2.0: event_retention_size działa tylko RAZEM z token_threshold -
+#    samo event_retention_size rzuca błąd; tu zwijamy po compaction_interval.)
 # Na razie None => kompaktowanie wyłączone (stan startowy).
 COMPACTION = None
 

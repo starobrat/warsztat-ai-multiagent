@@ -2,8 +2,9 @@
 
 Jedno wywołanie, jedna odpowiedź. Bez pętli, bez narzędzi.
 W starterze TODO to: rola (system prompt), pytanie i temperatura. Tu pokazujemy
-TĘ SAMĄ prośbę przy temperaturze 0.0 i 1.0 w jednym uruchomieniu, żeby od razu
-było widać różnicę (to jest kryterium "Działa, gdy" z README).
+TĘ SAMĄ prośbę (krótki wiersz o tym szkoleniu) przy temperaturze 0.2 i 0.8 w
+jednym uruchomieniu, żeby od razu było widać różnicę - tak jak na slajdzie i w
+README (to jest kryterium "Działa, gdy").
 
 Uruchom: uv run python solutions/ex_01_simple_call/solution.py
 """
@@ -28,18 +29,20 @@ def ask(system_prompt: str, user_prompt: str, temperature: float) -> str:
 
 
 def main() -> None:
-    # Rola (system prompt): analityk sprzedaży sklepu z muzyką, zwięźle, po polsku.
+    # Rola (system prompt): poeta-asystent, zwięźle, po polsku.
     system_prompt = (
-        "Jesteś analitykiem sprzedaży w sklepie z muzyką. "
-        "Odpowiadasz po polsku, zwięźle i konkretnie."
+        "Jesteś asystentem, który pisze krótkie, zgrabne wiersze po polsku."
     )
 
     # Pytanie celowo "kreatywne" - przy wyższej temperaturze odpowiedzi się rozjadą.
-    user_prompt = "Zaproponuj trzy pomysły na promocję, która zwiększy sprzedaż gatunku Rock."
+    user_prompt = (
+        "Napisz krótki wiersz o tym szkoleniu - o budowaniu aplikacji "
+        "wieloagentowych w Google ADK."
+    )
 
     # Ta sama prośba przy dwóch temperaturach - widać wpływ parametru.
     # (W starterze robisz to przez dwa osobne uruchomienia; tu dla wygody w jednym.)
-    for temperature in (0.0, 1.0):
+    for temperature in (0.2, 0.8):
         print(f"\n=== temperature={temperature} ===")
         print(ask(system_prompt, user_prompt, temperature))
 

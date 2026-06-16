@@ -36,10 +36,12 @@ agent = LlmAgent(
 # TODO wypełnione: sliding-window compaction.
 COMPACTION = EventsCompactionConfig(
     summarizer=LlmEventSummarizer(llm=get_model()),
-    compaction_interval=3,    # co ile eventów zwijać
+    compaction_interval=3,    # co ile eventów zwijać (rolling window = 3)
     overlap_size=1,           # nakładka między oknami
-    event_retention_size=6,   # ile ostatnich eventów zostawić surowych
 )
+# Uwaga (ADK 2.2.0): event_retention_size i token_threshold MUSZĄ być ustawione
+# RAZEM - samo event_retention_size rzuca ValidationError. Tu zwijamy po liczbie
+# eventów (compaction_interval), więc tych dwóch nie ustawiamy.
 
 app = App(name=APP, root_agent=agent, events_compaction_config=COMPACTION)
 runner = Runner(app=app, session_service=session_service)

@@ -7,11 +7,19 @@ ma gotowca, sam pisze SQL. `get_schema` (poznaj strukturę) -> `run_query`
 Uruchom: uv run adk web ex_14_text_to_sql
 """
 
-from common.exercise import placeholder
-from common.model import get_model
-from common.tools.db import get_schema, run_query
+import sys
+from pathlib import Path
 
-from google.adk.agents import LlmAgent
+# To ćwiczenie uruchamiamy też przez `adk eval` (moduł 7) - a `adk eval` ładuje
+# agenta po ścieżce pliku i NIE dokłada korzenia repo do sys.path. Dokładamy go
+# sami, żeby `from common...` działało i pod `adk web`, i pod `adk eval`.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from common.exercise import placeholder  # noqa: E402
+from common.model import get_model  # noqa: E402
+from common.tools.db import get_schema, run_query  # noqa: E402
+
+from google.adk.agents import LlmAgent  # noqa: E402
 
 
 root_agent = LlmAgent(

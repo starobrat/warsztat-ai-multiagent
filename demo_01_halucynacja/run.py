@@ -15,8 +15,8 @@ from common.llm import MODEL, client  # noqa: E402
 
 PYTANIA = [
     "Kim jest Piotr Starobrat?",
-    "Która jest teraz godzina?",
     "Jaki jest najnowszy model z rodziny Anthropic Claude?",
+    "Jakie modele są dostępne od OpenAI?",
     "Jaka jest w tej chwili pogoda w Poznaniu?",
 ]
 

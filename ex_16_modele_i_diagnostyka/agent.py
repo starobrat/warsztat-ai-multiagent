@@ -15,10 +15,18 @@ Uruchom eval:
       --config_file_path ex_16_modele_i_diagnostyka/test_config.json
 """
 
-from common.model import get_weak_model
-from common.tools import db
+import sys
+from pathlib import Path
 
-from google.adk.agents import LlmAgent
+# To ćwiczenie uruchamiamy przez `adk eval` - a `adk eval` ładuje agenta po
+# ścieżce pliku i NIE dokłada korzenia repo do sys.path. Dokładamy go sami,
+# żeby `from common...` działało i pod `adk web`, i pod `adk eval`.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from common.model import get_weak_model  # noqa: E402
+from common.tools import db  # noqa: E402
+
+from google.adk.agents import LlmAgent  # noqa: E402
 
 
 # --- Narzędzia z CELOWO mylącymi opisami (docstring = kontrakt dla LLM) --------
