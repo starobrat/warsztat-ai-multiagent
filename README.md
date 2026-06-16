@@ -109,9 +109,9 @@ uv run adk web ex_14_text_to_sql
 # Część 2 - agent w terminalu
 uv run adk run ex_04_hello
 
-# Ewaluacja z CLI
-uv run adk eval ex_14_text_to_sql ex_15_ewaluacja/sql_agent.evalset.json \
-    --config_file_path ex_15_ewaluacja/test_config.json
+# Ewaluacja z CLI (wzorcowy test set leży w solutions/)
+uv run adk eval solutions/ex_14_text_to_sql solutions/ex_15_ewaluacja/sql_agent.evalset.json \
+    --config_file_path solutions/ex_15_ewaluacja/test_config.json
 
 # Testy automatyczne
 uv run pytest ex_23_tests

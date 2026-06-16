@@ -17,7 +17,7 @@ się automatycznie, a nie "na oko".
 ## Koncepcja w pigułce
 `AgentEvaluator.evaluate(agent_module="ex_14_text_to_sql", eval_dataset_file_path_or_dir=...)`
 ładuje agenta po nazwie jego katalogu i uruchamia na nim evalset. Próg zaliczenia bierze
-z `ex_15_ewaluacja/test_config.json`. To most między "ręcznym" evalem a CI.
+z `solutions/ex_15_ewaluacja/test_config.json`. To most między "ręcznym" evalem a CI.
 
 ## Twoje zadanie
 Najpierw nagraj test set systemu raportowego w `adk web ex_22_report_writer` (zakładka
@@ -27,7 +27,7 @@ Eval), zapisz go do `ex_15_ewaluacja/report_system.evalset.json`. Gdy plik już 
 ## Wskazówki (jeśli pracujesz bez agenta AI)
 - `AgentEvaluator.evaluate(agent_module="ex_22_report_writer", eval_dataset_file_path_or_dir=...)`.
 - Evalset nagraj w `adk web ex_22_report_writer` (zakładka Eval) albo dopisz ręcznie
-  wg wzoru `ex_15_ewaluacja/sql_agent.evalset.json`.
+  wg wzoru `solutions/ex_15_ewaluacja/sql_agent.evalset.json`.
 
 ## "Działa", gdy
 `uv run pytest ex_23_tests` przechodzi (lub świadomie pomija test, którego evalsetu
