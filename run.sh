@@ -4,6 +4,26 @@
 set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
+# --- Bootstrap: jednorazowy setup, zeby uczestnik odpalil repo bez przygotowania ---
+bootstrap() {
+  if ! command -v uv >/dev/null 2>&1; then
+    printf "Brak narzedzia 'uv' (menedzer srodowiska Pythona) - jego trzeba zainstalowac raz.\n"
+    printf "macOS/Linux:  curl -LsSf https://astral.sh/uv/install.sh | sh\n"
+    printf "Potem otworz terminal na nowo i uruchom ./run.sh ponownie.\n"
+    exit 1
+  fi
+  if [ ! -d ".venv" ]; then
+    printf "Pierwsze uruchomienie - instaluje zaleznosci (uv sync)...\n\n"
+    if ! uv sync; then
+      printf "\n'uv sync' nie powiodlo sie - sprawdz blad powyzej.\n"
+      exit 1
+    fi
+    printf "\nGotowe. Uruchamiam menu...\n"
+    sleep 1
+  fi
+}
+bootstrap
+
 labels=(
   "uv sync  -  instalacja zaleznosci"
   "00  smoke test  -  sprawdz setup (klucz + model)"
@@ -137,21 +157,46 @@ cmds=(
   "__EXIT__"
 )
 
-sel=0
+sel=0      # zaznaczona pozycja
+top=0      # indeks pierwszej widocznej pozycji (gorny brzeg okna)
 n=${#labels[@]}
+visible=$n # ile pozycji miesci sie na ekranie (liczone w draw)
+page=1     # skok PgUp/PgDn (liczony w draw)
 
 draw() {
+  local rows reserved i end
+  # wysokosc terminala; fallback na $LINES, potem 24
+  rows=$(tput lines 2>/dev/null || echo "${LINES:-24}")
+  reserved=4                       # 3 linie naglowka + 1 linia stopki/zapas
+  visible=$((rows - reserved))
+  [ "$visible" -lt 3 ] && visible=3
+  [ "$visible" -gt "$n" ] && visible=$n
+  page=$((visible - 1)); [ "$page" -lt 1 ] && page=1
+
+  # przesun okno tak, by zaznaczenie bylo zawsze widoczne
+  [ "$sel" -lt "$top" ] && top=$sel
+  [ "$sel" -ge "$((top + visible))" ] && top=$((sel - visible + 1))
+  [ "$((top + visible))" -gt "$n" ] && top=$((n - visible))
+  [ "$top" -lt 0 ] && top=0
+
   clear
-  printf "  Warsztat AI Multi-Agentic  -  co odpalic?\n"
-  printf "  strzalki gora/dol, Enter = uruchom, q = wyjscie\n\n"
-  local i
-  for ((i = 0; i < n; i++)); do
+  printf "  Warsztat AI Multi-Agentic  -  co odpalic?   [%d/%d]\n" "$((sel + 1))" "$n"
+  printf "  strzalki/jk  PgUp/PgDn  g/G skraj  Enter=uruchom  q=wyjscie\n"
+  if [ "$top" -gt 0 ]; then
+    printf "  \033[2m^^^ %d wyzej\033[0m\n" "$top"
+  else
+    printf "\n"
+  fi
+  end=$((top + visible))
+  for ((i = top; i < end; i++)); do
     if [ "$i" -eq "$sel" ]; then
       printf "  \033[7m > %s \033[0m\n" "${labels[$i]}"
     else
       printf "    %s\n" "${labels[$i]}"
     fi
   done
+  # stopka bez konczacego \n - dzieki temu ekran nie przewija sie o linie
+  [ "$end" -lt "$n" ] && printf "  \033[2mvvv %d nizej\033[0m" "$((n - end))"
 }
 
 run_selected() {
@@ -164,6 +209,11 @@ run_selected() {
   read -r _
 }
 
+up()   { sel=$(((sel - 1 + n) % n)); }
+down() { sel=$(((sel + 1) % n)); }
+pgup() { sel=$((sel - page)); [ "$sel" -lt 0 ] && sel=0; }
+pgdn() { sel=$((sel + page)); [ "$sel" -ge "$n" ] && sel=$((n - 1)); }
+
 while true; do
   draw
   IFS= read -rsn1 key || true
@@ -171,13 +221,23 @@ while true; do
     $'\x1b')
       read -rsn2 rest || true
       case "$rest" in
-        '[A') sel=$(((sel - 1 + n) % n)) ;;
-        '[B') sel=$(((sel + 1) % n)) ;;
+        '[A') up ;;
+        '[B') down ;;
+        '[5') read -rsn1 _ || true; pgup ;;   # PgUp (sekwencja konczy sie '~')
+        '[6') read -rsn1 _ || true; pgdn ;;   # PgDn
+        '[H') sel=0 ;;                         # Home
+        '[F') sel=$((n - 1)) ;;                # End
+        '[1') read -rsn1 _ || true; sel=0 ;;   # Home (wariant '1~')
+        '[4') read -rsn1 _ || true; sel=$((n - 1)) ;;  # End (wariant '4~')
       esac
       ;;
     "" | $'\n' | $'\r') run_selected ;;
-    k | K) sel=$(((sel - 1 + n) % n)) ;;
-    j | J) sel=$(((sel + 1) % n)) ;;
+    k | K) up ;;
+    j | J) down ;;
+    u | U) pgup ;;
+    d | D) pgdn ;;
+    g) sel=0 ;;
+    G) sel=$((n - 1)) ;;
     q | Q) clear; exit 0 ;;
   esac
 done
