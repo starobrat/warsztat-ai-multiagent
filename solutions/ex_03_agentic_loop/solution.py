@@ -78,6 +78,8 @@ def run_agent(question: str) -> str:
             messages.append({"role": "user", "content": f"BŁĄD: nie ma narzędzia {tool_name!r}."})
             continue
 
+        # Log kroku: widać, że agent SAM sięgnął po narzędzie (i z jakimi argumentami).
+        print(f"  -> narzędzie: {tool_name}({decision.get('args', {})})")
         result = TOOLS[tool_name](**decision.get("args", {}))
         # Wynik narzędzia wraca do modelu jako kolejna wiadomość - to "obserwacja".
         messages.append({"role": "user", "content": f"Wynik {tool_name}:\n{result}"})
