@@ -31,12 +31,13 @@ def main() -> None:
     # (np. "Jesteś analitykiem sprzedaży sklepu muzycznego...").
     system_prompt = ""
 
-    # TODO(you): napisz pytanie do modelu.
+    # TODO(you): poproś model o krótki wiersz o tym szkoleniu
+    # (aplikacje wieloagentowe / Google ADK).
     user_prompt = ""
 
-    # TODO(you): ustaw temperaturę (0.0 = zachowawczo, ~1.0 = kreatywnie).
-    # Uruchom raz, potem zmień tę wartość i uruchom ponownie, żeby porównać.
-    temperature = 0.0
+    # TODO(you): ustaw temperaturę (0.2 = zachowawczo, 0.8 = kreatywnie).
+    # Uruchom przy 0.2, potem zmień na 0.8 i uruchom ponownie, żeby porównać wiersz.
+    temperature = 0.2
 
     print(f"=== temperature={temperature} ===")
     print(ask(system_prompt, user_prompt, temperature))

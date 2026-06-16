@@ -36,8 +36,9 @@ agent = LlmAgent(
 # TODO wypełnione: sliding-window compaction.
 COMPACTION = EventsCompactionConfig(
     summarizer=LlmEventSummarizer(llm=get_model()),
-    compaction_interval=3,  # co ile eventów zwijać
-    overlap_size=1,         # nakładka między oknami
+    compaction_interval=3,    # co ile eventów zwijać
+    overlap_size=1,           # nakładka między oknami
+    event_retention_size=6,   # ile ostatnich eventów zostawić surowych
 )
 
 app = App(name=APP, root_agent=agent, events_compaction_config=COMPACTION)

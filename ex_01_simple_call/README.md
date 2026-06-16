@@ -22,13 +22,13 @@ LLM to funkcja: tekst wejściowy -> tekst wyjściowy, niedeterministycznie.
 żadnej "akcji" - model tylko generuje tekst.
 
 ## Twoje zadanie
-Patrz `starter.py` (`# TODO(you)`): napisz własny prompt systemowy (rolę) i pytanie
-do modelu, ustaw temperaturę i uruchom raz. Potem zmień temperaturę i uruchom
-ponownie - skrypt wykonuje jedno wywołanie na uruchomienie.
+Patrz `starter.py` (`# TODO(you)`): **napisz własny prompt systemowy (rolę), poproś
+model o krótki wiersz o tym szkoleniu (aplikacje wieloagentowe) i uruchom raz przy
+temperaturze 0.2, a potem przy 0.8.** Skrypt wykonuje jedno wywołanie na uruchomienie.
 
 ## "Działa", gdy
-Ta sama prośba przy niskiej (np. 0.0) i wysokiej (np. 1.0) temperaturze daje
-zauważalnie różne odpowiedzi, a zmiana roli w prompcie zmienia ton i treść.
+Ten sam wiersz przy temperaturze 0.2 i 0.8 daje zauważalnie różne odpowiedzi,
+a zmiana roli w prompcie zmienia ton i treść.
 
 ## Pójdź dalej
 - Pozmieniaj inne parametry (`top_p`, `max_tokens`, `presence_penalty`) i opisz wpływ.

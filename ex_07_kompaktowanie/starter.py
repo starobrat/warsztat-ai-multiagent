@@ -42,8 +42,9 @@ agent = LlmAgent(
 # TODO(you): skonfiguruj kompaktowanie (sliding window) i wstaw je do App poniżej.
 #   COMPACTION = EventsCompactionConfig(
 #       summarizer=LlmEventSummarizer(llm=get_model()),
-#       compaction_interval=3,   # co ile eventów zwijać
-#       overlap_size=1,          # ile eventów nakładki między oknami
+#       compaction_interval=3,    # co ile eventów zwijać
+#       overlap_size=1,           # ile eventów nakładki między oknami
+#       event_retention_size=6,   # ile ostatnich eventów zostawić surowych
 #   )
 # Na razie None => kompaktowanie wyłączone (stan startowy).
 COMPACTION = None

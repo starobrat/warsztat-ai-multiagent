@@ -1,7 +1,8 @@
 """DEMO (moduł 1): halucynacja na żywo.
 
-Pytamy model o funkcję, która NIE istnieje. Model pewnym tonem zmyśli opis -
-brzmi wiarygodnie, a jest wymyślone. To pokazuje, czemu nie można ślepo ufać LLM.
+Pytamy model o rzeczy, do których NIE ma dostępu albo które są po jego punkcie
+odcięcia (cut-off). Część model pewnie ZMYŚLI, część UCZCIWIE ODMÓWI - i to też
+jest lekcja: czasem zna swoje granice, czasem nie, a brzmi tak samo pewnie.
 
 Uruchom: uv run demo_01_halucynacja/run.py
 """
@@ -12,25 +13,36 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from common.llm import MODEL, client  # noqa: E402
 
-PYTANIE = (
-    "Opisz dokładnie funkcję `chinook_quantum_join()` z biblioteki sqlite3 "
-    "w Pythonie: jakie ma argumenty i co zwraca."
-)
+PYTANIA = [
+    "Kim jest Piotr Starobrat?",
+    "Która jest teraz godzina?",
+    "Jaki jest najnowszy model z rodziny Anthropic Claude?",
+    "Jaka jest w tej chwili pogoda w Poznaniu?",
+]
 
 
-def main() -> None:
+def zapytaj(pytanie: str) -> str:
     resp = client.chat.completions.create(
         model=MODEL,
         temperature=0.7,
         messages=[
-            {"role": "system", "content": "Jesteś pomocnym ekspertem od Pythona."},
-            {"role": "user", "content": PYTANIE},
+            {"role": "system", "content": "Jesteś pomocnym asystentem. Odpowiadaj po polsku."},
+            {"role": "user", "content": pytanie},
         ],
     )
-    print("PYTANIE:\n ", PYTANIE)
-    print("\nODPOWIEDŹ MODELU (zmyślona, choć brzmi pewnie):\n")
-    print(resp.choices[0].message.content)
-    print("\n--- Taka funkcja nie istnieje. Model zmyślił pewnym tonem. ---")
+    return resp.choices[0].message.content
+
+
+def main() -> None:
+    for pytanie in PYTANIA:
+        print("=" * 70)
+        print("PYTANIE:", pytanie)
+        print("-" * 70)
+        print(zapytaj(pytanie))
+        print()
+    print("=" * 70)
+    print("Zwróć uwagę: część odpowiedzi to pewna siebie ZMYŚLONA treść,")
+    print("a część - uczciwe 'nie mam dostępu'. Model nie zawsze zna swoje granice.")
 
 
 if __name__ == "__main__":
