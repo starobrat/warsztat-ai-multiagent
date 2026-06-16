@@ -28,7 +28,9 @@ planner = LlmAgent(
         "użytkownika wypisz ZWIĘZŁY plan raportu: 2-4 sekcje, a dla każdej sekcji "
         "podaj, jakiej liczby/danych potrzeba i czy warto dodać wykres. "
         "NIE pisz SQL - od pobierania danych jest osobny agent. Zwróć sam plan, "
-        "po polsku, w punktach."
+        "po polsku, w punktach.\n"
+        "Jeśli użytkownik tylko się wita lub nie napisał, o jaki raport chodzi - "
+        "krótko przedstaw się (system raportowy Chinook) i zapytaj, jaki raport przygotować."
     ),
     output_key="report_plan",
 )
