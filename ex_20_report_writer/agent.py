@@ -1,8 +1,8 @@
-"""Ćwiczenie ex_22: pipeline raportu - REPORT WRITER (moduł 11). STARTER.
+"""Ćwiczenie ex_20: pipeline raportu - REPORT WRITER (moduł 11). STARTER.
 
-Ten sam pipeline co ex_21 (planner -> data_agent -> report_writer), ale tym razem
+Ten sam pipeline co ex_19 (planner -> data_agent -> report_writer), ale tym razem
 planner i data_agent są GOTOWE. Twoje zadanie: złożyć report_writera - podłączyć
-narzędzia raportowe (bar_chart, make_html_report) i napisać instrukcję, która z
+narzędzia raportowe (bar_chart_artifact, make_html_report) i napisać instrukcję, która z
 {report_plan} i {report_data} buduje gotowy artefakt (wykres PNG + raport HTML).
 
 Uruchom: uv run adk web ex_20_report_writer (albo adk run ex_20_report_writer).
@@ -11,7 +11,7 @@ Uruchom: uv run adk web ex_20_report_writer (albo adk run ex_20_report_writer).
 from common.exercise import placeholder
 from common.model import get_model
 from common.tools.db import get_schema, run_query
-from common.tools.charts import bar_chart
+from common.tools.charts import bar_chart_artifact
 from common.tools.html_report import make_html_report
 
 from google.adk.agents import LlmAgent, SequentialAgent
@@ -53,10 +53,10 @@ report_writer = LlmAgent(
     model=get_model(),
     description="Składa finalny raport (HTML) z danych.",
     # TODO(you): napisz instrukcję. Na podstawie {report_plan} i {report_data} ma
-    # (opcjonalnie) zrobić wykres bar_chart, a potem złożyć raport make_html_report.
+    # (opcjonalnie) zrobić wykres bar_chart_artifact, a potem złożyć make_html_report.
     # Ma używać danych z {report_data}, nie zmyślać, i na końcu podać ścieżkę pliku.
     instruction=placeholder(
-        "podłącz narzędzia raportowe (bar_chart, make_html_report) i napisz "
+        "podłącz narzędzia raportowe (bar_chart_artifact, make_html_report) i napisz "
         "instrukcję budującą artefakt z {report_plan} i {report_data}",
         readme="README ex_20_report_writer",
     ),

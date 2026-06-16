@@ -5,11 +5,11 @@ z tego ARTEFAKT - wykres. To payoff całego bloku narzędziowego.] -->
 
 ## Co ćwiczymy
 **Agent produkuje artefakt.** Łączysz analitykę (gatunki + sprzedaż) z narzędziem
-rysującym wykres słupkowy. Pytanie -> dane -> plik PNG.
+rysującym wykres słupkowy. Pytanie -> dane -> wykres PNG zapisany jako artefakt.
 
 ## Które narzędzia podpinamy
 - `get_genres`, `get_sold_count_for_genre` - dane (jak w ex_12).
-- `narysuj_wykres_slupkowy(labels, values, title)` - rysuje wykres (PNG).
+- `narysuj_wykres_slupkowy(labels, values, title)` - rysuje wykres i zapisuje go jako artefakt (PNG).
 
 ## Twoje zadanie
 Patrz `agent.py` (`# TODO(you)`):
@@ -21,7 +21,7 @@ Patrz `agent.py` (`# TODO(you)`):
 ## Jak sprawdzić, że działa
 - W Traces widać dane z `get_sold_count_for_genre`, a na końcu wywołanie
   `narysuj_wykres_slupkowy`.
-- Powstaje plik `raport.png` z poprawnymi słupkami.
+- Powstaje `raport.png` - widoczny w zakładce **Artifacts** w adk web (nie tylko plik na dysku).
 
 ## Praca z agentem AI
 Bramka sokratejska (`CLAUDE.md`): poproś asystenta, by wyjaśnił, jak agent

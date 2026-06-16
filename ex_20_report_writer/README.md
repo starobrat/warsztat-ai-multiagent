@@ -1,9 +1,9 @@
-# Ćwiczenie ex_22: pipeline raportu - report_writer (moduł 11)
+# Ćwiczenie ex_20: pipeline raportu - report_writer (moduł 11)
 
-<!-- [TODO Piotr - ŁUK: w ex_21 napisaliśmy mózg (plannera). Dane już płyną.
+<!-- [TODO Piotr - ŁUK: w ex_19 napisaliśmy mózg (plannera). Dane już płyną.
 Teraz domykamy pipeline: report_writer bierze plan + dane i SKŁADA z nich gotowy
 artefakt - wykres i raport HTML. Pierwszy raz agent woła narzędzia, które
-produkują plik na dysku.] -->
+produkują artefakt (wykres ląduje też w zakładce Artifacts).] -->
 
 ## Co ćwiczymy
 **Rolę report_writera - składanie artefaktu z klocków.** Ten sam pipeline
@@ -14,13 +14,13 @@ plik.
 ## Które narzędzia podpinamy
 - `planner` (GOTOWY) - `output_key="report_plan"`.
 - `data_agent` (GOTOWY) - `get_schema`, `run_query`, `output_key="report_data"`.
-- `report_writer` - `bar_chart`, `make_html_report` (TWOJE zadanie podłączyć i opisać).
+- `report_writer` - `bar_chart_artifact`, `make_html_report` (TWOJE zadanie podłączyć i opisać).
 
 ## Twoje zadanie
 Patrz `agent.py` (`# TODO(you)`):
-1. Podłącz `tools=[bar_chart, make_html_report]`.
+1. Podłącz `tools=[bar_chart_artifact, make_html_report]`.
 2. Napisz instrukcję: z `{report_plan}` i `{report_data}` (opcjonalnie zrób
-   `bar_chart`) zbuduj raport `make_html_report(title, sections, filename)`.
+   `bar_chart_artifact`) zbuduj raport `make_html_report(title, sections, filename)`.
    `sections` to lista `{"heading", "body", "image": ścieżka_PNG lub pomiń}`.
 3. Każ podać na końcu ścieżkę wygenerowanego pliku; zabroń zmyślania danych.
 
@@ -34,9 +34,9 @@ dane (`{report_data}`) i czym jest `sections` w `make_html_report`. Bez gotowej 
 
 ## "Działa", gdy
 W `out/` powstaje raport HTML zbudowany z realnych danych z bazy (nie zmyślony),
-a w Traces widać wywołania `bar_chart` / `make_html_report`.
+a w Traces widać wywołania `bar_chart_artifact` / `make_html_report`.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_23: pipeline jest liniowy -
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_21: pipeline jest liniowy -
 krok po kroku. A gdyby dwa zapytania do bazy mogły lecieć RÓWNOLEGLE i skrócić
-czas? To ParallelAgent - ex_23.] -->
+czas? To ParallelAgent - ex_21.] -->

@@ -1,6 +1,6 @@
-# Ćwiczenie ex_21: pipeline raportu - planner (moduł 10)
+# Ćwiczenie ex_19: pipeline raportu - planner (moduł 10)
 
-<!-- [TODO Piotr - ŁUK: minimalną sekwencję mamy z ex_20. Teraz prawdziwy pipeline
+<!-- [TODO Piotr - ŁUK: minimalną sekwencję mamy z ex_18. Teraz prawdziwy pipeline
 trzech ról: planista, ten-co-pobiera-dane, ten-co-składa-raport. W tym ćwiczeniu
 piszemy MÓZG całości - plannera, który decyduje, co w ogóle ma się znaleźć w raporcie.] -->
 
@@ -12,7 +12,7 @@ planner -> data_agent -> report_writer. Planner NIE dotyka bazy - układa plan
 ## Które narzędzia podpinamy
 - `planner` - bez narzędzi (sama instrukcja, `output_key="report_plan"`). TWOJE zadanie.
 - `data_agent` (GOTOWY) - `get_schema`, `run_query`, czyta `{report_plan}`.
-- `report_writer` (GOTOWY) - `bar_chart`, `make_html_report`, czyta `{report_data}`.
+- `report_writer` (GOTOWY) - `bar_chart_artifact`, `make_html_report`, czyta `{report_data}`.
 
 ## Twoje zadanie
 Patrz `agent.py` (`# TODO(you)`): napisz instrukcję plannera. Ma wypisać zwięzły
@@ -32,6 +32,6 @@ Planner produkuje czytelny plan, a dalsze agenty go realizują - cały pipeline
 przechodzi i powstaje plik w `out/`.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_22: planner zaplanował, dane
-są zebrane. Ale kto z tego zlepia gotowy artefakt? W ex_22 bierzemy na warsztat
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_20: planner zaplanował, dane
+są zebrane. Ale kto z tego zlepia gotowy artefakt? W ex_20 bierzemy na warsztat
 report_writera - wykres + HTML.] -->

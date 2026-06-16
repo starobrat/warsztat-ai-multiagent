@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_21: pipeline raportu - PLANNER (moduł 10). STARTER.
+"""Ćwiczenie ex_19: pipeline raportu - PLANNER (moduł 10). STARTER.
 
 Pełny pipeline raportu (SequentialAgent): planner -> data_agent -> report_writer.
 data_agent i report_writer są GOTOWE. Twoje zadanie: napisać instrukcję plannera,
@@ -11,7 +11,7 @@ Uruchom: uv run adk web ex_19_planner (albo adk run ex_19_planner).
 from common.exercise import placeholder
 from common.model import get_model
 from common.tools.db import get_schema, run_query
-from common.tools.charts import bar_chart
+from common.tools.charts import bar_chart_artifact
 from common.tools.html_report import make_html_report
 
 from google.adk.agents import LlmAgent, SequentialAgent
@@ -57,13 +57,14 @@ report_writer = LlmAgent(
         "Składasz finalny raport ze sklepu Chinook. Masz plan: {report_plan}\n"
         "oraz zebrane dane: {report_data}\n"
         "Krok 1 (opcjonalnie): jeśli dane się do tego nadają, zrób wykres słupkowy "
-        "narzędziem bar_chart (labels, values, tytuł, nazwa pliku PNG).\n"
+        "narzędziem bar_chart_artifact (labels, values, tytuł, nazwa pliku PNG) - "
+        "zwróci ścieżkę PNG i zapisze wykres jako artefakt.\n"
         "Krok 2: zbuduj raport make_html_report(title, sections, filename), gdzie "
         "sections to lista {\"heading\": ..., \"body\": ..., \"image\": ścieżka_PNG "
         "lub pomiń}. Używaj danych z {report_data}, nie zmyślaj. Na końcu podaj "
         "ścieżkę do wygenerowanego pliku."
     ),
-    tools=[bar_chart, make_html_report],
+    tools=[bar_chart_artifact, make_html_report],
     output_key="report_path",
 )
 

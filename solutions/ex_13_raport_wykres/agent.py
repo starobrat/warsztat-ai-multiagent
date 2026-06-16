@@ -15,21 +15,24 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from common.model import get_model
-from common.tools.charts import bar_chart
+from common.tools.charts import bar_chart_artifact
 from common.tools.db import get_genres, get_sold_count_for_genre
 
 from google.adk.agents import LlmAgent
+from google.adk.tools.tool_context import ToolContext
 
 
-def narysuj_wykres_slupkowy(labels: list[str], values: list[float], title: str) -> str:
-    """Rysuje wykres słupkowy z podanych etykiet i wartości; zwraca ścieżkę do PNG.
+async def narysuj_wykres_slupkowy(
+    labels: list[str], values: list[float], title: str, tool_context: ToolContext
+) -> str:
+    """Rysuje wykres słupkowy i zapisuje go jako ARTEFAKT agenta (zakładka Artifacts).
 
     Args:
         labels: etykiety słupków (np. nazwy gatunków).
         values: wartości słupków (np. liczby sprzedanych utworów).
         title: tytuł wykresu.
     """
-    return bar_chart(labels, values, title, "raport.png")
+    return await bar_chart_artifact(labels, values, title, "raport.png", tool_context)
 
 
 root_agent = LlmAgent(
@@ -46,7 +49,8 @@ root_agent = LlmAgent(
         "3. Gdy masz już komplet danych, OBOWIĄZKOWO wywołaj narysuj_wykres_slupkowy: "
         "labels to lista nazw gatunków, values to odpowiadające im liczby sprzedaży, "
         "a title opisuje raport (np. 'Sprzedaż wg gatunku 2025').\n"
-        "4. W odpowiedzi podaj ścieżkę do wygenerowanego pliku PNG zwróconą przez to narzędzie.\n\n"
+        "4. W odpowiedzi podaj ścieżkę zwróconą przez narzędzie i zaznacz, że wykres "
+        "jest też zapisany jako artefakt (widoczny w zakładce Artifacts).\n\n"
         "Nie kończ, dopóki nie wywołasz narzędzia rysującego wykres - sama tabela liczb to za mało."
     ),
     tools=[get_genres, get_sold_count_for_genre, narysuj_wykres_slupkowy],
