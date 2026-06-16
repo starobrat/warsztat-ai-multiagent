@@ -1,4 +1,4 @@
-# Ćwiczenie ex_21: ParallelAgent (moduł 11)
+# Ćwiczenie ex_19: ParallelAgent (moduł 11)
 
 <!-- [TODO Piotr - ŁUK: cały pipeline raportu szedł liniowo - krok po kroku. Ale
 nie wszystko MUSI być po kolei. Dwa niezależne zapytania do bazy nie czekają na
@@ -21,7 +21,7 @@ Patrz `agent.py` (`# TODO(you)`):
 2. Wpnij `[rownolegle, synteza]` w `SequentialAgent` i przypisz do `root_agent`.
 
 ## Jak sprawdzić, że działa
-- `uv run adk run ex_21_rownoleglosc "podsumuj bazę"` lub `adk web`.
+- `uv run adk run ex_19_rownoleglosc "podsumuj bazę"` lub `adk web`.
 - W Traces widać DWIE gałęzie uruchomione równolegle, potem syntezę.
 
 ## Praca z agentem AI
@@ -34,6 +34,6 @@ Obie gałęzie policzyły swoją liczbę (klienci ORAZ faktury), a syntezator zw
 podsumowanie z obiema wartościami.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_22: Sequential = po kolei,
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_20: Sequential = po kolei,
 Parallel = naraz. Brakuje jeszcze jednego kształtu: powtarzaj, AŻ będzie dobrze.
-To LoopAgent - ex_22.] -->
+To LoopAgent - ex_20.] -->

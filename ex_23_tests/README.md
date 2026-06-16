@@ -12,7 +12,7 @@ się automatycznie, a nie "na oko".
 
 ## Poza zakresem (gdzie indziej)
 - Tworzenie/nagrywanie evalsetów i metryki - moduł 7 (`ex_15_ewaluacja/`).
-- Budowa samych agentów - `ex_14_text_to_sql`, `ex_20_report_writer`.
+- Budowa samych agentów - `ex_14_text_to_sql`, `ex_22_report_writer`.
 
 ## Koncepcja w pigułce
 `AgentEvaluator.evaluate(agent_module="ex_14_text_to_sql", eval_dataset_file_path_or_dir=...)`
@@ -20,13 +20,13 @@ się automatycznie, a nie "na oko".
 z `ex_15_ewaluacja/test_config.json`. To most między "ręcznym" evalem a CI.
 
 ## Twoje zadanie
-Najpierw nagraj test set systemu raportowego w `adk web ex_20_report_writer` (zakładka
+Najpierw nagraj test set systemu raportowego w `adk web ex_22_report_writer` (zakładka
 Eval), zapisz go do `ex_15_ewaluacja/report_system.evalset.json`. Gdy plik już istnieje,
 `test_report_system.py` przestaje być pomijany (`skipif`) i odpala się sam.
 
 ## Wskazówki (jeśli pracujesz bez agenta AI)
-- `AgentEvaluator.evaluate(agent_module="ex_20_report_writer", eval_dataset_file_path_or_dir=...)`.
-- Evalset nagraj w `adk web ex_20_report_writer` (zakładka Eval) albo dopisz ręcznie
+- `AgentEvaluator.evaluate(agent_module="ex_22_report_writer", eval_dataset_file_path_or_dir=...)`.
+- Evalset nagraj w `adk web ex_22_report_writer` (zakładka Eval) albo dopisz ręcznie
   wg wzoru `ex_15_ewaluacja/sql_agent.evalset.json`.
 
 ## "Działa", gdy

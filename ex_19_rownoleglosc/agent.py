@@ -1,4 +1,4 @@
-"""Ćwiczenie ex_21: ParallelAgent - równoległe odpytanie bazy (moduł 11). STARTER.
+"""Ćwiczenie ex_19: ParallelAgent - równoległe odpytanie bazy (moduł 11). STARTER.
 
 Do tej pory agenty szły po kolei (SequentialAgent). Tu DWA niezależne zapytania
 do bazy lecą RÓWNOLEGLE (ParallelAgent) - każde zapisuje wynik pod swój output_key.
@@ -10,7 +10,7 @@ Wzorzec fan-out/gather:
 branch_a, branch_b i synteza są gotowe. Twoje zadanie: złożyć ParallelAgent z gałęzi
 i wpiąć go w sekwencję z syntezatorem.
 
-Uruchom: uv run adk web ex_21_rownoleglosc (albo adk run ex_21_rownoleglosc).
+Uruchom: uv run adk web ex_19_rownoleglosc (albo adk run ex_19_rownoleglosc).
 """
 
 from common.exercise import placeholder
@@ -70,6 +70,6 @@ root_agent = LlmAgent(
     instruction=placeholder(
         "złóż branch_klienci i branch_faktury w ParallelAgent, a potem [rownolegle, "
         "synteza] w SequentialAgent jako root_agent",
-        readme="README ex_21_rownoleglosc",
+        readme="README ex_19_rownoleglosc",
     ),
 )

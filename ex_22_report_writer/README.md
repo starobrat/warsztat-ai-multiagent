@@ -1,6 +1,6 @@
-# Ćwiczenie ex_20: pipeline raportu - report_writer (moduł 11)
+# Ćwiczenie ex_22: pipeline raportu - report_writer (moduł 11)
 
-<!-- [TODO Piotr - ŁUK: w ex_19 napisaliśmy mózg (plannera). Dane już płyną.
+<!-- [TODO Piotr - ŁUK: w ex_21 napisaliśmy mózg (plannera). Dane już płyną.
 Teraz domykamy pipeline: report_writer bierze plan + dane i SKŁADA z nich gotowy
 artefakt - wykres i raport HTML. Pierwszy raz agent woła narzędzia, które
 produkują artefakt (wykres ląduje też w zakładce Artifacts).] -->
@@ -25,7 +25,7 @@ Patrz `agent.py` (`# TODO(you)`):
 3. Każ podać na końcu ścieżkę wygenerowanego pliku; zabroń zmyślania danych.
 
 ## Jak sprawdzić, że działa
-- `uv run adk run ex_20_report_writer "raport o sprzedaży gatunków"` lub `adk web`.
+- `uv run adk run ex_22_report_writer "raport o sprzedaży gatunków"` lub `adk web`.
 - Po przejściu pipeline w katalogu `out/` pojawia się plik `.html` (i ewentualnie `.png`).
 
 ## Praca z agentem AI
@@ -37,6 +37,6 @@ W `out/` powstaje raport HTML zbudowany z realnych danych z bazy (nie zmyślony)
 a w Traces widać wywołania `bar_chart_artifact` / `make_html_report`.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_21: pipeline jest liniowy -
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_23: pipeline jest liniowy -
 krok po kroku. A gdyby dwa zapytania do bazy mogły lecieć RÓWNOLEGLE i skrócić
-czas? To ParallelAgent - ex_21.] -->
+czas? To ParallelAgent - ex_23.] -->

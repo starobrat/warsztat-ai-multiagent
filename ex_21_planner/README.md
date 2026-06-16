@@ -1,4 +1,4 @@
-# Ćwiczenie ex_19: pipeline raportu - planner (moduł 10)
+# Ćwiczenie ex_21: pipeline raportu - planner (moduł 10)
 
 <!-- [TODO Piotr - ŁUK: minimalną sekwencję mamy z ex_18. Teraz prawdziwy pipeline
 trzech ról: planista, ten-co-pobiera-dane, ten-co-składa-raport. W tym ćwiczeniu
@@ -20,7 +20,7 @@ plan raportu (2-4 sekcje; dla każdej: jakiej liczby/danych potrzeba, czy dodać
 wykres). Bez pisania SQL - od tego jest `data_agent`.
 
 ## Jak sprawdzić, że działa
-- `uv run adk run ex_19_planner "raport o sprzedaży gatunków"` lub `adk web`.
+- `uv run adk run ex_21_planner "raport o sprzedaży gatunków"` lub `adk web`.
 - W Traces: planner zwraca plan -> data_agent go realizuje -> report_writer składa plik.
 
 ## Praca z agentem AI
@@ -32,6 +32,6 @@ Planner produkuje czytelny plan, a dalsze agenty go realizują - cały pipeline
 przechodzi i powstaje plik w `out/`.
 
 ## Pójdź dalej
-<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_20: planner zaplanował, dane
-są zebrane. Ale kto z tego zlepia gotowy artefakt? W ex_20 bierzemy na warsztat
+<!-- [TODO Piotr - rozszerzenie + CLIFFHANGER do ex_22: planner zaplanował, dane
+są zebrane. Ale kto z tego zlepia gotowy artefakt? W ex_22 bierzemy na warsztat
 report_writera - wykres + HTML.] -->

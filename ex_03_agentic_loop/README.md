@@ -14,7 +14,7 @@ użyć, aż uzna, że ma odpowiedź. To domknięcie części 1.
 - Pamięć / sesje - część 2 (ADK).
 - Abstrakcja ADK (LlmAgent, adk web) - część 2, zaczyna się od `ex_04_hello`.
 - Ewaluacja - część 2, moduł 7 (`ex_15_ewaluacja/`).
-- Wieloagentowość - część 2, `ex_20_report_writer`.
+- Wieloagentowość - część 2, `ex_22_report_writer`.
 
 ## Koncepcja w pigułce
 - **Wywołanie** = jeden krok, jedna odpowiedź.

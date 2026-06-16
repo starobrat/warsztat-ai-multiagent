@@ -69,10 +69,10 @@ ex_16_modele_i_diagnostyka/ tuning promptu red->green na słabym modelu (moduł 
 # Wieloagentowość (moduły 9-11)
 ex_17_delegacja_transfer/   master -> sub_agents, transfer sterowania
 ex_18_sekwencja/            SequentialAgent + output_key
-ex_19_planner/              system raportowy: planner
-ex_20_report_writer/        system raportowy: artefakt (writer + narzędzia)
-ex_21_rownoleglosc/         ParallelAgent
-ex_22_petla_agentow/        LoopAgent (iteracja z warunkiem stopu)
+ex_19_rownoleglosc/         ParallelAgent
+ex_20_petla_agentow/        LoopAgent (iteracja z warunkiem stopu)
+ex_21_planner/              system raportowy: planner
+ex_22_report_writer/        system raportowy: artefakt (writer + narzędzia)
 ex_23_tests/                testy automatyczne (pytest, moduł 12)
 # Bezpieczeństwo / guardraile (moduł 14)
 ex_24_guardrail_tool/       before_tool: blokuj groźne SQL

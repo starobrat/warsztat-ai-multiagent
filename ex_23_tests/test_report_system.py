@@ -28,6 +28,6 @@ EVALSET = REPO / "ex_15_ewaluacja" / "report_system.evalset.json"
 @pytest.mark.asyncio
 async def test_report_system_evalset():
     await AgentEvaluator.evaluate(
-        agent_module="ex_20_report_writer",
+        agent_module="ex_22_report_writer",
         eval_dataset_file_path_or_dir=str(EVALSET),
     )

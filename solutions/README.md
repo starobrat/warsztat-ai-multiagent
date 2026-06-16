@@ -46,7 +46,7 @@ uv run python solutions/_verify.py solutions/ex_08_narzedzie_grounding "Jakie ta
 | ex_15_ewaluacja | niekodowe | SOLUTION.md; eval 2/2 na rozwiązanym SQL |
 | ex_14_text_to_sql | adk | get_schema -> run_query; Niemcy = 4 |
 | ex_16_modele_i_diagnostyka | adk | eval RED->GREEN na słabym modelu |
-| ex_20_report_writer | adk | planner->data->writer; HTML+PNG w out/ |
+| ex_22_report_writer | adk | planner->data->writer; HTML+PNG w out/ |
 | ex_23_tests | niekodowe+kod | SOLUTION.md + szablon evalsetu |
 | ex_24_guardrail_tool | adk | DROP zablokowane, SELECT działa |
 

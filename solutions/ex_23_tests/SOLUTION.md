@@ -18,7 +18,7 @@ czyli ewaluacja agenta wchodzi do CI.
    `ex_15_ewaluacja/report_system.evalset.json`. Wtedy `skipif` przepuszcza test.
    - Szablon takiego evalsetu: `report_system.evalset.json` w tym katalogu (skopiuj do
      `ex_15_ewaluacja/`).
-   - Kanonicznie: `uv run adk web ex_20_report_writer` -> zakładka **Eval** -> nagraj sesję.
+   - Kanonicznie: `uv run adk web ex_22_report_writer` -> zakładka **Eval** -> nagraj sesję.
 
 ## Jak uruchomić
 ```bash
@@ -31,7 +31,7 @@ Trajektoria w `report_system` obejmuje wywołania narzędzi przez `data_agent` i
 `report_writer` - jest dłuższa i mniej deterministyczna niż u pojedynczego agenta SQL.
 Dlatego kryterium trajektorii trzymamy na `0.0` (z `ex_15_ewaluacja/test_config.json`), a w
 oczekiwanej odpowiedzi celujemy w fakt, że RAPORT POWSTAŁ, nie w dokładny tekst/ścieżkę.
-System raportowy zweryfikowany ręcznie: `solutions/ex_20_report_writer` produkuje plik
+System raportowy zweryfikowany ręcznie: `solutions/ex_22_report_writer` produkuje plik
 HTML + wykres PNG w `out/` (planner -> data_agent -> report_writer).
 
 ## Friction

@@ -1,4 +1,4 @@
-# Ćwiczenie ex_22: LoopAgent (moduł 11)
+# Ćwiczenie ex_20: LoopAgent (moduł 11)
 
 <!-- [TODO Piotr - ŁUK: mamy już trzy kształty orkiestracji - po kolei
 (Sequential), naraz (Parallel), a teraz trzeci: powtarzaj, AŻ będzie dobrze.
@@ -21,7 +21,7 @@ Patrz `agent.py` (`# TODO(you)`):
 2. Ustaw `max_iterations` (np. 5) jako twardy limit bezpieczeństwa.
 
 ## Jak sprawdzić, że działa
-- `uv run adk run ex_22_petla_agentow "Skróć hasło: Najlepsze buty do biegania w mieście dla każdego"`
+- `uv run adk run ex_20_petla_agentow "Skróć hasło: Najlepsze buty do biegania w mieście dla każdego"`
 - W Traces widać kilka iteracji skracacza, a na końcu wywołanie `exit_loop`
   (lub zatrzymanie po `max_iterations`).
 

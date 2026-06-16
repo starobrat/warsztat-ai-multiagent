@@ -1,14 +1,16 @@
-"""Ćwiczenie ex_19: pipeline raportu - PLANNER (moduł 10). STARTER.
+"""ROZWIĄZANIE ex_22: pipeline raportu - REPORT WRITER.
 
-Pełny pipeline raportu (SequentialAgent): planner -> data_agent -> report_writer.
-data_agent i report_writer są GOTOWE. Twoje zadanie: napisać instrukcję plannera,
-który układa plan raportu (sekcje, jakich danych potrzeba, gdzie wykres) i zapisuje
-go pod output_key="report_plan". data_agent czyta ten plan przez {report_plan}.
+Wypełnione: narzędzia raportowe + instrukcja report_writera (buduje artefakt z
+{report_plan} i {report_data}). planner i data_agent były gotowe.
 
-Uruchom: uv run adk web ex_19_planner (albo adk run ex_19_planner).
+Uruchom: uv run adk run solutions/ex_22_report_writer "..." (albo adk web).
 """
 
-from common.exercise import placeholder
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 from common.model import get_model
 from common.tools.db import get_schema, run_query
 from common.tools.charts import bar_chart_artifact
@@ -17,23 +19,20 @@ from common.tools.html_report import make_html_report
 from google.adk.agents import LlmAgent, SequentialAgent
 
 
-# 1) PLANNER - planuje raport: jakie sekcje, jakie dane, jakie wykresy. TWOJE ZADANIE.
 planner = LlmAgent(
     name="planner",
     model=get_model(),
     description="Planuje strukturę raportu, zanim ktokolwiek odpyta bazę.",
-    # TODO(you): napisz instrukcję plannera. Ma wypisać ZWIĘZŁY plan raportu:
-    # 2-4 sekcje, dla każdej jaką liczbę/dane trzeba pobrać i czy dodać wykres.
-    # NIE pisze SQL - od tego jest data_agent. Plan wędruje dalej przez output_key.
-    instruction=placeholder(
-        "napisz instrukcję plannera: ma ułożyć zwięzły plan raportu (sekcje, jakich "
-        "danych potrzeba, gdzie wykres), bez pisania SQL",
-        readme="README ex_19_planner",
+    instruction=(
+        "Jesteś planistą raportu o sklepie z muzyką Chinook. Na podstawie prośby "
+        "użytkownika wypisz ZWIĘZŁY plan raportu: 2-4 sekcje, a dla każdej sekcji "
+        "podaj, jakiej liczby/danych potrzeba i czy warto dodać wykres. "
+        "NIE pisz SQL - od pobierania danych jest osobny agent. Zwróć sam plan, "
+        "po polsku, w punktach."
     ),
     output_key="report_plan",
 )
 
-# 2) DATA AGENT - realizuje plan: odpytuje bazę Chinook. GOTOWY.
 data_agent = LlmAgent(
     name="data_agent",
     model=get_model(),
@@ -48,7 +47,6 @@ data_agent = LlmAgent(
     output_key="report_data",
 )
 
-# 3) REPORT WRITER - składa artefakt z gotowych klocków. GOTOWY.
 report_writer = LlmAgent(
     name="report_writer",
     model=get_model(),
@@ -68,7 +66,6 @@ report_writer = LlmAgent(
     output_key="report_path",
 )
 
-# Master = pipeline trzech kroków.
 root_agent = SequentialAgent(
     name="report_system",
     description="System wieloagentowy generujący raport z danych sklepu Chinook.",

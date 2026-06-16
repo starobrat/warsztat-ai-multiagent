@@ -33,7 +33,7 @@ oryginalnego katalogu ćwiczenia.
 - ex_14_text_to_sql: brak friction. Zweryfikowane: get_schema -> run_query, klienci z Niemiec = 4.
 - ex_16_modele_i_diagnostyka: brak friction. Naprawa WYŁĄCZNIE instruction na słabym modelu;
   eval RED->GREEN (2 passed). Diagnoza w nagłówku solution.
-- ex_20_report_writer: brak friction. Zweryfikowane: planner -> data_agent -> report_writer;
+- ex_22_report_writer: brak friction. Zweryfikowane: planner -> data_agent -> report_writer;
   powstaje HTML + wykres PNG w out/.
 - ex_23_tests (NIEKODOWE+kod): SOLUTION.md + szablon report_system.evalset.json.
   Friction (drobne, POPRAWIONE w starterze): README/docstring mówiły "odkomentuj test",

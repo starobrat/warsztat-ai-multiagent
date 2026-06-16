@@ -1,14 +1,16 @@
-"""Ćwiczenie ex_20: pipeline raportu - REPORT WRITER (moduł 11). STARTER.
+"""ROZWIĄZANIE ex_21: pipeline raportu - PLANNER.
 
-Ten sam pipeline co ex_19 (planner -> data_agent -> report_writer), ale tym razem
-planner i data_agent są GOTOWE. Twoje zadanie: złożyć report_writera - podłączyć
-narzędzia raportowe (bar_chart_artifact, make_html_report) i napisać instrukcję, która z
-{report_plan} i {report_data} buduje gotowy artefakt (wykres PNG + raport HTML).
+Wypełnione: instrukcja plannera (output_key="report_plan"). data_agent i
+report_writer były gotowe. Pipeline: planner -> data_agent -> report_writer.
 
-Uruchom: uv run adk web ex_20_report_writer (albo adk run ex_20_report_writer).
+Uruchom: uv run adk run solutions/ex_21_planner "..." (albo adk web).
 """
 
-from common.exercise import placeholder
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 from common.model import get_model
 from common.tools.db import get_schema, run_query
 from common.tools.charts import bar_chart_artifact
@@ -17,7 +19,6 @@ from common.tools.html_report import make_html_report
 from google.adk.agents import LlmAgent, SequentialAgent
 
 
-# 1) PLANNER - planuje raport. GOTOWY.
 planner = LlmAgent(
     name="planner",
     model=get_model(),
@@ -32,7 +33,6 @@ planner = LlmAgent(
     output_key="report_plan",
 )
 
-# 2) DATA AGENT - realizuje plan: odpytuje bazę Chinook. GOTOWY.
 data_agent = LlmAgent(
     name="data_agent",
     model=get_model(),
@@ -47,25 +47,25 @@ data_agent = LlmAgent(
     output_key="report_data",
 )
 
-# 3) REPORT WRITER - składa artefakt z gotowych klocków. TWOJE ZADANIE.
 report_writer = LlmAgent(
     name="report_writer",
     model=get_model(),
     description="Składa finalny raport (HTML) z danych.",
-    # TODO(you): napisz instrukcję. Na podstawie {report_plan} i {report_data} ma
-    # (opcjonalnie) zrobić wykres bar_chart_artifact, a potem złożyć make_html_report.
-    # Ma używać danych z {report_data}, nie zmyślać, i na końcu podać ścieżkę pliku.
-    instruction=placeholder(
-        "podłącz narzędzia raportowe (bar_chart_artifact, make_html_report) i napisz "
-        "instrukcję budującą artefakt z {report_plan} i {report_data}",
-        readme="README ex_20_report_writer",
+    instruction=(
+        "Składasz finalny raport ze sklepu Chinook. Masz plan: {report_plan}\n"
+        "oraz zebrane dane: {report_data}\n"
+        "Krok 1 (opcjonalnie): jeśli dane się do tego nadają, zrób wykres słupkowy "
+        "narzędziem bar_chart_artifact (labels, values, tytuł, nazwa pliku PNG) - "
+        "zwróci ścieżkę PNG i zapisze wykres jako artefakt.\n"
+        "Krok 2: zbuduj raport make_html_report(title, sections, filename), gdzie "
+        "sections to lista {\"heading\": ..., \"body\": ..., \"image\": ścieżka_PNG "
+        "lub pomiń}. Używaj danych z {report_data}, nie zmyślaj. Na końcu podaj "
+        "ścieżkę do wygenerowanego pliku."
     ),
-    # TODO(you): podłącz narzędzia raportowe.
-    tools=[],
+    tools=[bar_chart_artifact, make_html_report],
     output_key="report_path",
 )
 
-# Master = pipeline trzech kroków.
 root_agent = SequentialAgent(
     name="report_system",
     description="System wieloagentowy generujący raport z danych sklepu Chinook.",
