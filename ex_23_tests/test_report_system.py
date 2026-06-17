@@ -1,13 +1,10 @@
-"""Testy systemu raportowego - moduł 12. ĆWICZENIE.
+"""Testy systemu raportowego (wieloagentowego) - moduł 12. GOTOWY przykład.
 
-Po zbudowaniu systemu raportowego (moduły 9-11) dorób mu test set.
-W systemie wieloagentowym trajektoria obejmuje też transfery między agentami.
-
-Zadanie:
-  1. Nagraj 1-2 sesje w `adk web` (wybierz report_system) i zapisz jako eval case
-     do ex_15_ewaluacja/report_system.evalset.json
-  2. Test poniżej sam się odpali, gdy plik evalsetu już istnieje (skipif zniknie).
-  3. Pamiętaj o jakości oczekiwanych zapytań SQL (zweryfikuj liczby na bazie!).
+Odpowiednik test_sql_agent.py, ale dla systemu wieloagentowego (ex_22_report_writer:
+planner -> data_agent -> report_writer). Trajektoria w systemie wieloagentowym jest
+niedeterministyczna (kolejność i liczba wywołań narzędzi bywa różna), więc progi
+w solutions/ex_23_tests/test_config.json są łagodne - sprawdzamy głównie, że system
+przechodzi end-to-end i zwraca odpowiedź (smoke test eval w CI).
 
 Uruchom:
     uv run pytest ex_23_tests/test_report_system.py
@@ -19,14 +16,14 @@ import pytest
 from google.adk.evaluation.agent_evaluator import AgentEvaluator
 
 REPO = Path(__file__).resolve().parents[1]
+# Gotowy test set systemu raportowego. Obok leży test_config.json (łagodne progi),
+# który AgentEvaluator dobiera automatycznie z katalogu evalsetu.
+EVALSET = REPO / "solutions" / "ex_23_tests" / "report_system.evalset.json"
 
-# TODO(you): wskaż swój evalset po nagraniu sesji w adk web.
-EVALSET = REPO / "ex_15_ewaluacja" / "report_system.evalset.json"
 
-
-@pytest.mark.skipif(not EVALSET.exists(), reason="Najpierw nagraj test set (moduł 12)")
 @pytest.mark.asyncio
 async def test_report_system_evalset():
+    """System raportowy przechodzi swój test set (eval w CI, łagodne progi)."""
     await AgentEvaluator.evaluate(
         agent_module="ex_22_report_writer",
         eval_dataset_file_path_or_dir=str(EVALSET),

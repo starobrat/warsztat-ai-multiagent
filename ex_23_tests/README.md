@@ -7,7 +7,7 @@ się automatycznie, a nie "na oko".
 
 ## Zakres tego ćwiczenia
 - Uruchomienie gotowego testu agenta SQL (`test_sql_agent.py`).
-- Dorobienie test setu dla systemu wieloagentowego (`test_report_system.py` -> `# TODO(you)`).
+- Uruchomienie gotowego testu systemu wieloagentowego (`test_report_system.py`).
 - Zrozumienie, że `agent_module` wskazuje katalog agenta (np. `ex_14_text_to_sql`).
 
 ## Poza zakresem (gdzie indziej)
@@ -16,25 +16,28 @@ się automatycznie, a nie "na oko".
 
 ## Koncepcja w pigułce
 `AgentEvaluator.evaluate(agent_module="ex_14_text_to_sql", eval_dataset_file_path_or_dir=...)`
-ładuje agenta po nazwie jego katalogu i uruchamia na nim evalset. Próg zaliczenia bierze
-z `solutions/ex_15_ewaluacja/test_config.json`. To most między "ręcznym" evalem a CI.
+ładuje agenta po nazwie jego katalogu i uruchamia na nim evalset. Próg zaliczenia
+`AgentEvaluator` bierze z `test_config.json` leżącego w katalogu evalsetu. To most
+między "ręcznym" evalem a CI.
 
 ## Twoje zadanie
-Najpierw nagraj test set systemu raportowego w `adk web ex_22_report_writer` (zakładka
-Eval), zapisz go do `ex_15_ewaluacja/report_system.evalset.json`. Gdy plik już istnieje,
-`test_report_system.py` przestaje być pomijany (`skipif`) i odpala się sam.
+Uruchom oba testy: `uv run pytest ex_23_tests`. Zobacz, jak ewaluacja agenta wchodzi
+do CI jako zwykły pytest - dla pojedynczego agenta (SQL) i dla systemu wieloagentowego
+(raportowy).
 
-## Wskazówki (jeśli pracujesz bez agenta AI)
-- `AgentEvaluator.evaluate(agent_module="ex_22_report_writer", eval_dataset_file_path_or_dir=...)`.
-- Evalset nagraj w `adk web ex_22_report_writer` (zakładka Eval) albo dopisz ręcznie
-  wg wzoru `solutions/ex_15_ewaluacja/sql_agent.evalset.json`.
+Dlaczego dwa różne progi? System wieloagentowy (planner -> data_agent -> report_writer)
+ma niedeterministyczną trajektorię, dlatego jego test ma łagodne progi
+(`solutions/ex_23_tests/test_config.json`): to smoke test, że system przechodzi
+end-to-end i zwraca raport - nie sprawdzamy dokładnej trajektorii ani tekstu.
 
 ## "Działa", gdy
-`uv run pytest ex_23_tests` przechodzi (lub świadomie pomija test, którego evalsetu
-jeszcze nie nagrałeś). Uwaga: na świeżym repo ten test jest CZERWONY - celuje w Twojego
-agenta z `ex_14_text_to_sql`, więc zazieleni się dopiero, gdy rozwiążesz ex_14.
+`uv run pytest ex_23_tests` przechodzi - oba testy zielone. Uwaga: test SQL celuje
+w Twojego agenta z `ex_14_text_to_sql`, więc zazieleni się dopiero, gdy rozwiążesz ex_14.
+Test systemu raportowego wymaga działającego `ex_22_report_writer`.
 
 ## Pójdź dalej
+- Nagraj własną sesję w `adk web ex_22_report_writer` (zakładka Eval) i dorzuć ją
+  jako nowy case do evalsetu (albo dopisz ręcznie wg wzoru istniejącego case'a).
 - Dodaj case, który celowo łamie system (pytanie poza zakresem raportu).
 - Porównaj, ile testów przechodzi na słabym vs mocnym modelu.
 - Jak podłączyłbyś te testy do CI (GitHub Actions)? Naszkicuj workflow.
