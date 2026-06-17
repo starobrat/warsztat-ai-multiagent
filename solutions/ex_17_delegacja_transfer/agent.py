@@ -36,11 +36,11 @@ analityk_chinook = LlmAgent(
 )
 
 root_agent = LlmAgent(
-    name="koordynator",
+    name="master",
     model=get_model(),
-    description="Koordynator - deleguje zadanie właściwemu specjaliście.",
+    description="Master - deleguje zadanie właściwemu specjaliście.",
     instruction=(
-        "Jesteś koordynatorem. Sam nie odpowiadasz merytorycznie - rozpoznaj "
+        "Jesteś masterem. Sam nie odpowiadasz merytorycznie - rozpoznaj "
         "intencję użytkownika i PRZEKAŻ zadanie właściwemu sub-agentowi.\n"
         "- Powitania, podziękowania, luźna rozmowa -> agent_powitan.\n"
         "- Pytania o dane sklepu z muzyką (klienci, sprzedaż, gatunki, faktury) "

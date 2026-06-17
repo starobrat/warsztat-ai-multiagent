@@ -1,6 +1,6 @@
 """DEMO (moduł 9): transfer sterowania w systemie wieloagentowym.
 
-Koordynator (master) deleguje zadanie do jednego z dwóch specjalistów na podstawie
+Master deleguje zadanie do jednego z dwóch specjalistów na podstawie
 ich `description`. W adk web (zakładka Traces) widać, KTO przejął zadanie.
 
 Spróbuj: "cześć, co słychać?" (-> agent_powitan) oraz "ilu mamy klientów z Niemiec?"
@@ -34,9 +34,9 @@ analityk_chinook = LlmAgent(
 )
 
 root_agent = LlmAgent(
-    name="koordynator",
+    name="master",
     model=get_model(),
-    description="Koordynator - deleguje zadanie właściwemu specjaliście.",
+    description="Master - deleguje zadanie właściwemu specjaliście.",
     instruction=(
         "Rozpoznaj intencję użytkownika i przekaż zadanie właściwemu sub-agentowi. "
         "Powitania i luźna rozmowa -> agent_powitan. "

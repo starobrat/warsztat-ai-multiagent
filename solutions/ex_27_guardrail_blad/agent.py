@@ -1,7 +1,7 @@
 """Ćwiczenie ex_27: guardrail na BŁĄD narzędzia (on_tool_error_callback). ROZWIĄZANIE.
 
 Gdy run_query_raw rzuci wyjątek (np. zła nazwa kolumny), callback łapie go i oddaje
-modelowi czysty dict z błędem zamiast pozwolić wywalić całą turę agenta.
+modelowi czysty dict z błędem zamiast pozwolić przerwać całą turę agenta.
 """
 
 import sys
@@ -47,7 +47,7 @@ def handle_tool_error(
     """Callback wywoływany, gdy narzędzie rzuci wyjątek.
 
     Zwróć dict = czysta odpowiedź dla modelu (tura żyje dalej), None = błąd leci
-    dalej i tura się wywala.
+    dalej i tura się przerywa.
     """
     return {
         "error": (

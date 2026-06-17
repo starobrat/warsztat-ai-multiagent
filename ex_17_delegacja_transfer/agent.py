@@ -37,11 +37,11 @@ analityk_chinook = LlmAgent(
     tools=[get_schema, run_query],
 )
 
-# MASTER - koordynator. Sam nie liczy ani nie wita - DELEGUJE.
+# MASTER. Sam nie liczy ani nie wita - DELEGUJE.
 root_agent = LlmAgent(
-    name="koordynator",
+    name="master",
     model=get_model(),
-    description="Koordynator - deleguje zadanie właściwemu specjaliście.",
+    description="Master - deleguje zadanie właściwemu specjaliście.",
     # TODO(you): napisz instrukcję, która opisuje, KIEDY przekazać zadanie któremu
     # sub-agentowi (powitania -> agent_powitan, dane sklepu -> analityk_chinook).
     instruction=placeholder(

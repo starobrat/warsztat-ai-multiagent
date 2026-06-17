@@ -2,7 +2,7 @@
 
 ## Co ćwiczymy
 **Guardrail na błędy**: gdy narzędzie rzuci wyjątek, łapiemy go i oddajemy modelowi
-czysty komunikat, zamiast pozwolić, by tura agenta się wywaliła. `on_tool_error_callback`
+czysty komunikat, zamiast pozwolić, by tura agenta się przerwała. `on_tool_error_callback`
 dostaje `(tool, args, tool_context, error)` i jeśli zwróci `dict`, ADK użyje go jako
 odpowiedzi narzędzia (graceful degradation - agent może spróbować ponownie).
 
@@ -30,7 +30,7 @@ uv run python solutions/_verify.py solutions/ex_27_guardrail_blad "Policz wiersz
 i może poprawić zapytanie)
 
 ## "Działa", gdy
-Błędne zapytanie NIE wywala tury - w `ODPOWIEDZI NARZĘDZI` widać kontrolowany
+Błędne zapytanie NIE przerywa tury - w `ODPOWIEDZI NARZĘDZI` widać kontrolowany
 `{"error": ...}`, a agent reaguje na komunikat (sprawdza schemat / poprawia SQL),
 zamiast się zatrzymać na wyjątku.
 

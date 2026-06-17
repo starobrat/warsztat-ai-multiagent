@@ -2,7 +2,7 @@
 
 Czwarty guardrail. ex_24 pilnował akcji, ex_25 wejścia, ex_26 wyjścia. Tutaj
 pilnujemy BŁĘDU: gdy narzędzie rzuci wyjątek, łapiemy go i oddajemy modelowi
-czysty komunikat zamiast pozwolić, by cała tura agenta się wywaliła.
+czysty komunikat zamiast pozwolić, by cała tura agenta się przerwała.
 
 Po co osobne narzędzie `run_query_raw`? Zwykłe run_query łapie błędy SQL w środku
 i nigdy nie rzuca - więc nie da się na nim pokazać on_tool_error. `run_query_raw`
@@ -11,7 +11,7 @@ celowo NIE łapie wyjątku (np. zła nazwa kolumny -> sqlite3.OperationalError),
 
 Zasada ADK: on_tool_error_callback dostaje (tool, args, tool_context, error) i
 jeśli ZWRÓCI dict, ADK użyje go jako odpowiedzi narzędzia (zamiast propagować
-wyjątek). Zwrócenie None = błąd leci dalej (tura się wywala).
+wyjątek). Zwrócenie None = błąd leci dalej (tura się przerywa).
 
 Uruchom: uv run adk web ex_27_guardrail_blad (albo adk run ex_27_guardrail_blad).
 """
@@ -55,7 +55,7 @@ def handle_tool_error(
     """Callback wywoływany, gdy narzędzie rzuci wyjątek.
 
     Zwróć dict = czysta odpowiedź dla modelu (tura żyje dalej), None = błąd leci
-    dalej i tura się wywala.
+    dalej i tura się przerywa.
     """
     # TODO(you): zamień wyjątek `error` w czytelny dict z kluczem "error", żeby
     # model dostał kontrolowany komunikat ("zapytanie się nie powiodło: ...")
