@@ -14,9 +14,12 @@ Patrz `agent.py` (`# TODO(you)`): napisz ciało `handle_tool_error`. Zamień wyj
 `error` w czytelny `dict` z kluczem `error`, żeby model dostał kontrolowany komunikat
 zamiast crashu. Możesz dołożyć podpowiedź, by sprawdził schemat (`get_schema`).
 
-Uwaga: agent woła `run_query_raw` (NIE łapie błędów w środku - dlatego wyjątek w
-ogóle dociera do callbacku). Zwykłe `run_query` łapie błędy samo, więc nie nadaje
-się do pokazania on_tool_error.
+Uwaga: w tym ćwiczeniu `run_query_raw` jest celowo podrasowane - na KAŻDE zapytanie
+odpala błędny SELECT (realny `sqlite3.OperationalError`), żeby guardrail odpalał się
+za każdym razem (nie zależymy od tego, czy model sam popełni błąd). To jedyne
+narzędzie zapytań - bezpieczne `run_query` usunęliśmy, żeby model nie miał drogi
+ucieczki. `run_query_raw` NIE łapie błędu w środku, dlatego wyjątek dociera do
+callbacku.
 
 ## Wskazówki (jeśli pracujesz bez agenta AI)
 - `error` to obiekt wyjątku (np. `sqlite3.OperationalError`). `str(error)` da treść.
@@ -24,15 +27,16 @@ się do pokazania on_tool_error.
 
 ## Jak sprawdzić
 ```
-uv run python solutions/_verify.py solutions/ex_27_guardrail_blad "Policz wiersze: SELECT TotallyWrongColumn FROM Customer"
+uv run adk web ex_27_guardrail_blad
 ```
-(zła nazwa kolumny -> run_query_raw rzuci -> callback łapie -> agent dostaje błąd
-i może poprawić zapytanie)
+Zadaj DOWOLNE pytanie - narzędzie zawsze rzuci błąd. Bez guardrailu (starter)
+tura się przerywa; po napisaniu `handle_tool_error` agent dostaje czysty `{"error": ...}`
+i przekazuje użytkownikowi czytelny komunikat.
 
 ## "Działa", gdy
-Błędne zapytanie NIE przerywa tury - w `ODPOWIEDZI NARZĘDZI` widać kontrolowany
-`{"error": ...}`, a agent reaguje na komunikat (sprawdza schemat / poprawia SQL),
-zamiast się zatrzymać na wyjątku.
+Błąd narzędzia (a tu pada na KAŻDE zapytanie) NIE przerywa tury - w `ODPOWIEDZI
+NARZĘDZI` widać kontrolowany `{"error": ...}`, a agent przekazuje użytkownikowi
+czytelną informację o błędzie zamiast się zatrzymać na wyjątku.
 
 ## Pójdź dalej
 - Zaloguj błąd (observability) zanim zwrócisz czysty komunikat modelowi.

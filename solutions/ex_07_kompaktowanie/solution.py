@@ -1,8 +1,11 @@
-"""ROZWIĄZANIE ćwiczenia 7 - kompaktowanie kontekstu / rolling window - moduł 6.
+"""ROZWIĄZANIE ćwiczenia 7 - kompaktowanie vs rolling window - moduł 6.
 
-TODO wypełnione: COMPACTION = EventsCompactionConfig(...) podłączone do App.
-Efekt: w sesji pojawiają się zwinięcia (streszczenia), a agent nadal pamięta
-wczesny fakt ("Piotr") mimo zwinięcia okna.
+Sedno: oba sposoby TNĄ okno kontekstu, ale różnią się tym, co zostaje.
+Ta sama rozmowa, dwa biegi:
+  A. KOMPAKTOWANIE - starsze tury model zwija w streszczenie; wczesny fakt
+     (imię "Piotr") przeżywa, bo trafił do streszczenia.
+  B. ROLLING WINDOW - trzymamy tylko ostatnie N tur; starsze po prostu wypadają,
+     więc wczesny fakt ginie i agent go nie zna.
 
 Uruchom: uv run python solutions/ex_07_kompaktowanie/solution.py
 """
@@ -25,65 +28,120 @@ APP = "ex07"
 USER = "uczestnik"
 SID = "s1"
 
-session_service = InMemorySessionService()
+# Wspólny scenariusz: WCZESNY fakt = imię, podane w turze 1.
+TURY = [
+    "Mam na imię Piotr.",            # <- wczesny fakt (tura 1)
+    "Uczę się grać na ukulele.",
+    "Pracuję w Poznaniu.",
+    "Mam psa.",
+    "Piję kawę bez cukru.",
+    "Jeżdżę rowerem do pracy.",
+]
+PYTANIE = "Jak mam na imię?"
+IMIE = "Piotr"  # wczesny fakt, którego losy śledzimy
+OSTATNIE_N = 2  # rolling window: trzymamy tylko ostatnie N tur
 
-agent = LlmAgent(
-    name="rozmowca",
-    model=get_model(),
-    instruction="Odpowiadasz po polsku, krótko - jednym zdaniem.",
+# Domyślny szablon streszczenia w ADK jest po angielsku - wymuszamy polski.
+# Ważne: kolejne zwinięcie streszcza poprzednie streszczenie, więc każemy mu
+# ZAWSZE przenosić imię i wcześniejsze fakty - inaczej wczesny fakt może zniknąć.
+STRESZCZAJ_PO_POLSKU = (
+    "Streść PO POLSKU historię rozmowy użytkownika z agentem w 1-2 zdaniach. "
+    "ZAWSZE zachowaj imię użytkownika oraz wcześniej ustalone fakty o nim - także "
+    "jeśli pochodzą z wcześniejszego streszczenia. Nie pomijaj ich."
+    "\n\n{conversation_history}"
 )
 
-# TODO wypełnione: sliding-window compaction.
+# TODO wypełnione: sliding-window compaction ze streszczaniem po polsku.
 COMPACTION = EventsCompactionConfig(
-    summarizer=LlmEventSummarizer(llm=get_model()),
-    compaction_interval=3,    # co ile eventów zwijać (rolling window = 3)
+    summarizer=LlmEventSummarizer(llm=get_model(), prompt_template=STRESZCZAJ_PO_POLSKU),
+    compaction_interval=4,    # co ile eventów zwijać starsze w streszczenie
     overlap_size=1,           # nakładka między oknami
 )
-# Uwaga (ADK 2.2.0): event_retention_size i token_threshold MUSZĄ być ustawione
-# RAZEM - samo event_retention_size rzuca ValidationError. Tu zwijamy po liczbie
-# eventów (compaction_interval), więc tych dwóch nie ustawiamy.
-
-app = App(name=APP, root_agent=agent, events_compaction_config=COMPACTION)
-runner = Runner(app=app, session_service=session_service)
+# Uwaga (ADK 2.2.0): token_threshold i event_retention_size MUSZĄ być ustawione
+# RAZEM - inaczej ValidationError. Tu zwijamy po liczbie eventów
+# (compaction_interval), więc tych dwóch nie ustawiamy.
 
 
-def powiedz(tekst: str) -> str:
-    msg = gt.Content(role="user", parts=[gt.Part.from_text(text=tekst)])
-    final = ""
-    for ev in runner.run(user_id=USER, session_id=SID, new_message=msg):
-        if ev.is_final_response() and ev.content and ev.content.parts:
-            final = "".join(p.text or "" for p in ev.content.parts)
-    return final
+def _zbuduj_agenta() -> LlmAgent:
+    return LlmAgent(
+        name="rozmowca",
+        model=get_model(),
+        instruction=(
+            "Jesteś rozmówcą. Odpowiadasz po polsku, jednym krótkim zdaniem - "
+            "naturalnie reagujesz na to, co mówi użytkownik. Gdy pyta o fakt, "
+            "którego w rozmowie NIE podał, powiedz wprost: Nie wiem. Nie zgaduj."
+        ),
+    )
 
 
-def pokaz_kompaktowanie() -> None:
-    s = asyncio.run(session_service.get_session(app_name=APP, user_id=USER, session_id=SID))
-    compactions = [e for e in s.events if getattr(e.actions, "compaction", None)]
-    print(f"\nEventów w sesji: {len(s.events)} | zwinięć (compaction): {len(compactions)}")
-    for i, e in enumerate(compactions, 1):
-        c = e.actions.compaction
-        txt = "".join(p.text or "" for p in (c.compacted_content.parts or [])) if c.compacted_content else ""
-        print(f"  streszczenie {i}: {txt[:200].strip()}")
+def _odtworz_i_zapytaj(compaction, tury):
+    """Świeża sesja: odtwórz podane tury, na końcu zadaj PYTANIE.
+
+    Zwraca (odpowiedź_na_pytanie, sesja).
+    """
+    session_service = InMemorySessionService()
+    app = App(name=APP, root_agent=_zbuduj_agenta(), events_compaction_config=compaction)
+    runner = Runner(app=app, session_service=session_service)
+    asyncio.run(session_service.create_session(app_name=APP, user_id=USER, session_id=SID))
+
+    def powiedz(tekst: str) -> str:
+        msg = gt.Content(role="user", parts=[gt.Part.from_text(text=tekst)])
+        final = ""
+        for ev in runner.run(user_id=USER, session_id=SID, new_message=msg):
+            if ev.is_final_response() and ev.content and ev.content.parts:
+                final = "".join(p.text or "" for p in ev.content.parts)
+        return final
+
+    for t in tury:
+        powiedz(t)
+    odp = powiedz(PYTANIE)
+    sesja = asyncio.run(session_service.get_session(app_name=APP, user_id=USER, session_id=SID))
+    return odp, sesja
+
+
+def _streszczenia(sesja) -> list[str]:
+    """Teksty streszczeń (compaction) zapisanych w sesji."""
+    out = []
+    for e in sesja.events:
+        c = getattr(e.actions, "compaction", None)
+        if c and c.compacted_content:
+            out.append("".join(p.text or "" for p in (c.compacted_content.parts or [])))
+    return out
 
 
 def main() -> None:
-    asyncio.run(session_service.create_session(app_name=APP, user_id=USER, session_id=SID))
+    # A. KOMPAKTOWANIE - cała rozmowa, starsze tury zwijane w streszczenie.
+    _, sesja_a = _odtworz_i_zapytaj(COMPACTION, TURY)
+    streszcz = _streszczenia(sesja_a)
+    imie_w_streszczeniu = any(IMIE in s for s in streszcz)
 
-    tury = [
-        "Mam na imię Piotr.",
-        "Lubię gatunek Rock.",
-        "Pracuję w Poznaniu.",
-        "Mam kota.",
-        "Piję kawę bez cukru.",
-        "Jeżdżę rowerem do pracy.",
-    ]
-    for t in tury:
-        powiedz(t)
+    print("=== A. Kompaktowanie (starsze tury -> streszczenie) ===")
+    print(f"  podano tur: {len(TURY)} | zwinięć: {len(streszcz)}")
+    for i, s in enumerate(streszcz, 1):
+        print(f"  streszczenie {i}: {' '.join(s.split())}")
+    if streszcz:
+        print(
+            f"  -> wczesne tury zwinięte; imię '{IMIE}' żyje w streszczeniu: "
+            f"{'TAK' if imie_w_streszczeniu else 'NIE'}"
+        )
+    else:
+        print("  -> brak zwinięć (kompaktowanie wyłączone) - wypełnij TODO, by starsze tury się zwinęły")
 
-    pokaz_kompaktowanie()
+    # B. ROLLING WINDOW - trzymamy tylko ostatnie N tur, starsze wypadają.
+    okno_b = TURY[-OSTATNIE_N:]
+    imie_w_oknie_b = any(IMIE in t for t in okno_b)
+    print(f"\n=== B. Rolling window (tylko ostatnie {OSTATNIE_N} tury, bez streszczenia) ===")
+    print(f"  okno modelu: {', '.join(repr(t) for t in okno_b)}")
+    print(
+        f"  -> imię '{IMIE}' w oknie: {'TAK' if imie_w_oknie_b else 'NIE'} "
+        f"(wczesna tura wypadła z okna)"
+    )
 
-    print("\nPytanie o wczesny fakt:")
-    print("  agent:", powiedz("Jak mam na imię?"))
+    print(
+        "\nWniosek: oba okna są przycięte. Kompaktowanie zachowało imię w streszczeniu "
+        f"({'TAK' if imie_w_streszczeniu else 'NIE'}),\nsamo obcięcie je zgubiło "
+        f"({'TAK' if imie_w_oknie_b else 'NIE'})."
+    )
 
 
 if __name__ == "__main__":

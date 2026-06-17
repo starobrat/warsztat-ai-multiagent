@@ -9,9 +9,13 @@ compaction natywnie - tu ją włączasz i obserwujesz.
 
 ## Zakres tego ćwiczenia
 - `App(events_compaction_config=EventsCompactionConfig(...))`.
-- `LlmEventSummarizer` jako "zwijacz" starszych eventów.
-- Obserwacja: liczba zwinięć + treść streszczeń.
-- Dowód: agent nadal pamięta WCZESNY fakt mimo zwinięcia okna.
+- `LlmEventSummarizer` jako "zwijacz" starszych eventów (streszczenia po polsku
+  przez `prompt_template`).
+- Kontrast dwóch biegów na tej samej rozmowie:
+  - **A. kompaktowanie** - starsze tury zwinięte w streszczenie, wczesny fakt
+    (imię) przeżywa, bo trafił do streszczenia,
+  - **B. rolling window** - trzymamy tylko ostatnie N tur, wczesny fakt wypada
+    z okna i agent go nie zna.
 
 ## Poza zakresem (przyjdzie później)
 - Pamięć długoterminowa (Memory) - ex_06 (osobny mechanizm, nie mylić).
@@ -29,9 +33,10 @@ streszczenie, z nakładką `overlap_size`, żeby nie zgubić styku okien.
 
 ## Twoje zadanie
 Patrz `starter.py` (`# TODO(you)`): zbuduj `COMPACTION` jako `EventsCompactionConfig`
-(z `LlmEventSummarizer(llm=get_model())`, ustaw `compaction_interval` i `overlap_size`)
-i podaj go do `App(... events_compaction_config=COMPACTION)`. Uruchom i porównaj z
-wersją wyłączoną (`COMPACTION = None`).
+(z `LlmEventSummarizer(llm=get_model(), prompt_template=STRESZCZAJ_PO_POLSKU)`, ustaw
+`compaction_interval` i `overlap_size`) i podmień `COMPACTION = None`. Uruchom i
+porównaj: jak zmienia się bieg A po włączeniu kompaktowania (0 zwinięć -> zwinięcia
++ streszczenie), oraz dlaczego bieg B (rolling window) gubi imię.
 
 ## Wskazówki (jeśli pracujesz bez agenta AI)
 - `EventsCompactionConfig` i `App` importujesz z `google.adk.apps.app`.
@@ -39,10 +44,15 @@ wersją wyłączoną (`COMPACTION = None`).
 - Mały `compaction_interval` (np. 3) szybciej pokaże efekt na krótkiej rozmowie.
 
 ## "Działa", gdy
-Po włączeniu kompaktowania `pokaz_kompaktowanie()` raportuje co najmniej jedno
-zwinięcie ze streszczeniem rozmowy, a na pytanie "jak mam na imię?" agent nadal
-odpowiada "Piotr" - mimo że wczesne tury zostały zwinięte. Z `COMPACTION = None`
-nie ma żadnych zwinięć.
+Po włączeniu kompaktowania bieg **A** raportuje co najmniej jedno zwinięcie ze
+streszczeniem (po polsku), w którym przetrwało imię -> `imię 'Piotr' żyje
+w streszczeniu: TAK` - mimo że surowa tura 1 została zwinięta. Bieg **B**
+(rolling window: ostatnie N tur) pokazuje `imię 'Piotr' w oknie: NIE` - wczesna
+tura wypadła z okna. Z `COMPACTION = None` bieg A nie ma żadnych zwinięć
+(`wypełnij TODO`).
+
+Dowód jest deterministyczny (sprawdzamy zawartość okna, nie swobodną odpowiedź
+modelu) - dlatego wynik jest taki sam przy każdym uruchomieniu.
 
 ## Pójdź dalej
 - Zwiększ `compaction_interval` - od ilu eventów pojawia się pierwsze zwinięcie?
