@@ -18,7 +18,7 @@ from google.adk.evaluation.agent_evaluator import AgentEvaluator
 REPO = Path(__file__).resolve().parents[1]
 # Gotowy test set systemu raportowego. Obok leży test_config.json (łagodne progi),
 # który AgentEvaluator dobiera automatycznie z katalogu evalsetu.
-EVALSET = REPO / "solutions" / "ex_23_tests" / "report_system.evalset.json"
+EVALSET = REPO / "ex_23_tests" / "report_system.evalset.json"
 
 
 @pytest.mark.asyncio

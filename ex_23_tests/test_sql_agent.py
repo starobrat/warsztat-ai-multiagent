@@ -14,7 +14,7 @@ from google.adk.evaluation.agent_evaluator import AgentEvaluator
 
 REPO = Path(__file__).resolve().parents[1]
 # Wzorcowy (gotowy) test set agenta SQL leży w solutions/ - ex_15 buduje WŁASNY w adk web.
-EVALSET = REPO / "solutions" / "ex_15_ewaluacja" / "sql_agent.evalset.json"
+EVALSET = REPO / "ex_15_ewaluacja" / "sql_agent.evalset.json"
 
 
 @pytest.mark.asyncio
