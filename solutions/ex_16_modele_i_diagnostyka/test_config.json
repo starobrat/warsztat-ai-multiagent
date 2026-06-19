@@ -1,0 +1,22 @@
+{
+  "criteria": {
+    "tool_trajectory_avg_score": { "threshold": 1.0 },
+    "response_match_score": { "threshold": 0.2 },
+    "answer_correct_score": { "threshold": 1.0 },
+    "answer_polite_score": { "threshold": 0.6 }
+  },
+  "custom_metrics": {
+    "answer_correct_score": {
+      "code_config": {
+        "name": "solutions.ex_16_modele_i_diagnostyka.correctness_metric.answer_correct_score"
+      },
+      "description": "Czy odpowiedź agenta zawiera właściwą wartość z bazy (ground truth z wzorcowego wywołania)."
+    },
+    "answer_polite_score": {
+      "code_config": {
+        "name": "solutions.ex_16_modele_i_diagnostyka.politeness_metric.answer_polite_score"
+      },
+      "description": "Czy odpowiedź agenta jest grzeczna - ocenia sędzia-LLM (agent ADK na mocniejszym modelu)."
+    }
+  }
+}
